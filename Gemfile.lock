@@ -13,6 +13,18 @@ GIT
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
 
+GIT
+  remote: git://github.com/spree/spree_auth_devise.git
+  revision: f231fce43686d66fe3e6d65ba8595b4474c49895
+  branch: 3-0-stable
+  specs:
+    spree_auth_devise (3.0.0)
+      devise (~> 3.4.1)
+      devise-encryptable (= 0.1.2)
+      json
+      multi_json
+      spree_core (~> 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -118,16 +130,15 @@ GEM
       nokogiri (~> 1.6.0)
       polyglot
       rails (>= 3.1)
-    devise (3.5.2)
+    devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_invitable (1.5.3)
-      actionmailer (>= 3.2.6, < 5)
-      devise (>= 3.2.0)
+    devise-encryptable (0.1.2)
+      devise (>= 2.1.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -442,7 +453,6 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
-  devise_invitable
   factory_girl_rails
   ffaker
   figaro
@@ -469,6 +479,7 @@ DEPENDENCIES
   simple_form
   slim-rails
   spree (= 3.0.4)
+  spree_auth_devise!
   spring
   spring-commands-rspec
   turbolinks

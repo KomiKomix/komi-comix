@@ -22,7 +22,7 @@ end
 
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'devise_invitable'
+#gem 'devise_invitable'
 gem 'figaro'
 gem 'high_voltage'
 gem 'puma', '~> 2.15.3'
@@ -34,7 +34,7 @@ gem 'foreman'
 
 gem 'spree', '3.0.4'
 #gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '2-3-stable'
-#gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '2-3-stable'
+gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '3-0-stable'
 #gem 'spree_i18n',                github: 'spree/spree_i18n', branch: '2-3-stable'
 #gem 'spree_social_products',     github: 'spree/spree_social_products', branch: '2-3-stable'
 #gem 'spree_sitemap',             github: 'jdutil/spree_sitemap', branch: '2-3-stable'
