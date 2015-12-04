@@ -14,6 +14,19 @@ GIT
       uniform_notifier (~> 1.9.0)
 
 GIT
+  remote: git://github.com/spree-contrib/spree_i18n.git
+  revision: 53853ad1f1f1c94ba90c6ec177568550354a65d4
+  branch: 3-0-stable
+  specs:
+    spree_i18n (3.0.0)
+      friendly_id-globalize
+      globalize (~> 5.0.1)
+      i18n_data (~> 0.7.0)
+      kaminari-i18n (~> 0.3.2)
+      rails-i18n (~> 4.0.1)
+      spree_core (~> 3.0.4)
+
+GIT
   remote: git://github.com/spree/spree_auth_devise.git
   revision: f231fce43686d66fe3e6d65ba8595b4474c49895
   branch: 3-0-stable
@@ -157,8 +170,13 @@ GEM
       thor (~> 0.19.1)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    friendly_id-globalize (1.0.0.alpha2)
+      friendly_id (~> 5.1.0, < 6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     high_voltage (2.4.0)
     highline (1.6.21)
     htmlentities (4.3.4)
@@ -166,6 +184,7 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    i18n_data (0.7.0)
     interception (0.5)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
@@ -180,6 +199,9 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-i18n (0.3.2)
+      kaminari
+      rails
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.2.0)
@@ -259,6 +281,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails-i18n (4.0.7)
+      i18n (~> 0.7)
+      railties (~> 4.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -480,6 +505,7 @@ DEPENDENCIES
   slim-rails
   spree (= 3.0.4)
   spree_auth_devise!
+  spree_i18n!
   spring
   spring-commands-rspec
   turbolinks

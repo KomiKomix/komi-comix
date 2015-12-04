@@ -16,3 +16,6 @@ Spree.config do |config|
 end
 
 Spree.user_class = "Spree::LegacyUser"
+
+Spree::Frontend::Config.locale = :ru
+Spree::Backend::Config.locale = :ru
