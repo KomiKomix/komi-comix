@@ -32,7 +32,7 @@ Spree.config do |config|
   #config.allow_ssl_in_staging = true
   #config.allow_ssl_in_production = true
   config.logo = 'logo/favicon.ico'
-  config.layout = 'application'
+  #config.layout = 'application'
   #config.default_country_id = 72
   config.products_per_page = 48
   config.allow_guest_checkout = true
