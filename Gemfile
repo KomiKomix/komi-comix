@@ -32,6 +32,10 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'foreman'
 
+gem 'aws-sdk-v1'
+gem 'aws-sdk', '~>2'
+
+
 gem 'spree', '3.0.4'
 #gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '2-3-stable'
 gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '3-0-stable'
