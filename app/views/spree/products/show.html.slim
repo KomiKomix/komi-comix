@@ -1,0 +1,65 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+    .carditems
+      .row
+        .col-md-6.col-sm-6.col-lg-6
+          .product-card-gallery.hidden-xs
+            = render partial: 'thumbnails'
+            ul.list-unstyled.product-card-gallery-list
+              li class="product-card-gallery-item state_selected"
+                a[class="link" href="#"]
+                  img[src="img/18.jpg"]
+              li class="product-card-gallery-item"
+                a[class="link" href="#"]
+                  img[src="img/20.jpg"]
+              li class="product-card-gallery-item"
+                a[class="link" href="#"]
+                  img[src="img/19.jpg"]
+              li class="product-card-gallery-item"
+                a[class="link" href="#"]
+                  img[src="img/21.jpg"]
+
+          .items.center-block
+            .image-wrapper
+              = render partial: 'image'
+              img[src="img/4.jpg" alt="..." class="img-responsive img-center"]
+
+        .col-md-6.col-sm-6.col-lg-6
+          .page-header
+            h3= 'Зигги, космический хомяк'
+            br
+            small= 'Детский комикс увеличенного формата'
+
+          .description.copy
+            //= render partial: 'description'
+            p.p_small.text-justify
+              = 'Сценарист Роман Котков и художник Евгений Яковлев создали комикс, одновременно детский и взрослый, с весёлым юмором и прекрасными иллюстрациями.'
+              br
+              = 'Приключения находчивого инопланетного хомяка Зигги и его брата-акулёнка Йанго придутся по душе всем: как новым читателям, так и фанатам комиксов!'
+
+            ul.list-unstyled.p_small.copy
+              li
+                = 'Издательство: Bubble'
+              li
+                = 'Вес: 600 г'
+              li
+                = 'Твердый переплет'
+              li
+                = 'Объем — 212 стр.'
+              li
+                = 'Формат — 225×155×25 мм'
+
+          .shopping-box
+            .price
+              span= '120.00 ₽'
+              span.quantity
+                = '×'
+                input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3"]
+
+            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"]
+              = 'Добавить в корзину'
+
+
+
+
