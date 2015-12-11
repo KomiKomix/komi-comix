@@ -1,0 +1,33 @@
+- paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+- paginated_products ||= products
+
+.container
+  .row
+    = render partial: 'spree/shared/sidebar' if content_for? :sidebar
+    .col-md-9.col-sm-8
+      .row
+        .col-md-12.nav_select
+          .btn-group[role='group' aria-label='...']
+            button[type="button" class="btn btn-default"]
+              = 'Новые'
+            button[type="button" class="btn btn-default"]
+              = 'Название'
+            button[type="button" class="btn btn-default"]
+              = 'Цена'
+
+      hr.copy
+      .row
+        - if products.any?
+          - products.each do |product|
+            - url = product_url(product, taxon_id: @taxon.try(:id))
+            .col-sm-6.col-md-4.col-lg-3
+              .thumbnail.copy.center-block
+                = link_to product_image(product, itemprop: 'image'), url, itemprop: 'url'
+                .caption
+                  h4.text-center
+                    = link_to truncate(product.name, length: 50), url, class: 'info', itemprop: 'name', title: product.name
+                  p.text-center
+                    = display_price(product)
+                    = link_to '#', class: 'btn btn-primary', role: 'button'
+                      i.fa.fa-plus
+

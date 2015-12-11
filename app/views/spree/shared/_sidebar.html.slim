@@ -1,0 +1,142 @@
+.hidden-xs.col-md-3.col-sm-4
+  .input-group.search
+    input[type="text" class="form-control" placeholder="Найди свой комикс..."]
+    span.input-group-btn
+      button[class="btn" type="button"]
+       i.fa.fa-search
+
+  aside.list-group.copy
+    .list-group-item
+      div[role="tab" id="headingOne"]
+        a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"]
+          = 'Собрание'
+
+      div[id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"]
+        .panel-body
+          label.checkbox[for="checkbox2"]
+            input[type="checkbox" value="" id="checkbox2" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Комиксы на Русском'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Комиксы на Английском'
+
+          label.checkbox[for="checkbox3"]
+            input[type="checkbox" value="" id="checkbox3" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Артбуки'
+
+          label.checkbox[for="checkbox4"]
+            input[type="checkbox" value="" id="checkbox4" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Энциклопедии'
+
+          label.checkbox[for="checkbox5"]
+            input[type="checkbox" value="" id="checkbox5" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Манга'
+
+          label.checkbox[for="checkbox6"]
+            input[type="checkbox" value="" id="checkbox6" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Книги'
+
+    .list-group-item
+      div[role="tab" id="headingTwo"]
+        a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne"]
+          = 'Издательства'
+
+      div[id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo"]
+        .panel-body
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Dark Horse'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'DC'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Marvel'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Bubble'
+
+    .list-group-item
+      div[role="tab" id="heading5"]
+        a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapseOne"]
+          = 'Сувениры'
+
+      div[id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5"]
+        .panel-body
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Значки'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Наклейки'
+
+          label.checkbox[for="checkbox1"]
+            input[type="checkbox" value="" id="checkbox1" data-toggle="checkbox" class="custom-checkbox"]
+              span.icons
+                span.icon-unchecked
+                span.icon-checked
+            = 'Плакаты'
+
+  aside
+    .list-group
+      .list-group-item.head-list
+        h4= 'Успей купить'
+
+      a[href="#" class="list-group-item"]
+        h4.list-group-item-heading
+          = 'Эра Альтрона'
+        p.list-group-item-text
+          = 'Книга 2'
+
+      a[href="#" class="list-group-item"]
+        h4.list-group-item-heading
+          = 'Росомаха'
+        p.list-group-item-text
+          = 'Старик Логан'
+
+      a[href="#" class="list-group-item"]
+        h4.list-group-item-heading
+          = 'Бэтмен'
+        p.list-group-item-text
+          = 'Книга 2. Город Сов'

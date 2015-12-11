@@ -1,0 +1,80 @@
+.container
+  .row.visible-xs
+    .col-md-12.text-center
+      .btn-group.btn-group-xs[role='group' aria-label='...']
+        a[type="button" class="btn btn-top" href="#{account_path}"]= 'Мой аккаунт'
+        button[type="button" class="btn btn-top hidden-lg hidden-md"]
+          i[class='fa fa-shopping-cart']
+          span= '(0)'
+
+  .row
+    .col-md-6.col-md-offset-3.col-sm-4.col-sm-offset-4
+      a[href="#{root_path}"]
+        .logo
+
+    .col-md-3.col-sm-4
+
+      nav.head_nav.hidden-xs
+        a[class="account_box p_small text-center" data-toggle="modal" data-target=".bs-example-modal-sm"]
+          span= 'Мой аккаунт'
+        hr
+        
+        a[class="card_box pull-right p_small" href="#{cart_path}"]
+          i[class="fa fa-shopping-cart fa-lg"]
+          span.cart-count= 'В корзине (0)'
+          br
+          span.cart-text= '0,00 ₽'
+          
+      .modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
+        .modal-dialog.modal-sm
+          .modal-content
+            .modal-body
+            .login-form
+              .form-group
+                input[type="text" class="form-control login-field" value="" placeholder="Введите вашу почту" id="login-name"]
+                label[class="login-field-icon fui-user" for="login-name"]
+
+              .form-group
+                  <input type="password" class="form-control login-field" value="" placeholder="Пароль" id="login-pass">
+                  <label class="login-field-icon fui-lock" for="login-pass"></label>
+
+              a[class="btn btn-primary btn-lg btn-block" href="account.html"]
+                = 'Войти'
+              a[class="login-link" href="#"]
+                = 'Забыли пароль?'
+              a[class="btn btn-info btn-lg btn-block" href="singup.html" style="margin-top: 15px;"]
+                = 'Регистрация'
+
+  nav.navbar
+    .container-fluid
+      .navbar-header
+        button[type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"]
+          span.sr-only= 'Toggle navigation'
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+
+      .collapse.navbar-collapse[id="bs-example-navbar-collapse-1"]
+        ul.nav.navbar-nav.center-block
+          li.active
+            a[href="#{root_path}"]= 'Архив'
+          li
+            a[href="news.html"]= 'Пропаганда'
+          li
+            a[href="delivery.html"]= 'Доставка'
+          li
+            a[href="about.html"]= 'О нас'
+
+
+.container
+  .row
+    .col-md-12
+      section.baner.hidden-xs
+        .head-baner
+          h2= 'Бесплатная доставка'
+          br
+          small= 'По Республике Коми на заказы от 800 ₽'
+
+        .foot-baner
+          p= '*Акция действует до 31 декабря 2015 года.'
+
