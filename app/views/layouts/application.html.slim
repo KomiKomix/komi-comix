@@ -1,0 +1,24 @@
+doctype html
+html[lang='ru']
+
+  head[data-hook='inside_head']
+    = render partial: 'spree/shared/head'
+
+  body[data-hook='body']
+    header
+      = render partial: 'spree/shared/header'
+
+    main
+      = yield :before_content
+
+      - c_class = !content_for?(:sidebar) ? 'sixteen' : 'twelve omega'
+      #content[class="contet_area columns #{c_class}"]
+        = flash_messages
+
+        = yield
+
+
+    = yield :footer_before_content
+    footer
+      = render partial: 'spree/shared/footer'
+
