@@ -1,7 +1,7 @@
 module Spree
   module BaseHelper
     def taxons_tree(root_taxon, current_taxon, max_level = 1)
-      return '' if max_level < 1 #|| root_taxon.leaf?
+      return '' if max_level < 1 || root_taxon.nil? #|| root_taxon.leaf?
       content_tag :div, class: 'list-group' do
         root_taxon.children.map do |taxon|
           css_class = (current_taxon && current_taxon.self_and_ancestors.include?(taxon)) ? 'list-group-item active' : 'list-group-item'
