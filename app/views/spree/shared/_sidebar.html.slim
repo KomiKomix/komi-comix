@@ -8,23 +8,24 @@
   aside.list-group.copy
 
     - @taxonomies.each_with_index do |taxonomy, index|
-      .list-group-item
-        div[role="tab" id="heading_#{taxonomy.id}"]
-          a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_#{taxonomy.id}" aria-expanded="true" aria-controls="collapse_#{taxonomy.id}"]
-            = taxonomy.name
+      - if !(taxonomy.taxons.count == 1 && taxonomy.taxons.first.products.count.zero?)
+        .list-group-item
+          div[role="tab" id="heading_#{taxonomy.id}"]
+            a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_#{taxonomy.id}" aria-expanded="true" aria-controls="collapse_#{taxonomy.id}"]
+              = taxonomy.name
 
-        - collapsed_class = 'panel-collapse collapse'
-        - collapsed_class += ' in' if index == 0
-        div[id="collapse_#{taxonomy.id}" class=collapsed_class role="tabpanel" aria-labelledby="headingOne"]
-          - taxonomy.taxons.each do |taxon|
-            - if taxon.id != taxonomy.id
-              .panel-body
-                label.checkbox[for="checkbox_#{taxonomy.id}_#{taxon.id}"]
-                  input[type="checkbox" value="" id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox"]
-                    span.icons
-                      span.icon-unchecked
-                      span.icon-checked
-                  = taxon.name
+          - collapsed_class = 'panel-collapse collapse'
+          - collapsed_class += ' in' if index == 0
+          div[id="collapse_#{taxonomy.id}" class=collapsed_class role="tabpanel" aria-labelledby="headingOne"]
+            - taxonomy.taxons.each do |taxon|
+              - if taxon.id != taxonomy.id && !taxon.products.count.zero?
+                .panel-body
+                  label.checkbox[for="checkbox_#{taxonomy.id}_#{taxon.id}"]
+                    input[type="checkbox" value="" id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox"]
+                      span.icons
+                        span.icon-unchecked
+                        span.icon-checked
+                    = taxon.name
 
   aside
     .list-group
@@ -32,7 +33,7 @@
         h4= 'Успей купить'
 
       - Spree::Product.rand.each do |product|
-        - link_to product_url(product), class: 'list-group-item' do
+        = link_to product_url(product), class: 'list-group-item' do
           h4.list-group-item-heading
             = product.name
           p.list-group-item-text
