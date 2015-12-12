@@ -7,13 +7,15 @@
 
   aside.list-group.copy
 
-    - @taxonomies.each do |taxonomy|
+    - @taxonomies.each_with_index do |taxonomy, index|
       .list-group-item
         div[role="tab" id="heading_#{taxonomy.id}"]
           a[role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_#{taxonomy.id}" aria-expanded="true" aria-controls="collapse_#{taxonomy.id}"]
             = taxonomy.name
 
-        div[id="collapse_#{taxonomy.id}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"]
+        - collapsed_class = 'panel-collapse collapse'
+        - collapsed_class += ' in' if index == 0
+        div[id="collapse_#{taxonomy.id}" class=collapsed_class role="tabpanel" aria-labelledby="headingOne"]
           - taxonomy.taxons.each do |taxon|
             - if taxon.id != taxonomy.id
               .panel-body
@@ -30,7 +32,7 @@
         h4= 'Успей купить'
 
       - Spree::Product.rand.each do |product|
-        = link_to product_url(product), class: 'list-group-item' do
+        - link_to product_url(product), class: 'list-group-item' do
           h4.list-group-item-heading
             = product.name
           p.list-group-item-text
