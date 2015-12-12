@@ -22,12 +22,15 @@
             - url = product_url(product, taxon_id: @taxon.try(:id))
             .col-sm-6.col-md-4.col-lg-3
               .thumbnail.copy.center-block
-                = link_to product_image(product, itemprop: 'image'), url, itemprop: 'url'
+                = link_to url, itemprop: 'url' do
+                  = render partial: 'spree/products/image', locals: { product: product, image_size: :small }
                 .caption
                   h4.text-center
-                    = link_to truncate(product.name, length: 50), url, class: 'info', itemprop: 'name', title: product.name
+                    = product.name
                   p.text-center
                     = display_price(product)
                     = link_to '#', class: 'btn btn-primary', role: 'button'
-                      i.fa.fa-plus
+                      i.fa.fa-plus[title='Add to cart']
+
+
 

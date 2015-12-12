@@ -21,9 +21,7 @@
                   img[src="img/21.jpg"]
 
           .items.center-block
-            .image-wrapper
-              = render partial: 'image'
-              img[src="img/4.jpg" alt="..." class="img-responsive img-center"]
+            = render partial: 'spree/products/image', locals: { product: @product, image_size: :product }
 
         .col-md-6.col-sm-6.col-lg-6
           .page-header

@@ -1,0 +1,5 @@
+.image-wrapper
+  - if defined?(image) && image
+    = image_tag image.attachment.url(image_size), itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name
+  - else
+    = product_image(product, itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name)
