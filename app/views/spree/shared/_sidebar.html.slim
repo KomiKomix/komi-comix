@@ -1,9 +1,12 @@
+- @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots
 .hidden-xs.col-md-3.col-sm-4
   .input-group.search
-    input[type="text" class="form-control" placeholder="Найди свой комикс..."]
+    = form_tag spree.products_path, method: :get do
+      = hidden_field_tag :taxon, ''
+      = search_field_tag :keywords, params[:keywords], placeholder: 'Найди свой комикс...', class: 'form-control'
     span.input-group-btn
-      button[class="btn" type="button"]
-       i.fa.fa-search
+      submit[name=nil class="btn", type="button"]
+        i.fa.fa-search
 
   aside.list-group.copy
 
@@ -21,7 +24,8 @@
               - if taxon.id != taxonomy.id && !taxon.products.count.zero?
                 .panel-body
                   label.checkbox[for="checkbox_#{taxonomy.id}_#{taxon.id}"]
-                    input[type="checkbox" value="" id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox"]
+                    - selected_taxon = @taxons_ids.present? && @taxons_ids.include?(taxon.id)
+                    input[type="checkbox" value=taxon.id id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox" checked=selected_taxon]
                       span.icons
                         span.icon-unchecked
                         span.icon-checked

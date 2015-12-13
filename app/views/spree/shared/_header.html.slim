@@ -1,12 +1,12 @@
-.container
-  .row.visible-xs
-    .col-md-12.text-center
-      .btn-group.btn-group-xs[role='group' aria-label='...']
-        a[type="button" class="btn btn-top" href="#{account_path}"]= 'Мой аккаунт'
-        button[type="button" class="btn btn-top hidden-lg hidden-md"]
-          i[class='fa fa-shopping-cart']
-          span= '(0)'
+.row.visible-xs
+  .col-md-12.text-center
+    .btn-group.btn-group-xs[role='group' aria-label='...']
+      a[type="button" class="btn btn-top" href="#{account_path}"]= 'Мой аккаунт'
+      button[type="button" class="btn btn-top hidden-lg hidden-md"]
+        i[class='fa fa-shopping-cart']
+        span= '(0)'
 
+.container
   .row
     .col-md-6.col-md-offset-3.col-sm-4.col-sm-offset-4
       a[href="#{root_path}"]
@@ -45,26 +45,25 @@
               a[class="btn btn-info btn-lg btn-block" href="singup.html" style="margin-top: 15px;"]
                 = 'Регистрация'
 
-  nav.navbar
-    .container-fluid
-      .navbar-header
-        button[type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"]
-          span.sr-only= 'Toggle navigation'
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
+nav.navbar
+  .container-fluid
+    .navbar-header
+      button[type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"]
+        span.sr-only= 'Toggle navigation'
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
 
-      .collapse.navbar-collapse[id="bs-example-navbar-collapse-1"]
-        ul.nav.navbar-nav.center-block
-          li.active
-            a[href="#{root_path}"]= 'Архив'
-          li
-            a[href="news.html"]= 'Пропаганда'
-          li
-            a[href="delivery.html"]= 'Доставка'
-          li
-            a[href="about.html"]= 'О нас'
-
+    .collapse.navbar-collapse[id="bs-example-navbar-collapse-1"]
+      ul.nav.navbar-nav.center-block
+        li.active
+          a[href="#{root_path}"]= 'Архив'
+        li
+          a[href="news.html"]= 'Пропаганда'
+        li
+          a[href="delivery.html"]= 'Доставка'
+        li
+          a[href="about.html"]= 'О нас'
 
 .container
   .row
