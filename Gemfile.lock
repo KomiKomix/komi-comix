@@ -14,6 +14,16 @@ GIT
       uniform_notifier (~> 1.9.0)
 
 GIT
+  remote: git://github.com/spree-contrib/spree_editor.git
+  revision: eafe2e60ddd566c5e8c0a3338382fba1684547ef
+  branch: 3-0-stable
+  specs:
+    spree_editor (2.2.1)
+      ckeditor (~> 4.1.2)
+      spree_backend (~> 3.0.0)
+      tinymce-rails (~> 4.0.16)
+
+GIT
   remote: git://github.com/spree-contrib/spree_i18n.git
   revision: 53853ad1f1f1c94ba90c6ec177568550354a65d4
   branch: 3-0-stable
@@ -27,6 +37,14 @@ GIT
       spree_core (~> 3.0.4)
 
 GIT
+  remote: git://github.com/spree-contrib/spree_static_content.git
+  revision: 80a74e1ad8e1843c6bfabcd700dc8edb84822fdd
+  branch: 3-0-stable
+  specs:
+    spree_static_content (3.0.1)
+      spree_core (~> 3.0.0)
+
+GIT
   remote: git://github.com/spree/spree_auth_devise.git
   revision: f231fce43686d66fe3e6d65ba8595b4474c49895
   branch: 3-0-stable
@@ -36,6 +54,14 @@ GIT
       devise-encryptable (= 0.1.2)
       json
       multi_json
+      spree_core (~> 3.0.0)
+
+GIT
+  remote: git://github.com/spree/spree_social_products.git
+  revision: cf9a156eb6e7fc5645eee36f6b50a7d9599472fd
+  branch: 3-0-stable
+  specs:
+    spree_social_products (2.0.0)
       spree_core (~> 3.0.0)
 
 GEM
@@ -128,6 +154,9 @@ GEM
       activesupport (>= 3.0.0)
     childprocess (0.5.8)
       ffi (~> 1.0, >= 1.0.11)
+    ckeditor (4.1.5)
+      cocaine
+      orm_adapter (~> 0.5.0)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -446,6 +475,8 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.1)
     tins (1.6.0)
+    tinymce-rails (4.0.28.2)
+      railties (>= 3.1.1)
     truncate_html (0.9.2)
     turbolinks (2.5.3)
       coffee-rails
@@ -487,6 +518,7 @@ DEPENDENCIES
   bullet!
   byebug
   capybara
+  ckeditor (~> 4.1.0)
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -511,13 +543,16 @@ DEPENDENCIES
   rails_layout
   rspec-rails
   rubocop
-  sass-rails (~> 5.0)
+  sass-rails (~> 5.0.3)
   selenium-webdriver
   simple_form
   slim-rails
   spree (= 3.0.4)
   spree_auth_devise!
+  spree_editor!
   spree_i18n!
+  spree_social_products!
+  spree_static_content!
   spring
   spring-commands-rspec
   turbolinks

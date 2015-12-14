@@ -4,7 +4,7 @@ ruby '2.1.7'
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.18.4'
 
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
@@ -40,14 +40,14 @@ gem 'spree', '3.0.4'
 #gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '2-3-stable'
 gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_i18n',                github: 'spree-contrib/spree_i18n', branch: '3-0-stable'
-#gem 'spree_social_products',     github: 'spree/spree_social_products', branch: '2-3-stable'
+gem 'spree_social_products',     github: 'spree/spree_social_products', branch: '3-0-stable'
 #gem 'spree_sitemap',             github: 'jdutil/spree_sitemap', branch: '2-3-stable'
-#gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', branch: '2-3-stable'
+gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', branch: '3-0-stable'
 #gem 'spree-bank-transfer',       github: 'vinsol/spree_bank_transfer', branch: '2-3-stable', require: 'spree_bank_transfer'
-#gem 'spree_editor',              github: 'jaemo/spree_editor', branch: '2-3-stable'
-#gem 'spree_comments',            github: 'spree/spree_comments', branch: '2-3-stable'
+gem 'spree_editor',              github: 'spree-contrib/spree_editor', branch: '3-0-stable'
+#gem 'spree_comments',            github: 'spree/spree_comments', branch: '3-0-stable'
 
-#gem 'ckeditor', '4.1.0'
+gem 'ckeditor', '~>4.1.0'
 
 
 group :development do
