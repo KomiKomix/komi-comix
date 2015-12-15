@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .card_block
+        .b_title
+          .page-header
+            h3= 'Регистратура'
+
+          = form_for(Spree::User.new, as: :spree_user, url: spree_user_session_path, html: { role: 'form'}) do |f|
+            .row
+              .col-md-8.col-md-offset-2
+                = f.label :email, Spree.t(:email),  class: 'input__title copy'
+                = f.email_field :email, class: 'form-control', :'data-rule-required' => 'true', :'aria-required' => 'true', :'aria-invalid' => 'true'
+                = f.label :password, Spree.t(:password), class: 'input__title copy'
+                = f.password_field :password, class: 'form-control', :'data-rule-required' => 'true', :'data-rule-password' => 'true', :'aria-invalid' => 'true'
+
+            .row
+              .col-md-8.col-md-offset-2
+              = f.submit Spree.t(:login), id: 'login-button', class: 'btn btn-primary pull-right copy'
+

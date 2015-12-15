@@ -10,22 +10,28 @@
                 span.p_small= 'Выйти'
           .row
             .col-md-8.col-md-offset-2
-                p.lead.copy= 'Контактная информация'
+              p.lead.copy= 'Контактная информация'
 
-                label.input__title.copy= 'ФИО'
-                input[type="text" value="" data-rule-required="true" placeholder="" class="form-control" aria-required="true" aria-invalid="true"]
 
-                label.input__title.copy= 'Телефон'
-                input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+              //= form_for Spree::User.new, :as => @user, :url => spree.user_path(@user), :method => :put do |f|
 
-                label.input__title.copy= 'Электронная почта'
-                input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+              //  = f.label :email, Spree.t(:email),  class: 'servicePage_form_Label'
+              //  = f.email_field :email, class: 'input__title copy', class: 'form-control', :'data-rule-required' => 'true', :'aria-required' => 'true', :'aria-invalid' => 'true'
 
-                label.input__title.copy= 'Индекс'
-                input[type="tel" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+              label.input__title.copy= 'ФИО'
+              input[type="text" value="" data-rule-required="true" placeholder="" class="form-control" aria-required="true" aria-invalid="true"]
 
-                label.input__title.copy= 'Адрес (населенный пункт, улица, дом, квартира)'
-                input[type="tel" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+              label.input__title.copy= 'Телефон'
+              input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+
+              label.input__title.copy= 'Электронная почта'
+              input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+
+              label.input__title.copy= 'Индекс'
+              input[type="tel" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+
+              label.input__title.copy= 'Адрес (населенный пункт, улица, дом, квартира)'
+              input[type="tel" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
 
           .row
             .col-md-8.col-md-offset-2
@@ -34,14 +40,18 @@
           .row
             .col-md-8.col-md-offset-2
               p.lead.copy= 'Сменить пароль'
-          .col-md-4.col-md-offset-2
-            label.input__title= 'Новый пароль'
-            input[type="text" value="" data-rule-required="true" placeholder="" class="form-control" aria-required="true" aria-invalid="true"]
 
-          .col-md-4
-            label.input__title= 'Повторите пароль'
-            input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+          = form_for current_spree_user, as: :spree_user, url: spree.update_password_path, method: :put do |f|
 
-          .row
-            .col-md-8.col-md-offset-2
-              button.btn.btn-primary.pull-right.copy= 'Сохранить'
+            .col-md-4.col-md-offset-2
+              = f.label :password, Spree.t(:password), class: 'input__title'
+              = f.password_field :password, class: 'form-control', :'data-rule-required' => 'true', :'aria-required' => 'true', :'aria-invalid' => 'true'
+
+            .col-md-4
+              = f.label :password_confirmation, Spree.t(:confirm_password), class: 'input__title'
+              = f.password_field :password_confirmation, class: 'form-control', :'data-rule-PASSWORD' => 'true', :'aria-required' => 'true', :'aria-invalid' => 'true'
+
+            .row
+              .col-md-8.col-md-offset-2
+                = f.submit Spree.t(:change_my_password), class: 'btn btn-primary pull-right copy'
+
