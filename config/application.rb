@@ -39,6 +39,7 @@ module KomiComix
     config.i18n.available_locales = :en, :ru
     I18n.enforce_available_locales = false
 
+    config.autoload_paths    += ["#{config.root}/app/models/ckeditor"]
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
