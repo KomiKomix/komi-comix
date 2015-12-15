@@ -6,7 +6,6 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
                       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
                       bucket:            ENV['S3_BUCKET']
                     },
-                    :bucket => "********"
                     bucket: ENV['S3_BUCKET'],
 
                     url: '/ckeditor_assets/attachments/:id/:filename',
