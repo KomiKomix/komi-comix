@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += ['tinymce-jquery.js']
 Rails.application.config.assets.precompile += ['ckeditor/*']
+Rails.application.config.assets.precompile += Ckeditor.assets
+Rails.application.config.autoload_paths    += ["#{config.root}/app/models/ckeditor"]

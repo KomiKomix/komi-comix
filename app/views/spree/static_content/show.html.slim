@@ -13,7 +13,4 @@
   .contet_columnedCover_main
     .static_text_pads
       #page_content
-        - if @mustache_variables.present?
-          = raw Mustache.render(@page.body, @mustache_variables)
-        - else
-          = raw @page.body
+        = raw Mustache.render(@page.body, @mustache_variables)
