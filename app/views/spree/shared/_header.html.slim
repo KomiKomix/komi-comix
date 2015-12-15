@@ -60,11 +60,15 @@ nav.navbar
         li.active
           a[href="#{root_path}"]= 'Архив'
         li
-          a[href="news.html"]= 'Пропаганда'
+          a[href="#"]= 'Пропаганда'
         li
-          a[href="delivery.html"]= 'Доставка'
+          - delivery_page = Spree::Page.visible.find_by_slug('/delivery')
+          - delivery_url = delivery_page.present? && delivery_page.slug.present? ? delivery_page.slug : '#'
+          = link_to 'Доставка', delivery_url
         li
-          a[href="about.html"]= 'О нас'
+          - about_page = Spree::Page.visible.find_by_slug('/about')
+          - about_url = about_page.present? && about_page.slug.present? ? about_page.slug : '#'
+          = link_to 'О нас', about_url
 
 - if current_page?(root_path) or current_page?(products_path)
   .container

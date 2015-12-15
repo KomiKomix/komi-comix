@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
+//= require 'spree/komi-comix/products'
+//= require 'spree/komi-comix/bootstrap'
+//= require 'ckeditor/config'
 //= require_tree .
