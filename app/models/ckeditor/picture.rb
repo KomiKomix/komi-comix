@@ -4,7 +4,8 @@ class Ckeditor::Picture < Ckeditor::Asset
                     s3_credentials: {
                       access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
                       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
-                      bucket:            ENV['S3_BUCKET']
+                      bucket:            ENV['S3_BUCKET'],
+                      region: 'us-east-1'
                     },
                     url: 'ckeditor_assets/pictures/:id/:style_:basename.:extension',
                     path: 'ckeditor_assets/pictures/:id/:style_:basename.:extension'
