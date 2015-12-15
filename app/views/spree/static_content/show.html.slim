@@ -1,0 +1,19 @@
+- if @page.layout.present? and @page.render_layout_as_partial?
+  = render partial: @page.layout
+- else
+  - content_for :head do
+    - if @page.meta_title.present?
+      meta[name="title" content="<%=@page.meta_title%>"]
+    - else
+      meta[name="title" content="<%=@page.title%>"]
+
+    meta[name="keywords" content="<%=@page.meta_keywords%>"]
+    meta[name="description" content="<%=@page.meta_description%>"]
+
+  .contet_columnedCover_main
+    .static_text_pads
+      #page_content
+        - if @mustache_variables.present?
+          = raw Mustache.render(@page.body, @mustache_variables)
+        - else
+          = raw @page.body

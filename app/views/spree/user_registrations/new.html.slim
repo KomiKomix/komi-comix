@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .card_block
+        .b_title
+          .page-header
+            h3= 'Регистратура'
+
+          .row
+            .col-md-8.col-md-offset-2
+              label.input__title.copy= 'Имя'
+              input[type="text" value="" data-rule-required="true" placeholder="" class="form-control" aria-required="true" aria-invalid="true"]
+              label.input__title.copy= 'Электронная почта'
+              input[type="tel" name="USER[PHONE_NUMBER]" value="" data-rule-phone="true" placeholder="" class="form-control" aria-invalid="true"]
+
+          .row
+            .col-md-8.col-md-offset-2
+              button[class="btn btn-primary pull-right copy" data-toggle="modal" data-target="#signup_modal"]= 'Отправить'
+
+        #signup_modal.modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
+          .modal-dialog.modal-sm
+            .modal-content
+              .modal-header
+                h4.text-center= 'Чудесно!'
+
+              .modal-body
+                p.lead.text-center= 'Мы отправили пароль на вашу почту'
