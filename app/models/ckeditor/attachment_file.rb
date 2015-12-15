@@ -6,10 +6,8 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
                       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
                       bucket:            ENV['S3_BUCKET']
                     },
-                    bucket: ENV['S3_BUCKET'],
-
                     url: '/ckeditor_assets/attachments/:id/:filename',
-                    path: ':rails_root/public/ckeditor_assets/attachments/:id/:filename'
+                    path: '/ckeditor_assets/attachments/:id/:filename'
 
   validates_attachment_presence :data
   validates_attachment_size :data, less_than: 100.megabytes
