@@ -8,7 +8,7 @@ class Ckeditor::Picture < Ckeditor::Asset
                     },
                     bucket: ENV['S3_BUCKET'],
                     url: 'ckeditor_assets/pictures/:id/:style_:basename.:extension',
-                    path: 'ckeditor_assets/pictures/:id/:style_:basename.:extension',
+                    path: 'ckeditor_assets/pictures/:id/:style_:basename.:extension'
 
   validates_attachment_presence :data
   validates_attachment_size :data, less_than: 2.megabytes
