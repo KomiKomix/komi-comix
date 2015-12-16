@@ -1,6 +1,5 @@
 - paginated_products = @searcher.retrieve_products if params.key?(:keywords)
 - paginated_products ||= products
-- products = @products
 
 .row#products_container
   - if products.any?
@@ -20,3 +19,4 @@
               = link_to '#', class: 'btn btn-primary', role: 'button'
                 i.fa.fa-plus[title='Add to cart']
 
+  = paginate paginated_products, theme: 'komi-comix'

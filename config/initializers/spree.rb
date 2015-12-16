@@ -23,7 +23,7 @@ Spree.config do |config|
   config.logo = 'logo/favicon.ico'
   config.layout = 'application'
   #config.default_country_id = 72
-  config.products_per_page = 16
+  config.products_per_page = 12
   config.allow_guest_checkout = true
   config.always_include_confirm_step = true
   #config.mails_from = ""

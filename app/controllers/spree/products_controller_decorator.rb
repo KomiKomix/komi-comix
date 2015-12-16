@@ -21,7 +21,7 @@ Spree::ProductsController.class_eval do
       end
     else
       @searcher   = build_searcher(params.merge(include_images: true))
-      @products   = @searcher.retrieve_products.where(id: arr)
+      @products   = @searcher.retrieve_products
       @taxonomies = Spree::Taxonomy.includes(root: :children)
       respond_to do |format|
         format.js
