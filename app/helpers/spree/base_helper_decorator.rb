@@ -9,5 +9,14 @@ module Spree
         end.join("\n").html_safe
       end
     end
+
+    def take_your_chance_block_links
+      Spree::Product.rand.collect do |product|
+        link_to product_url(product), class: 'list-group-item' do
+          content_tag(:h4, 'product.caption', class: 'list-group-item-heading') +
+          content_tag(:p, product.name, class: 'list-group-item-text')
+        end
+      end
+    end
   end
 end

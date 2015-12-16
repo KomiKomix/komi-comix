@@ -29,11 +29,6 @@
   aside
     .list-group
       .list-group-item.head-list
-        h4= 'Успей купить'
+        h4= Spree.t('take_your_chance')
 
-      - Spree::Product.rand.each do |product|
-        = link_to product_url(product), class: 'list-group-item'
-          h4.list-group-item-heading
-            = product.caption
-          p.list-group-item-text
-            = product.name
+      = raw(take_your_chance_block_links.join.html_safe)
