@@ -16,7 +16,43 @@
               = product.name
             p.text-center
               = display_price(product)
-              = link_to '#', class: 'btn btn-primary', role: 'button'
+
+              = link_to '#', class: 'btn btn-primary', role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#myModal'
                 i.fa.fa-plus[title='Add to cart']
 
   = paginate paginated_products, theme: 'komi-comix'
+
+#myModal.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]= '&times;'.html_safe
+        h4.modal-title.text-center#myModalLabel= 'Прекрасный выбор!'
+
+      .modal-body
+        table.table
+          tbody
+            tr
+              td.product_name.text-left= 'Зигги, космический хомяк'
+              td.item_amount= '×&nbsp;1'.html_safe
+              td.item_cost.money.text-right= '120.00&nbsp;₽'.html_safe
+              td.hidden-xs.text-right
+                a[href="#"]
+                  i.fa.fa-trash-o
+            tr
+              td.product_name.text-left= 'Человек муравей'
+              td.item_amount= '×&nbsp;1'.html_safe
+              td.item_cost.money.text-right= '230.00&nbsp;₽'.html_safe
+              td.hidden-xs.text-right
+                a[href="#"]
+                  i.fa.fa-trash-o
+            tr.price_total
+              td[colspan="2"]= 'Итого:'
+              td.text-right= '240.00&nbsp;₽'.html_safe
+              td.hidden-xs
+
+      .modal-footer
+        button[type="button" class="btn btn-info hidden-xs pull-left" data-dismiss="modal"]= 'Продолжить покупки'
+        a[type="button" href=cart_path class="btn btn-primary"]
+          i.fa.fa-shopping-cart= 'Купить'
