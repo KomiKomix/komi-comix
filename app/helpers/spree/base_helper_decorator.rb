@@ -10,6 +10,19 @@ module Spree
       end
     end
 
+    def search_form
+      form_tag root_path, method: :get, remote: true  do
+        search_field_tag(:keywords, params[:keywords], placeholder: 'Найди свой комикс...', class: 'form-control', type: 'text') +
+        content_tag(:div, search_button, class: 'input-group-btn search')
+      end
+    end
+
+    def search_button
+      content_tag(:button, class: 'btn', type: 'button') do
+        "<i class='fa fa-search'></i>".html_safe
+      end
+    end
+
     def take_your_chance_block_links
       Spree::Product.rand.collect do |product|
         link_to product_url(product), class: 'list-group-item' do
