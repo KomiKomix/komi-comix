@@ -420,25 +420,6 @@ aside {
     border-color: #EF6C00;
   }
 
-  h4 {
-    font-size: 1.6rem;
-    font-weight: 400;
-    text-transform: none;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
-  p {
-    font-size: 1.6rem;
-    font-weight: 400;
-    text-transform: none;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-bottom: 10px;
-  }
-
   .btn {
     font-size: 20px;
     height: 30px;
@@ -451,14 +432,23 @@ aside {
     margin-left: 4px;
   }
 
-  p {
-    margin: 0;
-    font-weight: 400;
-  }
-
   .image-wrapper {
     height: 270px;
   }
+}
+
+.thumbnail .caption {
+  height: 90px;
+}
+.thumbnail h4, .thumbnail p {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+  text-transform: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .table .image-wrapper {
