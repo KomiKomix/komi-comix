@@ -5,14 +5,9 @@
       .row
         .col-md-12.nav_select
           .btn-group[role='group' aria-label='...']
-            //= link_to 'Новые', params.merge(sort_by: :ascend_by_updated_at), class: 'btn btn-default'
-            //= link_to 'Название', params.merge(sort_by: :ascend_by_name), class: 'btn btn-default'
-            //= link_to 'Цена', params.merge(sort_by: :descend_by_master_price), class: 'btn btn-default'
-            button[type="button" class="btn btn-default"]
-              = 'Новые'
-            button[type="button" class="btn btn-default"]
-              = 'Название'
-            button[type="button" class="btn btn-default"]
-              = 'Цена'
+            = link_to 'Новые', params.merge(sort_by: :ascend_by_updated_at), class: 'btn btn-default'
+            = link_to 'Название', params.merge(sort_by: :ascend_by_name), class: 'btn btn-default'
+            = link_to 'Цена', params.merge(sort_by: :descend_by_master_price), class: 'btn btn-default'
+
       hr.copy
       = render partial: 'spree/shared/products', locals: { products: @products }

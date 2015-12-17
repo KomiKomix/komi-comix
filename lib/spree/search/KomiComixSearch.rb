@@ -33,12 +33,30 @@ module Spree
       protected
         def get_base_scope
           base_scope = Spree::Product.active
+          base_scope = apply_sort_scopes(base_scope)
           base_scope = base_scope.in_taxon(taxons) unless taxon.blank?
           base_scope = base_scope.in_taxons(taxons) unless taxons.nil?
           base_scope = get_products_conditions_for(base_scope, keywords)
           base_scope = add_search_scopes(base_scope)
           base_scope = add_eagerload_scopes(base_scope)
           base_scope
+        end
+
+        def apply_sort_scopes(product_scope)
+          sort_scope = product_scope
+          case
+          when sort_by && sort_by == 'ascend_by_updated_at'
+            sort_scope = sort_scope.ascend_by_updated_at
+          when sort_by && sort_by == 'descend_by_master_price'
+            sort_scope = sort_scope.descend_by_master_price
+          when sort_by && sort_by == 'ascend_by_name'
+            sort_scope = sort_scope.ascend_by_name
+          #EALeon: now we use Spree::Classification position field for sorting by default
+          #else
+          #  sort_scope = sort_scope.descend_by_popularity
+          end
+
+          sort_scope
         end
 
         def add_eagerload_scopes scope
@@ -87,6 +105,7 @@ module Spree
           @properties[:taxons] = params[:taxons].nil? ? nil : Spree::Taxon.where(id: params[:taxons])
           @properties[:keywords] = params[:keywords]
           @properties[:search] = params[:search]
+          @properties[:sort_by] = params[:sort_by]
           @properties[:include_images] = params[:include_images]
 
           per_page = params[:per_page].to_i
