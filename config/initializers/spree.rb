@@ -10,7 +10,7 @@
 #
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
-
+require 'spree/search/KomiComixSearch'
 
 
 Spree.config do |config|
@@ -31,7 +31,7 @@ Spree.config do |config|
   #config.facebook_layout = 'button_count'
   #config.order_emails_bcc = ''
   #config.delivery_time_in_days = 3
-  #config.searcher_class = Spree::Search::YgiSearch
+  config.searcher_class = Spree::Search::KomiComixSearch
   #config.use_common_meta = true
   #config.taxon_use_common_meta = true
 
