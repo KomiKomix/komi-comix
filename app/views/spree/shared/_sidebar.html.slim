@@ -1,7 +1,6 @@
 - @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots
 .hidden-xs.col-md-3.col-sm-4
-  .input-group.search
-    = raw(search_form.html_safe)
+  = raw(search_form.html_safe)
 
   aside.list-group.copy
 
