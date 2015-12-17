@@ -9,13 +9,9 @@ $ ->
       ids.push(selectors[i].value)
       i++
 
-    url = window.location.href
-    if url.match(/\?/)
-      url = url + '&taxons='+ids
-    else
-      url = url + '?taxons='+ids
-
-    $.get( url )
+    $.ajax '/products',
+      data: {taxons: ids}
+      type: 'GET'
 
     return
 
