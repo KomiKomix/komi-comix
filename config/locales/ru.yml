@@ -23,3 +23,5 @@ ru:
   spree:
     caption: Заголовок
     take_your_chance: Успей купить
+    posts: Новости
+    post: Новость

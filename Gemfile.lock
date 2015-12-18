@@ -1,6 +1,13 @@
 GIT
+  remote: git://github.com/EALeon/spree_news.git
+  revision: 4e921a2f86afe3600d2e0ec8505c49589770a298
+  branch: test_branch
+  specs:
+    spree_news (1.0.0)
+
+GIT
   remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: cdb1d4ad102d824397292c7aa13153ee107087f1
+  revision: 654c6d0c99b04de72a7bd91a27fb491559f2699b
   specs:
     rack-mini-profiler (0.9.8)
       rack (>= 1.1.3)
@@ -109,22 +116,22 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
-    addressable (2.3.8)
+    addressable (2.4.0)
     arel (6.0.3)
     ast (2.1.0)
     astrolabe (1.3.1)
       parser (~> 2.2)
-    autoprefixer-rails (6.1.2)
+    autoprefixer-rails (6.2.0)
       execjs
       json
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
-    aws-sdk (2.2.5)
-      aws-sdk-resources (= 2.2.5)
-    aws-sdk-core (2.2.5)
+    aws-sdk (2.2.7)
+      aws-sdk-resources (= 2.2.7)
+    aws-sdk-core (2.2.7)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.5)
-      aws-sdk-core (= 2.2.5)
+    aws-sdk-resources (2.2.7)
+      aws-sdk-core (= 2.2.7)
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -163,9 +170,9 @@ GEM
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
-    coffee-rails (4.1.0)
+    coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
+      railties (>= 4.0.0, < 5.1.x)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -259,7 +266,7 @@ GEM
       i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     paperclip (4.2.4)
@@ -272,7 +279,7 @@ GEM
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
     pg (0.18.4)
-    polyamorous (1.2.0)
+    polyamorous (1.3.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
     powerpack (0.1.1)
@@ -370,7 +377,7 @@ GEM
       tins (<= 1.6.0)
     ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
-    sass (3.4.19)
+    sass (3.4.20)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -452,10 +459,10 @@ GEM
       sprockets-rails (~> 2.2)
     spree_sample (3.0.4)
       spree_core (= 3.0.4)
-    spring (1.5.0)
+    spring (1.6.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.5.0)
+    sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
@@ -496,7 +503,7 @@ GEM
       activesupport (>= 3.2)
       railties (>= 3.2)
       tzinfo
-    warden (1.2.3)
+    warden (1.2.4)
       rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
@@ -551,6 +558,7 @@ DEPENDENCIES
   spree_auth_devise!
   spree_editor!
   spree_i18n!
+  spree_news!
   spree_social_products!
   spree_static_content!
   spring

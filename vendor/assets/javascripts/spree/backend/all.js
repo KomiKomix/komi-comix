@@ -10,3 +10,4 @@
 
 //= require_tree .
 //= require spree/backend/spree_i18n
+//= require backend/spree_news

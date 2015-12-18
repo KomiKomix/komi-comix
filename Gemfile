@@ -45,6 +45,7 @@ gem 'spree_social_products',     github: 'spree/spree_social_products', branch: 
 gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', branch: '3-0-stable'
 #gem 'spree-bank-transfer',       github: 'vinsol/spree_bank_transfer', branch: '2-3-stable', require: 'spree_bank_transfer'
 gem 'spree_editor',              github: 'spree-contrib/spree_editor', branch: '3-0-stable'
+gem 'spree_news',                github: 'EALeon/spree_news', branch: 'test_branch'
 #gem 'spree_comments',            github: 'spree/spree_comments', branch: '3-0-stable'
 
 gem 'ckeditor', '~>4.1.0'

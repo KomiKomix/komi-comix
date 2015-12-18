@@ -1,0 +1,37 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .page-header
+        h3= 'Пропаганда'
+        .card_block
+      .row
+        .col-md-8.col-md-offset-2
+          .news_card
+            - Spree::Post.published.each do |post|
+              .content
+                p.title= post.title
+                p.p_small= post.created_at
+                = raw post.description
+
+
+
+
+      .row
+        nav.col-md-12.text-center
+          ul.pagination.copy
+            li
+              a[href="#" aria-label="Previous"]
+                span[aria-hidden="true"]= '&laquo;'.html_safe
+
+            li.active
+              a[href="#"]
+                = '1'
+                span.sr-only= '(current)'
+            li
+              a[href="#"]= '2'
+            li
+              a[href="#"]= '3'
+            li
+              a[href="#" aria-label="Next"]
+                span[aria-hidden="true"]= '&raquo;'.html_safe
+

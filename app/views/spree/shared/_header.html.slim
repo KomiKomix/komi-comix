@@ -61,7 +61,9 @@ nav.navbar
         li.active
           a[href="#{root_path}"]= 'Архив'
         li
-          a[href="#"]= 'Пропаганда'
+          - news = Spree::Post.published
+          - news_url = news.present? ? posts_path : '#'
+          = link_to 'Пропаганда', news_url
         li
           - delivery_page = Spree::Page.visible.find_by_slug('/delivery')
           - delivery_url = delivery_page.present? && delivery_page.slug.present? ? delivery_page.slug : '#'
