@@ -31,3 +31,7 @@
         h4= Spree.t('take_your_chance')
 
       = raw(take_your_chance_block_links.join.html_safe)
+
+= hidden_field_tag :taxons, @taxons
+= hidden_field_tag :keywords, params[:keywords]
+= hidden_field_tag :sort_by, params[:sort_by]

@@ -13,6 +13,7 @@ module Spree
     def search_form
       form_for products_path, method: :get, remote: true, id: 'products_search' do
         content_tag(:div, class: 'input-group search') do
+          hidden_field_tag(:taxons, params[:taxons]) +
           search_field_tag(:keywords, params[:keywords], placeholder: 'Найди свой комикс...', class: 'form-control', type: 'text') +
           content_tag(:div, search_button, class: 'input-group-btn')
         end

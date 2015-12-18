@@ -1,0 +1,27 @@
+- variant = line_item.variant
+= order_form.fields_for :line_items, line_item do |item_form|
+  tr
+    td.product_name
+      .row
+        .col-sm-2.hidden-xs
+          .label-wrapper
+            - if variant.images.length == 0
+              = link_to basket_image(variant.product), variant.product
+            - else
+              = link_to image_tag(variant.images.first.attachment.url(:basket_image)), variant.product
+
+        .col-sm-10
+          .basket_details
+            = link_to variant.product do
+              span.title= line_item.name
+
+    td.item_amount
+      span.quantity
+        = '×'.html_safe
+        = item_form.number_field :quantity, min: 1, size: 3, id: 'quantity', name: 'quantity', maxlength: 3
+    td.item_cost.money.text-right
+      = line_item.single_money.to_html
+    td.text-right.trash
+      = link_to('#', id: "delete_#{dom_id(line_item)}") do
+        i.fa.fa-trash-o
+
