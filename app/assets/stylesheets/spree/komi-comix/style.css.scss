@@ -104,7 +104,7 @@ hr {
   width: 100%;
   color: #fff;
   background-color: #EF6C00;
-  background-image: url("../img/7.png");
+  background-image: image-url("7.png");
   background-repeat: no-repeat;
   background-size: 450px;
   background-position: 90% -10%;
@@ -329,7 +329,7 @@ nav .pagination a:hover {
 
 .logo {
   height: 100px;
-  background: url("../img/vkkx.png");
+  background: image-url("vkkx.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -611,35 +611,35 @@ aside {
 .vk {
   height: 32px;
   width: 32px;
-  background: no-repeat url("../img/icon.png") -192px 0;
+  background: no-repeat image-url("icon.png") -192px 0;
   background-size: auto;
 }
 
 .google {
   height: 32px;
   width: 32px;
-  background: no-repeat url("../img/icon.png") -64px -32px;
+  background: no-repeat image-url("icon.png") -64px -32px;
   background-size: auto;
 }
 
 .facebook {
   height: 32px;
   width: 32px;
-  background: no-repeat url("../img/icon.png") -128px -96px;
+  background: no-repeat image-url("icon.png") -128px -96px;
   background-size: auto;
 }
 
 .tweeter {
   height: 32px;
   width: 32px;
-  background: no-repeat url("../img/icon.png") 0 -160px;
+  background: no-repeat image-url("icon.png") 0 -160px;
   background-size: auto;
 }
 
 .tumbler {
   height: 32px;
   width: 32px;
-  background: no-repeat url("../img/icon.png") -160px -96px;
+  background: no-repeat image-url("icon.png") -160px -96px;
   background-size: auto;
 }
 
