@@ -8,8 +8,15 @@
 -%>
 <%= paginator.render do -%>
   <div class='row'>
-    <nav class='col-md-12 nav_select'>
-      <ul class='pagination'>
+    <%- if controller_name == 'posts' %>
+      <%- nav_class = 'col-md-12 text-center' %>
+      <%- ul_class = 'pagination copy' %>
+    <%- else %>
+      <%- nav_class = 'col-md-12 nav_select' %>
+      <%- ul_class = 'pagination' %>
+    <%- end %>
+    <nav class="<%= nav_class %>">
+      <ul class="<%= ul_class%>">
         <%= prev_page_tag unless current_page.first? %>
         <%#= first_page_tag unless current_page.first? %>
         <% each_page do |page| -%>
