@@ -5,15 +5,19 @@
   - if products.any?
     - products.each do |product|
       - url = product_url(product, taxon_id: @taxon.try(:id))
-      .col-sm-6.col-md-4.col-lg-3
+
+      .col-sm-4.col-md-4.col-lg-3
         .thumbnail.copy.center-block
+          div[style='display:none;']
+            //= render partial: 'spree/products/cart_form', locals: {product: product}
           = link_to url, itemprop: 'url' do
             = render partial: 'spree/products/image', locals: { product: product, image_size: :small }
           .caption
-            h4.text-center
-              = product.caption
-            p.text-center
-              = product.name
+            .caption_name
+              h4.text-center
+                = product.caption
+              p.text-center
+                = product.name
             p.text-center
               = display_price(product)
 

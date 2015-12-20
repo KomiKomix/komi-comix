@@ -744,7 +744,7 @@ pre {
 
 .thumbnail {
   display: block;
-  padding: 4px;
+  padding: 0px;
   margin-bottom: 5px;
   line-height: 1.72222;
   background-color: #fff;
@@ -2839,8 +2839,8 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   position: relative;
   padding-left: 32px;
   margin-bottom: 12px;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 12px;
+  line-height: 1.6;
   -webkit-transition: color .25s linear;
   transition: color .25s linear;
 }
@@ -2853,7 +2853,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   width: 20px;
   height: 20px;
   font-size: 20px;
-  line-height: 20px;
+  line-height: 16px;
   color: #bdc3c7;
   text-align: center;
   cursor: pointer;

@@ -104,7 +104,7 @@ hr {
   width: 100%;
   color: #fff;
   background-color: #EF6C00;
-  background-image: image-url("7.png");
+  background-image: url("../img/7.png");
   background-repeat: no-repeat;
   background-size: 450px;
   background-position: 90% -10%;
@@ -329,7 +329,7 @@ nav .pagination a:hover {
 
 .logo {
   height: 100px;
-  background: url(asset_path("vkkx.png"));
+  background: url("../img/vkkx.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -412,12 +412,49 @@ aside {
 }
 
 .thumbnail {
-  max-width: 250px;
+  max-width: 200px;
+  border-radius: 0px;
   border-color: #fff;
 
-  &:hover {
-    border: 2px solid #EF6C00;
-    border-color: #EF6C00;
+  &:hover h4 {
+    text-decoration: underline;
+  }
+
+  .caption {
+    height: 90px;
+    border-top: 1px solid #eee;
+  }
+}
+
+.caption_name {
+  height: 36px;
+  margin-bottom: 7px;
+}
+
+.thumbnail {
+  h4 {
+    font-size: 1.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    text-transform: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  p {
+    font-size: 1.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400;
+    text-transform: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 10px;
   }
 
   .btn {
@@ -432,23 +469,22 @@ aside {
     margin-left: 4px;
   }
 
-  .image-wrapper {
-    height: 270px;
+  p {
+    margin: 0;
+    font-weight: 400;
   }
-}
 
-.thumbnail .caption {
-  height: 90px;
-}
-.thumbnail h4, .thumbnail p {
-  font-size: 1.6rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 400;
-  text-transform: none;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  .image-wrapper {
+    display: table;
+    padding: 8px;
+    width: 100%;
+    height: 240px;
+
+    .img-table {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
 }
 
 .table .image-wrapper {
@@ -530,7 +566,7 @@ aside {
 }
 
 .thumbnail .img-center, .items .img-center {
-  max-height: 270px;
+  max-height: 220px;
   margin: 0 auto;
   outline: solid 1px rgba(0, 0, 0, 0.2);
 }
@@ -575,35 +611,35 @@ aside {
 .vk {
   height: 32px;
   width: 32px;
-  background: no-repeat url(asset_path("icon.png")) -192px 0;
+  background: no-repeat url("../img/icon.png") -192px 0;
   background-size: auto;
 }
 
 .google {
   height: 32px;
   width: 32px;
-  background: no-repeat url(asset_path("icon.png")) -64px -32px;
+  background: no-repeat url("../img/icon.png") -64px -32px;
   background-size: auto;
 }
 
 .facebook {
   height: 32px;
   width: 32px;
-  background: no-repeat url(asset_path("icon.png")) -128px -96px;
+  background: no-repeat url("../img/icon.png") -128px -96px;
   background-size: auto;
 }
 
 .tweeter {
   height: 32px;
   width: 32px;
-  background: no-repeat url(asset_path("icon.png")) 0 -160px;
+  background: no-repeat url("../img/icon.png") 0 -160px;
   background-size: auto;
 }
 
 .tumbler {
   height: 32px;
   width: 32px;
-  background: no-repeat url(asset_path("icon.png")) -160px -96px;
+  background: no-repeat url("../img/icon.png") -160px -96px;
   background-size: auto;
 }
 
@@ -743,6 +779,31 @@ footer {
   .price {
     font-size: 3rem;
     margin: 0 0 15px 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .nav {
+    a {
+      margin-right: 8px;
+      margin-left: 8px;
+    }
+
+    li a:hover {
+      Box-shadow: none;
+    }
+  }
+
+  .baner {
+    h2 {
+      font-size: 3rem;
+    }
+
+    height: 300px;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    background-size: 300px;
   }
 }
 
