@@ -23,9 +23,9 @@
         
         a[class="card_box pull-right p_small" href="#{cart_path}"]
           i[class="fa fa-shopping-cart fa-lg"]
-          span.cart-count= "В корзине (#{current_order.item_count})"
+          span.cart-count= "В корзине (#{current_order.present? ? current_order.item_count : '0'})"
           br
-          span.cart-text= Spree::Money.new(current_order.total).to_s
+          span.cart-text= "#{current_order.present? ? Spree::Money.new(current_order.total).to_s : '0,00 ₽'}"
           
       #signin_modal.modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
         .modal-dialog.modal-sm
