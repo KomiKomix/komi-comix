@@ -44,7 +44,7 @@
                   td.item_amount= "× #{i.quantity}".html_safe
                   td.item_cost.money.text-right= Spree::Money.new(i.total).to_s
                   td.hidden-xs.text-right
-                    = link_to '#', class: 'delete', id: "delete_#{dom_id(i)}"
+                    = link_to '#'
                       i.fa.fa-trash-o
 
               tr.price_total

@@ -16,11 +16,13 @@ $ ->
     return
 
   $('#cart_modal').on 'show.bs.modal', (event) ->
+
     button = $(event.relatedTarget)
 
-    product = button.data('product')
 
-    modal = $(this)
-    modal.find('.product_name').text product.name
+    # product = button.data('product')
+
+    # modal = $(this)
+    # modal.find('.product_name').text product.name
 
     return

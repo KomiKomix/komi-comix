@@ -2,62 +2,74 @@
   .row
     .col-md-10.col-md-offset-1
     .carditems
+      div[style='display: none;']
+        = render partial: 'spree/products/cart_form', locals: {product: @product}
       .row
         .col-md-6.col-sm-6.col-lg-6
           .product-card-gallery.hidden-xs
             = render partial: 'thumbnails'
-            ul.list-unstyled.product-card-gallery-list
-              li class="product-card-gallery-item state_selected"
-                a[class="link" href="#"]
-                  img[src="img/18.jpg"]
-              li class="product-card-gallery-item"
-                a[class="link" href="#"]
-                  img[src="img/20.jpg"]
-              li class="product-card-gallery-item"
-                a[class="link" href="#"]
-                  img[src="img/19.jpg"]
-              li class="product-card-gallery-item"
-                a[class="link" href="#"]
-                  img[src="img/21.jpg"]
 
           .items.center-block
             = render partial: 'spree/products/image', locals: { product: @product, image_size: :product }
 
         .col-md-6.col-sm-6.col-lg-6
           .page-header
-            h3= 'Зигги, космический хомяк'
+            h3= @product.caption
             br
-            small= 'Детский комикс увеличенного формата'
+            small= @product.name
 
           .description.copy
-            //= render partial: 'description'
             p.p_small.text-justify
-              = 'Сценарист Роман Котков и художник Евгений Яковлев создали комикс, одновременно детский и взрослый, с весёлым юмором и прекрасными иллюстрациями.'
-              br
-              = 'Приключения находчивого инопланетного хомяка Зигги и его брата-акулёнка Йанго придутся по душе всем: как новым читателям, так и фанатам комиксов!'
+              = @product.description.html_safe
 
             ul.list-unstyled.p_small.copy
-              li
-                = 'Издательство: Bubble'
-              li
-                = 'Вес: 600 г'
-              li
-                = 'Твердый переплет'
-              li
-                = 'Объем — 212 стр.'
-              li
-                = 'Формат — 225×155×25 мм'
+              - @product.properties.each do |p|
+                li
+                  = "#{p.name}: #{p.presentation}"
 
           .shopping-box
             .price
-              span= '120.00 ₽'
+              span= display_price(@product)
               span.quantity
                 = '×'
                 input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3"]
 
-            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal"]
+
+            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
               = 'Добавить в корзину'
 
 
+
+
+.modal.fade#cart_modal[tabindex="-1" role="dialog" aria-labelledby="cart_modal_label"]
+  .modal-dialog[role="document"]
+    .modal-content
+      .modal-header
+        button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
+          span[aria-hidden="true"]= '&times;'.html_safe
+        h4.modal-title.text-center#cart_modal_label= 'Прекрасный выбор!'
+
+      .modal-body
+        table.table
+          tbody
+            - if current_order.present?
+              - current_order.line_items.each do |i|
+                tr
+                  td.product_name.text-left= "#{i.name}"
+                  td.item_amount= "× #{i.quantity}".html_safe
+                  td.item_cost.money.text-right= Spree::Money.new(i.total).to_s
+                  td.hidden-xs.text-right
+                    a[href="#"]
+                      i.fa.fa-trash-o
+
+              tr.price_total
+                td[colspan="2"]= 'Итого:'
+                td.text-right= Spree::Money.new(current_order.total).to_s
+                td.hidden-xs
+
+      .modal-footer
+        button[type="button" class="btn btn-info hidden-xs pull-left" data-dismiss="modal"]= 'Продолжить покупки'
+        a[type="button" href=cart_path class="btn btn-primary"]
+          i.fa.fa-shopping-cart= 'Купить'
 
 
