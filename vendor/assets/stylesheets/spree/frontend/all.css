@@ -9,4 +9,5 @@
  *= require_tree .
  *= require spree/frontend/spree_static_content
  *= require frontend/spree_news
+ *= require spree/frontend/spree_paypal_express
 */
