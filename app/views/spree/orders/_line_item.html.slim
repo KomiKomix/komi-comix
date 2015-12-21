@@ -5,9 +5,7 @@
       .row
         .col-sm-2.hidden-xs
           .label-wrapper
-            - if variant.images.length == 0
-              = link_to basket_image(variant.product), variant.product
-            - else
+            - if !variant.images.count.zero? && variant.images.first.attachment.present?
               = link_to image_tag(variant.images.first.attachment.url(:basket_image)), variant.product
 
         .col-sm-10

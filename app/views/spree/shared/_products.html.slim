@@ -8,8 +8,8 @@
 
       .col-sm-4.col-md-4.col-lg-3
         .thumbnail.copy.center-block
-          div[style='display:none;']
-            //= render partial: 'spree/products/cart_form', locals: {product: product}
+          div[style='display: none;']
+            = render partial: 'spree/products/cart_form', locals: {product: product}
           = link_to url, itemprop: 'url' do
             = render partial: 'spree/products/image', locals: { product: product, image_size: :small }
           .caption
@@ -21,7 +21,7 @@
             p.text-center
               = display_price(product)
 
-              = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json
+              = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
                 i.fa.fa-plus[title='Add to cart']
 
   = paginate paginated_products, theme: 'komi-comix'
@@ -37,17 +37,18 @@
       .modal-body
         table.table
           tbody
-            tr
-              td.product_name.text-left
-              td.item_amount= '×&nbsp;1'.html_safe
-              td.item_cost.money.text-right= '120.00&nbsp;₽'.html_safe
-              td.hidden-xs.text-right
-                a[href="#"]
-                  i.fa.fa-trash-o
+            - current_order.line_items.each do |i|
+              tr
+                td.product_name.text-left= "#{i.name}"
+                td.item_amount= "× #{i.quantity}".html_safe
+                td.item_cost.money.text-right= Spree::Money.new(i.total).to_s
+                td.hidden-xs.text-right
+                  = link_to '#', class: 'delete', id: "delete_#{dom_id(i)}"
+                    i.fa.fa-trash-o
 
             tr.price_total
               td[colspan="2"]= 'Итого:'
-              td.text-right= '240.00&nbsp;₽'.html_safe
+              td.text-right= Spree::Money.new(current_order.total).to_s
               td.hidden-xs
 
       .modal-footer
