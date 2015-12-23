@@ -15,10 +15,12 @@
     .col-md-3.col-sm-4
 
       nav.head_nav.hidden-xs
-        - acc_path = current_spree_user ? edit_user_path(current_spree_user) : login_path
-        = link_to acc_path, class: 'account_box p_small text-center', :'data-toggle'=>'modal', :'data-target'=>'#signin_modal'
-          span= 'Мой аккаунт'
-
+        - if current_spree_user
+          = link_to edit_user_path(current_spree_user), class: 'account_box p_small text-center'
+            span= 'Мой аккаунт'
+        - else
+          = link_to '#', class: 'account_box p_small text-center', :'data-toggle'=>'modal', :'data-target'=>'#signin_modal'
+            span= 'Мой аккаунт'
         hr
         
         a[class="card_box pull-right p_small" href="#{cart_path}"]
@@ -27,21 +29,21 @@
           br
           span.cart-text= "#{current_order.present? ? Spree::Money.new(current_order.total).to_s : '0,00 ₽'}"
           
-      #signin_modal.modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
-        .modal-dialog.modal-sm
-          .modal-content
-            .modal-body
+    #signin_modal.modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-body
             .login-form
-              .form-group
-                input[type="text" class="form-control login-field" value="" placeholder="Введите вашу почту" id="login-name"]
-                label[class="login-field-icon fui-user" for="login-name"]
+              = form_for(Spree::User.new, as: :spree_user, url: spree_user_session_path, html: { role: 'form'}) do |f|
+                .form-group
+                  = f.email_field :email, class: 'form-control login-field', placeholder: "Введите вашу почту", :'data-rule-required' => 'true', :'data-rule-password' => 'true', :'aria-invalid' => 'true'
+                  = f.label :email, :email, class: 'login-field-icon fui-user'
+                .form-group
+                  = f.password_field :password, class: 'form-control login-field', :'data-rule-required' => 'true', :'data-rule-password' => 'true', :'aria-invalid' => 'true', placeholder: "Пароль"
+                  = f.label :password, Spree.t(:password), class: 'login-field-icon fui-lock'
 
-              .form-group
-                <input type="password" class="form-control login-field" value="" placeholder="Пароль" id="login-pass">
-                <label class="login-field-icon fui-lock" for="login-pass"></label>
+                = f.submit Spree.t(:login), id: 'login-button', class: 'btn btn-primary btn-lg btn-block'
 
-                a[class="btn btn-primary btn-lg btn-block" href="account.html"]
-                  = 'Войти'
                 a[class="login-link" href="#"]
                   = 'Забыли пароль?'
                 a[class="btn btn-info btn-lg btn-block" href="singup.html" style="margin-top: 15px;"]

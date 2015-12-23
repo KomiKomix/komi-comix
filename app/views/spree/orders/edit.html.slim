@@ -18,39 +18,10 @@
             tbody
               = render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form}
             tr.middle_index
-              td.call_empty
-              td[colspan="3"]
-                label.radio
-                  input[type="radio" name="optionsRadios" id="optionsRadios2" value="option1" data-toggle="radio" checked="" class="custom-radio"]
-                    span.icons
-                      span.icon-unchecked
-                      span.icon-checked
-                  = 'Доставка почтой'
-                label.radio
-                  input[type="radio" name="optionsRadios" id="optionsRadios1" value="option1" data-toggle="radio" class="custom-radio"]
-                    span.icons
-                      span.icon-unchecked
-                      span.icon-checked
-                    = 'Самовывоз'
-                .row
-                  .col-sm-5.col-sm-offset-1
-                    <input type="tel" value="" data-rule-phone="true" placeholder="Индекс" class="form-control" aria-invalid="true" style="width: 100%;">
-
-                  .col-sm-5
-                    button.btn.btn-primary[style="width: 100%;"]
-                      = 'Рассчитать'
-                a.login-link[href="https://pochta.ru/offices" target="_blank"]= 'Узнать свой индекс'
-
-              tr
-                td.call_empty
-                td.call_empty= 'Доставка:'
-                td.text-right.item_cost.call_empty= '150.00&nbsp;₽'.html_safe
-                td.trash.call_empty
-
               tr.price_total
                 td.call_empty
                 td= 'Общая сумма:'
-                td.text-right= '740.00&nbsp;₽'.html_safe
+                td.text-right= Spree::Money.new(current_order.total).to_s
                 td.trash
 
         .row
