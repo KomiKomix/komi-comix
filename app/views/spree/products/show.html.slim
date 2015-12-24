@@ -23,9 +23,10 @@
               = @product.description.html_safe
 
             ul.list-unstyled.p_small.copy
-              - @product.properties.each do |p|
-                li
-                  = "#{p.name}: #{p.presentation}"
+              - @product.product_properties.each do |p|
+                - if p.value.present?
+                  li
+                    = "#{p.property_name}: #{p.value}".html_safe
 
           .shopping-box
             .price
