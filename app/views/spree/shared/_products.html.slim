@@ -1,30 +1,45 @@
 - paginated_products = @searcher.retrieve_products if params.key?(:keywords)
 - paginated_products ||= products
 
-.row#products_container
-  - if products.any?
-    - products.each do |product|
-      - url = product_url(product, taxon_id: @taxon.try(:id))
+= hidden_field_tag(:taxons1, params[:taxons])
+= hidden_field_tag(:sort_by1, params[:sort_by])
+= hidden_field_tag(:page1, params[:page])
+= hidden_field_tag(:keywords1, params[:keywords])
 
-      .col-sm-4.col-md-4.col-lg-3
-        .thumbnail.copy.center-block
-          div[style='display: none;']
-            = render partial: 'spree/products/cart_form', locals: {product: product}
-          = link_to url, itemprop: 'url' do
-            = render partial: 'spree/products/image', locals: { product: product, image_size: :small }
-          .caption
-            .caption_name
-              h4.text-center
-                = product.caption
+#products_row
+  .row
+    .col-md-12.nav_select
+      .btn-group[role='group' aria-label='...']
+        = link_to 'Новые', params.merge(sort_by: :ascend_by_updated_at, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
+        = link_to 'Название', params.merge(sort_by: :ascend_by_name, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
+        = link_to 'Цена', params.merge(sort_by: :descend_by_master_price, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
+
+  hr.copy
+  .row
+
+    - if products.any?
+      - products.each do |product|
+        - url = product_url(product, taxon_id: @taxon.try(:id))
+
+        .col-sm-4.col-md-4.col-lg-3
+          .thumbnail.copy.center-block
+            div[style='display: none;']
+              = render partial: 'spree/products/cart_form', locals: {product: product}
+            = link_to url, itemprop: 'url' do
+              = render partial: 'spree/products/image', locals: { product: product, image_size: :small }
+            .caption
+              .caption_name
+                h4.text-center
+                  = product.caption
+                p.text-center
+                  = product.name
               p.text-center
-                = product.name
-            p.text-center
-              = display_price(product)
+                = display_price(product)
 
-              = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
-                i.fa.fa-plus[title='Add to cart']
+                = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
+                  i.fa.fa-plus[title='Add to cart']
 
-  = paginate paginated_products, theme: 'komi-comix'
+    = paginate paginated_products, theme: 'komi-comix'
 
 .modal.fade#cart_modal[tabindex="-1" role="dialog" aria-labelledby="cart_modal_label"]
   .modal-dialog[role="document"]

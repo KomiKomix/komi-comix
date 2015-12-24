@@ -2,7 +2,10 @@ Spree::ProductsController.class_eval do
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
   def index
+    #@taxons = params[:taxons]
     @searcher   = build_searcher(params.merge(include_images: true))
+    #raise @searcher.inspect
+    @taxons = @searcher.taxons.pluck(:id) if @searcher.taxons.present?
     @products   = @searcher.retrieve_products
     @taxonomies = Spree::Taxonomy.includes(root: :children)
     respond_to do |format|

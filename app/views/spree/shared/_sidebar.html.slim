@@ -1,4 +1,4 @@
-- @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots
+-# @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots
 .hidden-xs.col-md-3.col-sm-4
   = raw(search_form.html_safe)
 
@@ -18,7 +18,7 @@
               - if taxon.id != taxonomy.id && !taxon.products.count.zero?
                 .panel-body
                   label.checkbox[for="checkbox_#{taxonomy.id}_#{taxon.id}"]
-                    - selected_taxon = @taxons_ids.present? && @taxons_ids.include?(taxon.id)
+                    - selected_taxon = @taxons.present? && @taxons.include?(taxon.id)
                     input[type="checkbox" value=taxon.id id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox" checked=selected_taxon]
                       span.icons
                         span.icon-unchecked
@@ -32,6 +32,3 @@
 
       = raw(take_your_chance_block_links.join.html_safe)
 
-= hidden_field_tag :taxons, @taxons
-= hidden_field_tag :keywords, params[:keywords]
-= hidden_field_tag :sort_by, params[:sort_by]

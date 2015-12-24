@@ -11,11 +11,16 @@ module Spree
     end
 
     def search_form
-      form_for products_path, method: :get, remote: true, id: 'products_search' do
+      form_for products_path, method: :get, html: {id: 'products_search'}, remote: true do
+        hidden_field_tag(:taxons, params[:taxons]) +
+        hidden_field_tag(:sort_by, params[:sort_by]) +
+        hidden_field_tag(:page, params[:page]) +
+        hidden_field_tag(:keywords, params[:keywords]) +
         content_tag(:div, class: 'input-group search') do
-          hidden_field_tag(:taxons, params[:taxons]) +
-          search_field_tag(:keywords, params[:keywords], placeholder: 'Найди свой комикс...', class: 'form-control', type: 'text') +
-          content_tag(:div, search_button, class: 'input-group-btn')
+          search_field_tag(:keywords, params[:keywords], placeholder: 'Найди свой комикс...', class: 'form-control', type: 'text', autocomplete: 'off') do
+            params[:keywords]
+          end +
+          content_tag(:div, search_button, class: 'input-group-btn', onclick: "$(this).closest('#products_search').submit();")
         end
       end
     end
