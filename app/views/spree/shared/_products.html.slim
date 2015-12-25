@@ -57,14 +57,14 @@
                 tr
                   td.product_name.text-left= "#{i.name}"
                   td.item_amount= "× #{i.quantity}".html_safe
-                  td.item_cost.money.text-right= Spree::Money.new(i.total).to_s
+                  td.item_cost.money.text-right= Spree::Money.new(i.total).to_s.gsub(' ', "&nbsp;").html_safe
                   td.hidden-xs.text-right
                     = link_to '#'
                       i.fa.fa-trash-o
 
               tr.price_total
                 td[colspan="2"]= 'Итого:'
-                td.text-right= Spree::Money.new(current_order.total).to_s
+                td.text-right= Spree::Money.new(current_order.total).to_s.gsub(' ', "&nbsp;").html_safe
                 td.hidden-xs
 
       .modal-footer
