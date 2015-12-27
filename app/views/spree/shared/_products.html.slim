@@ -12,7 +12,7 @@
       .btn-group[role='group' aria-label='...']
         = link_to 'Новые', params.merge(sort_by: :ascend_by_updated_at, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
         = link_to 'Название', params.merge(sort_by: :ascend_by_name, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
-        = link_to 'Цена', params.merge(sort_by: :descend_by_master_price, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
+        = link_to 'Цена', params.merge(sort_by: :ascend_by_master_price, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
 
   hr.copy
   .row
@@ -47,25 +47,13 @@
       .modal-header
         button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
           span[aria-hidden="true"]= '&times;'.html_safe
-        h4.modal-title.text-center#cart_modal_label= 'Прекрасный выбор!'
+        - title = current_order.present? ? Spree.t('excellent_choice') : Spree.t('blank_cart')
+        h4.modal-title.text-center#cart_modal_label= title
 
       .modal-body
         table.table
-          tbody
-            - if current_order.present?
-              - current_order.line_items.each do |i|
-                tr
-                  td.product_name.text-left= "#{i.name}"
-                  td.item_amount= "× #{i.quantity}".html_safe
-                  td.item_cost.money.text-right= Spree::Money.new(i.total).to_s.gsub(' ', "&nbsp;").html_safe
-                  td.hidden-xs.text-right
-                    = link_to '#'
-                      i.fa.fa-trash-o
-
-              tr.price_total
-                td[colspan="2"]= 'Итого:'
-                td.text-right= Spree::Money.new(current_order.total).to_s.gsub(' ', "&nbsp;").html_safe
-                td.hidden-xs
+          tbody#popup_container
+            = render partial: 'spree/shared/products_for_popup', locals: { order: current_order }
 
       .modal-footer
         button[type="button" class="btn btn-info hidden-xs pull-left" data-dismiss="modal"]= 'Продолжить покупки'

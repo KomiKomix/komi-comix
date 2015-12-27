@@ -1,6 +1,6 @@
 - variant = line_item.variant
 = order_form.fields_for :line_items, line_item do |item_form|
-  tr
+  tr.line-item
     td.product_name
       .row
         .col-sm-2.hidden-xs
@@ -20,6 +20,6 @@
     td.item_cost.money.text-right
       = line_item.single_money.to_html
     td.text-right.trash
-      = link_to('#', id: "delete_#{dom_id(line_item)}") do
+      = link_to destroy_line_item_path(variant_id: line_item.variant_id, quantity: line_item.quantity), remote: true do
         i.fa.fa-trash-o
 

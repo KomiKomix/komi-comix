@@ -47,8 +47,8 @@ module Spree
           case
           when sort_by && sort_by == 'ascend_by_updated_at'
             sort_scope = sort_scope.ascend_by_updated_at
-          when sort_by && sort_by == 'descend_by_master_price'
-            sort_scope = sort_scope.descend_by_master_price
+          when sort_by && sort_by == 'ascend_by_master_price'
+            sort_scope = sort_scope.ascend_by_master_price
           when sort_by && sort_by == 'ascend_by_name'
             sort_scope = sort_scope.ascend_by_name
           #EALeon: now we use Spree::Classification position field for sorting by default
@@ -97,6 +97,7 @@ module Spree
           unless query.blank?
             base_scope = base_scope.like_any([:caption, :name], query.split)
           end
+          #raise base_scope.inspect
           base_scope
         end
 

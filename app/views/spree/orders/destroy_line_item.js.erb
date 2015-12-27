@@ -1,0 +1,3 @@
+var partial_type = "<%= #{current_controller} %>";
+alert(partial_type);
+$("#popup_container").html("<%= escape_javascript(render partial: 'spree/shared/products_for_popup', locals: { order: current_order}) %>");

@@ -18,7 +18,7 @@
               - if taxon.id != taxonomy.id && !taxon.products.count.zero?
                 .panel-body
                   label.checkbox[for="checkbox_#{taxonomy.id}_#{taxon.id}"]
-                    - selected_taxon = @taxons.present? && @taxons.include?(taxon.id)
+                    - selected_taxon = @taxons.present? && @taxons.include?(taxon.id) #TODO: fix it!
                     input[type="checkbox" value=taxon.id id="checkbox_#{taxonomy.id}_#{taxon.id}" data-toggle="checkbox" class="custom-checkbox" checked=selected_taxon]
                       span.icons
                         span.icon-unchecked
