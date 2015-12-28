@@ -45,9 +45,9 @@
 
                 = f.submit Spree.t(:login), id: 'login-button', class: 'btn btn-primary btn-lg btn-block'
 
-                a[class="login-link" href="#"]
+                a[class="login-link" href=recover_password_path]
                   = 'Забыли пароль?'
-                a[class="btn btn-info btn-lg btn-block" href="singup.html" style="margin-top: 15px;"]
+                a[class="btn btn-info btn-lg btn-block" href=login_path style="margin-top: 15px;"]
                   = 'Регистрация'
 
 nav.navbar
