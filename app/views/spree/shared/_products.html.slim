@@ -11,7 +11,7 @@
     .col-md-12.nav_select
       .btn-group[role='group' aria-label='...']
         = link_to 'Новые', params.merge(sort_by: :ascend_by_updated_at, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
-        = link_to 'Название', params.merge(sort_by: :ascend_by_name, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
+        = link_to 'Название', params.merge(sort_by: :ascend_by_caption_and_name, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
         = link_to 'Цена', params.merge(sort_by: :ascend_by_master_price, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
 
   hr.copy

@@ -49,8 +49,8 @@ module Spree
             sort_scope = sort_scope.ascend_by_updated_at
           when sort_by && sort_by == 'ascend_by_master_price'
             sort_scope = sort_scope.ascend_by_master_price
-          when sort_by && sort_by == 'ascend_by_name'
-            sort_scope = sort_scope.ascend_by_name
+          when sort_by && sort_by == 'ascend_by_caption_and_name'
+            sort_scope = sort_scope.ascend_by_caption_and_name
           #EALeon: now we use Spree::Classification position field for sorting by default
           #else
           #  sort_scope = sort_scope.descend_by_popularity

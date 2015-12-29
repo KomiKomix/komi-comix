@@ -29,6 +29,6 @@ Spree::ProductsController.class_eval do
   end
 
   def allowed_sortings
-    [:descend_by_master_price, :ascend_by_name, :ascend_by_updated_at]
+    [:descend_by_master_price, :ascend_by_caption_and_name, :ascend_by_updated_at]
   end
 end
