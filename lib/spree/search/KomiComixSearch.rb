@@ -119,17 +119,22 @@ module Spree
           end
         end
  
-        def filter_taxonomies_ids
-          Spree::Taxonomy.pluck(:id).uniq.first(2)
-        end
-
         def custom_filter_by_taxons(taxons, base_scope)
           taxonomies_ids = Spree::Taxonomy.pluck(:id).uniq.first(2)
-          parent_taxons  = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.first}).uniq.pluck(:id)
-          child_taxons   = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.last}).uniq.pluck(:id)
-          products_for_parent = base_scope.in_taxons(parent_taxons).uniq
-          products_for_child  = base_scope.in_taxons(child_taxons).uniq
-          products_for_parent.where(id: products_for_child.pluck(:id)).uniq
+          last_taxonomy  = Spree::Taxonomy.pluck(:id).uniq.last
+
+          last_taxonomy_taxons = Spree::Taxon.where({id: taxons, taxonomy_id: last_taxonomy}).uniq.pluck(:id)
+          if last_taxonomy_taxons.present?
+            return base_scope.in_taxons(last_taxonomy_taxons).uniq
+          else
+            parent_taxons  = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.first}).uniq.pluck(:id)
+            child_taxons   = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.last}).uniq.pluck(:id)
+
+            products_for_parent = base_scope.in_taxons(parent_taxons).uniq
+            products_for_child  = base_scope.in_taxons(child_taxons).uniq
+            return products_for_parent.where(id: products_for_child.pluck(:id)).uniq
+          end
+          base_scope
         end
 
     end
