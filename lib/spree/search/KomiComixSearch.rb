@@ -35,7 +35,8 @@ module Spree
           base_scope = Spree::Product.active
           base_scope = apply_sort_scopes(base_scope)
           base_scope = base_scope.in_taxon(taxons) unless taxon.blank?
-          base_scope = base_scope.in_taxons(taxons) unless taxons.nil?
+          #base_scope = base_scope.in_taxons(taxons) unless taxons.nil?
+          base_scope = custom_filter_by_taxons(taxons, base_scope) unless taxons.nil?
           base_scope = get_products_conditions_for(base_scope, keywords)
           base_scope = add_search_scopes(base_scope)
           base_scope = add_eagerload_scopes(base_scope)
@@ -117,6 +118,20 @@ module Spree
             @properties[:page] = 1
           end
         end
+ 
+        def filter_taxonomies_ids
+          Spree::Taxonomy.pluck(:id).uniq.first(2)
+        end
+
+        def custom_filter_by_taxons(taxons, base_scope)
+          taxonomies_ids = Spree::Taxonomy.pluck(:id).uniq.first(3)
+          parent_taxons  = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.first}).uniq.pluck(:id)
+          child_taxons   = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.last}).uniq.pluck(:id)
+          products_for_parent = base_scope.in_taxons(parent_taxons).uniq
+          products_for_child  = base_scope.in_taxons(child_taxons).uniq
+          products_for_parent.where(id: products_for_child.pluck(:id)).uniq
+        end
+
     end
   end
 end
