@@ -124,7 +124,7 @@ module Spree
         end
 
         def custom_filter_by_taxons(taxons, base_scope)
-          taxonomies_ids = Spree::Taxonomy.pluck(:id).uniq.first(3)
+          taxonomies_ids = Spree::Taxonomy.pluck(:id).uniq.first(2)
           parent_taxons  = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.first}).uniq.pluck(:id)
           child_taxons   = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.last}).uniq.pluck(:id)
           products_for_parent = base_scope.in_taxons(parent_taxons).uniq
