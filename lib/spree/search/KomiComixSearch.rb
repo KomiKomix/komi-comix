@@ -33,13 +33,13 @@ module Spree
       protected
         def get_base_scope
           base_scope = Spree::Product.active
-          base_scope = apply_sort_scopes(base_scope)
           base_scope = base_scope.in_taxon(taxons) unless taxon.blank?
           #base_scope = base_scope.in_taxons(taxons) unless taxons.nil?
           base_scope = custom_filter_by_taxons(taxons, base_scope) unless taxons.nil?
           base_scope = get_products_conditions_for(base_scope, keywords)
           base_scope = add_search_scopes(base_scope)
           base_scope = add_eagerload_scopes(base_scope)
+          base_scope = apply_sort_scopes(base_scope)
           base_scope
         end
 
@@ -120,19 +120,19 @@ module Spree
         end
  
         def custom_filter_by_taxons(taxons, base_scope)
-          taxonomies_ids = Spree::Taxonomy.pluck(:id).uniq.first(2)
-          last_taxonomy  = Spree::Taxonomy.pluck(:id).uniq.last
+          taxonomies_ids = Spree::Taxonomy.pluck(:id).first(2)
+          last_taxonomy  = Spree::Taxonomy.pluck(:id).last
 
           last_taxonomy_taxons = Spree::Taxon.where({id: taxons, taxonomy_id: last_taxonomy}).uniq.pluck(:id)
           if last_taxonomy_taxons.present?
-            return base_scope.in_taxons(last_taxonomy_taxons).uniq
+            return base_scope.in_taxons(last_taxonomy_taxons)
           else
             parent_taxons  = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.first}).uniq.pluck(:id)
             child_taxons   = Spree::Taxon.where({id: taxons, taxonomy_id: taxonomies_ids.last}).uniq.pluck(:id)
 
-            products_for_parent = base_scope.in_taxons(parent_taxons).uniq
-            products_for_child  = base_scope.in_taxons(child_taxons).uniq
-            return products_for_parent.where(id: products_for_child.pluck(:id)).uniq
+            products_for_parent = base_scope.in_taxons(parent_taxons)
+            products_for_child  = base_scope.in_taxons(child_taxons)
+            return products_for_parent.where(id: products_for_child.pluck(:id))
           end
           base_scope
         end
