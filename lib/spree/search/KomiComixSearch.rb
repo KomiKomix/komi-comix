@@ -52,9 +52,6 @@ module Spree
             sort_scope = sort_scope.ascend_by_master_price
           when sort_by && sort_by == 'ascend_by_caption_and_name'
             sort_scope = sort_scope.ascend_by_caption_and_name
-          #EALeon: now we use Spree::Classification position field for sorting by default
-          #else
-          #  sort_scope = sort_scope.descend_by_popularity
           end
 
           sort_scope
@@ -98,7 +95,6 @@ module Spree
           unless query.blank?
             base_scope = base_scope.like_any([:caption, :name], query.split)
           end
-          #raise base_scope.inspect
           base_scope
         end
 

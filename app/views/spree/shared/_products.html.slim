@@ -39,7 +39,10 @@
                 = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
                   i.fa.fa-plus[title='Add to cart']
 
-    = paginate paginated_products, theme: 'komi-comix'
+      = paginate paginated_products, theme: 'komi-comix'
+    - else
+      h4.text-center
+        = Spree.t('products_not_found')
 
 .modal.fade#cart_modal[tabindex="-1" role="dialog" aria-labelledby="cart_modal_label"]
   .modal-dialog[role="document"]

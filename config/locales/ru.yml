@@ -26,6 +26,7 @@ ru:
     posts: Новости
     post: Новость
     change_my_password: Сменить пароль
+    products_not_found: Извините, поиск не дал результата
 
   time:
     formats:
