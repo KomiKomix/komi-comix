@@ -52,6 +52,8 @@ module Spree
             sort_scope = sort_scope.ascend_by_master_price
           when sort_by && sort_by == 'ascend_by_caption_and_name'
             sort_scope = sort_scope.ascend_by_caption_and_name
+          else
+            sort_scope = sort_scope.descend_by_updated_at
           end
 
           sort_scope
