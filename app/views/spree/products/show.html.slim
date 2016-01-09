@@ -7,10 +7,12 @@
       .row
         .col-md-6.col-sm-6.col-lg-6
           .product-card-gallery.hidden-xs
-            = render partial: 'thumbnails'
+            #product-card-gallery-list
+              = render partial: 'thumbnails'
 
           .items.center-block
-            = render partial: 'spree/products/image', locals: { product: @product, image_size: :product }
+            #product-card-gallery-image
+              = render partial: 'spree/products/image', locals: { product: @product, image_size: :product }
 
         .col-md-6.col-sm-6.col-lg-6
           .page-header

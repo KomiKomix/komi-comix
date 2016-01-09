@@ -1,11 +1,10 @@
 Spree::ProductsController.class_eval do
   rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+  before_filter :set_active_pic, only: :show
 
   def index
-    #@taxons = params[:taxons]
     @searcher   = build_searcher(params.merge(include_images: true))
-    #raise @searcher.inspect
-    @taxons = @searcher.taxons.pluck(:id) if @searcher.taxons.present?
+    @taxons     = @searcher.taxons.pluck(:id) if @searcher.taxons.present?
     @products   = @searcher.retrieve_products
     @taxonomies = Spree::Taxonomy.includes(root: :children)
     respond_to do |format|
@@ -19,6 +18,12 @@ Spree::ProductsController.class_eval do
   end
 
   private
+
+  def set_active_pic
+    if @product.images.present?
+      @active_pic_id = params[:active_pic_id].present? ? params[:active_pic_id].to_i : @product.images.first.id
+    end
+  end
 
   def sorting_scope
     allowed_sortings.include?(sorting_param) ? sorting_param : default_sorting

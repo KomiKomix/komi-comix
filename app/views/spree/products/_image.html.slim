@@ -1,5 +1,6 @@
 .image-wrapper
   .img-table
+    - image ||= product.images.find_by_id(@active_pic_id)
     - if defined?(image) && image
       = image_tag image.attachment.url(image_size), itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name
     - else

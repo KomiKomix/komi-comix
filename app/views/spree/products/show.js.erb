@@ -1,0 +1,4 @@
+$('#product-card-gallery-list').
+  html("<%= escape_javascript(render partial: 'thumbnails') %>");
+$('#product-card-gallery-image').
+  html("<%= escape_javascript(render partial: 'image', locals: { product: @product, image_size: :product }) %>");

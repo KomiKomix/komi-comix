@@ -1,21 +1,20 @@
 // no need for thumbnails unless there is more than one image
 
 - if (@product.images + @product.variant_images).uniq.size > 1
-  - active_pic_id = @product.images.first.id
 
   ul.list-unstyled.product-card-gallery-list
     - @product.images.each do |i|
       - class_name = 'product-card-gallery-item'
-      - class_name = class_name + ' state_selected' if i.id == active_pic_id
+      - class_name = class_name + ' state_selected' if i.id == @active_pic_id
       li[class=class_name]
-        = link_to i.attachment.url(:product), class: 'link' do
+        = link_to spree.product_path(id: @product, active_pic_id: i.id), class: 'link', remote: true do
           = image_tag(i.attachment.url(:small))
 
     - if @product.has_variants?
       - @product.variant_images.each do |i|
         - next if @product.images.include?(i)
         - class_name = 'product-card-gallery-item'
-        - class_name = class_name + ' state_selected' if i.id == active_pic_id
+        - class_name = class_name + ' state_selected' if i.id == @active_pic_id
         li[class=class_name]
           = link_to i.attachment.url(:product), class: 'link' do
             = image_tag(i.attachment.url(:small))
