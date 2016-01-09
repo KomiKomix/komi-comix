@@ -1,0 +1,4 @@
+#owl-product-carousel.owl-carousel
+  - Spree::Product.active(current_currency).uniq.limit(10).each do |product|
+    .item
+      = link_to small_image(product, itemprop: 'image'), product_url(product)
