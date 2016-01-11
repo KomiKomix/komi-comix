@@ -39,5 +39,16 @@ module Spree
         end
       end
     end
+
+    def formatted_news(news_description)
+      html = Nokogiri::HTML::Document.parse(news_description)
+      images = html.css('img')
+      images.each do |i|
+        i.remove_attribute('style')
+        i.set_attribute('class', 'img-responsive')
+      end
+      raw html.css('body').children.to_s
+    end
+
   end
 end

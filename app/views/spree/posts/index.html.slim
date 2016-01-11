@@ -14,7 +14,7 @@
                 .content
                   p.title= post.title
                   p.p_small= l post.created_at, format: :long
-                  = raw post.description
+                  = formatted_news(post.description)
 
         = paginate news, theme: 'komi-comix'
 
