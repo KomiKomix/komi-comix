@@ -80,6 +80,8 @@ Spree::Backend::Config.locale = :ru
 
 Spree::Auth::Config.signout_after_password_change = false
 
+Spree::Product.whitelisted_ransackable_attributes |= ['caption']
+
 #Spree::PermittedAttributes.taxon_attributes << :short_description
 # Add terms_and_conditions to strong parameters
 #Spree::PermittedAttributes.checkout_attributes << :terms
