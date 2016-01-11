@@ -46,6 +46,9 @@ module Spree
       images.each do |i|
         i.remove_attribute('style')
         i.set_attribute('class', 'img-responsive')
+        p = i.parent
+        p.name = 'div'
+        p.set_attribute('class', 'news_img')
       end
       raw html.css('body').children.to_s
     end
