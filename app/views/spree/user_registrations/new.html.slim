@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-10.col-md-offset-1
+      .card_block
+        .b_title
+          .page-header
+            h3= 'Регистратура'
+
+          .row
+            .col-md-8.col-md-offset-2
+              #new-customer.panel-body[data-hook="login"]
+                = form_for resource, as: :spree_user, url: spree.registration_path do |f|
+                  div[data-hook="signup_inside_form"]
+                    = render partial: 'spree/shared/user_form', locals: { f: f }
+                    p
+                      = f.submit Spree.t(:create), class: 'btn btn-primary pull-right copy'
+
+                .text-center
+                  = Spree.t(:or)
+                  = link_to Spree.t(:login_as_existing), spree.login_path
+                div[data-hook="login_extras"]
+
