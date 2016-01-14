@@ -1,5 +1,5 @@
 # Change these
-server '46.101.140.24', port: your_port_num, roles: [:web, :app, :db], primary: true
+server '46.101.140.24', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:KomiKomix/komi-comix.git'
 set :application,     'komi-comix'
