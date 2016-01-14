@@ -7,18 +7,26 @@ GIT
 
 GIT
   remote: git://github.com/MiniProfiler/rack-mini-profiler.git
-  revision: 654c6d0c99b04de72a7bd91a27fb491559f2699b
+  revision: 20ff9b296e37fb35e431d0ba8378541be8c7dadb
   specs:
     rack-mini-profiler (0.9.8)
-      rack (>= 1.1.3)
+      rack (>= 1.2.0)
 
 GIT
   remote: git://github.com/flyerhzm/bullet.git
-  revision: a033dbed2c262c7380542b74b0dc1cc427b7aa7f
+  revision: 272604a4c1b9a9bdaca2cb7821ce0c1cf0f99cfe
   specs:
-    bullet (4.14.10)
+    bullet (5.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
+
+GIT
+  remote: git://github.com/shaggyone/russian_post_calc.git
+  revision: bf8ee6fed2f912e7542125ad7c9025f2bfe6d86e
+  specs:
+    russian_post_calc (0.0.1)
+      activesupport
+      nokogiri
 
 GIT
   remote: git://github.com/spree-contrib/better_spree_paypal_express.git
@@ -70,6 +78,14 @@ GIT
       devise-encryptable (= 0.1.2)
       json
       multi_json
+      spree_core (~> 3.0.0)
+
+GIT
+  remote: git://github.com/spree/spree_gateway.git
+  revision: 7301dc7c84c05b46427bf5003eda13ca64a48d7c
+  branch: 3-0-stable
+  specs:
+    spree_gateway (3.0.0.beta)
       spree_core (~> 3.0.0)
 
 GIT
@@ -130,17 +146,17 @@ GEM
     ast (2.2.0)
     astrolabe (1.3.1)
       parser (~> 2.2)
-    autoprefixer-rails (6.2.0)
+    autoprefixer-rails (6.2.3)
       execjs
       json
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
-    aws-sdk (2.2.7)
-      aws-sdk-resources (= 2.2.7)
-    aws-sdk-core (2.2.7)
+    aws-sdk (2.2.9)
+      aws-sdk-resources (= 2.2.9)
+    aws-sdk-core (2.2.9)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.7)
-      aws-sdk-core (= 2.2.7)
+    aws-sdk-resources (2.2.9)
+      aws-sdk-core (= 2.2.9)
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -160,6 +176,22 @@ GEM
     cancancan (1.10.1)
     canonical-rails (0.0.11)
       rails (>= 3.1, < 5.0)
+    capistrano (3.4.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.5)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -168,9 +200,9 @@ GEM
       xpath (~> 2.0)
     carmen (1.0.2)
       activesupport (>= 3.0.0)
-    childprocess (0.5.8)
+    childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
-    ckeditor (4.1.5)
+    ckeditor (4.1.6)
       cocaine
       orm_adapter (~> 0.5.0)
     cldr-plurals-runtime-rb (1.0.1)
@@ -240,8 +272,8 @@ GEM
     i18n (0.7.0)
     i18n_data (0.7.0)
     interception (0.5)
-    jbuilder (2.3.2)
-      activesupport (>= 3.0.0, < 5)
+    jbuilder (2.4.0)
+      activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jmespath (1.1.3)
     jquery-rails (4.0.5)
@@ -275,6 +307,9 @@ GEM
       i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (3.0.2)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -283,7 +318,7 @@ GEM
       activesupport (>= 3.2.0)
       cocaine (~> 0.5.5)
       mime-types
-    paranoia (2.1.4)
+    paranoia (2.1.5)
       activerecord (~> 4.0)
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
@@ -300,7 +335,7 @@ GEM
     premailer (1.8.6)
       css_parser (>= 1.3.6)
       htmlentities (>= 4.0.0)
-    premailer-rails (1.8.2)
+    premailer-rails (1.9.0)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
     pry (0.10.3)
@@ -341,7 +376,7 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails-i18n (4.0.7)
+    rails-i18n (4.0.8)
       i18n (~> 0.7)
       railties (~> 4.0)
     rails_12factor (0.0.3)
@@ -370,7 +405,7 @@ GEM
     rspec-expectations (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
-    rspec-mocks (3.4.0)
+    rspec-mocks (3.4.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-rails (3.4.0)
@@ -391,7 +426,7 @@ GEM
       tins (<= 1.6.0)
     ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
-    sass (3.4.20)
+    sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -405,9 +440,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
-    simple_form (3.2.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slim (3.0.6)
       temple (~> 0.7.3)
       tilt (>= 1.3.3, < 2.1)
@@ -473,7 +508,7 @@ GEM
       sprockets-rails (~> 2.2)
     spree_sample (3.0.4)
       spree_core (= 3.0.4)
-    spring (1.6.0)
+    spring (1.6.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -483,6 +518,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.8.1)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     state_machines (0.4.0)
     state_machines-activemodel (0.3.0)
       activemodel (~> 4.1)
@@ -494,7 +532,7 @@ GEM
     temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.1)
+    tilt (2.0.2)
     tins (1.6.0)
     tinymce-rails (4.0.28.2)
       railties (>= 3.1.1)
@@ -539,6 +577,11 @@ DEPENDENCIES
   bootstrap-sass
   bullet!
   byebug
+  capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rvm
+  capistrano3-puma
   capybara
   ckeditor (~> 4.1.0)
   coffee-rails (~> 4.1.0)
@@ -565,6 +608,7 @@ DEPENDENCIES
   rails_layout
   rspec-rails
   rubocop
+  russian_post_calc!
   sass-rails (~> 5.0.3)
   selenium-webdriver
   simple_form
@@ -572,6 +616,7 @@ DEPENDENCIES
   spree (= 3.0.4)
   spree_auth_devise!
   spree_editor!
+  spree_gateway!
   spree_i18n!
   spree_news!
   spree_paypal_express!
@@ -582,6 +627,3 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-BUNDLED WITH
-   1.10.6

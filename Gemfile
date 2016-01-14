@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.7'
+ruby '2.2.0'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.18.4'
@@ -16,6 +16,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
@@ -37,21 +43,24 @@ gem 'aws-sdk', '~>2'
 
 
 gem 'spree', '3.0.4'
-#gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '3-0-stable'
+gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_i18n',                github: 'spree-contrib/spree_i18n', branch: '3-0-stable'
 gem 'spree_social_products',     github: 'spree/spree_social_products', branch: '3-0-stable'
 #gem 'spree_sitemap',             github: 'jdutil/spree_sitemap', branch: '2-3-stable'
 gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', branch: '3-0-stable'
-#gem 'spree-bank-transfer',       github: 'vinsol/spree_bank_transfer', branch: '2-3-stable', require: 'spree_bank_transfer'
+#gem 'spree_bank_transfer',       github: 'alvarosaavedra/spree_bank_transfer', branch: '3-0-stable', require: 'spree_bank_transfer'
 gem 'spree_editor',              github: 'spree-contrib/spree_editor', branch: '3-0-stable'
 gem 'spree_news',                github: 'EALeon/spree_news', branch: 'test_branch'
 #gem 'spree_comments',            github: 'spree/spree_comments', branch: '3-0-stable'
 
-
 gem 'spree_paypal_express',      github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 
+#gem 'spree_robokassa',           github: 'pronix/spree_robokassa'
 gem 'ckeditor', '~>4.1.0'
+
+gem 'russian_post_calc',         github: 'shaggyone/russian_post_calc'
+#gem 'spree_russian_post_calc',   github: 'shaggyone/spree_russian_post_calc'
 
 
 group :development do
