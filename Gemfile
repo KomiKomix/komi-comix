@@ -7,6 +7,7 @@ gem 'pg', '~> 0.18.4'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug'
