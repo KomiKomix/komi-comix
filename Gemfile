@@ -14,7 +14,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano',          require: false
   gem 'capistrano-rvm',      require: false
   gem 'capistrano-rails',    require: false
   gem 'capistrano-bundler',  require: false
@@ -39,7 +38,7 @@ gem 'high_voltage'
 gem 'puma', '~> 2.15.3'
 
 gem 'pundit'
-gem 'simple_form'
+#gem 'simple_form'
 gem 'slim-rails'
 gem 'foreman'
 
@@ -87,9 +86,9 @@ group :development, :test do
   gem 'rubocop'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
+#group :production do
+#  gem 'rails_12factor'
+#end
 
 group :test do
   gem 'capybara'

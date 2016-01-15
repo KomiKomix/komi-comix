@@ -1,5 +1,6 @@
+require 'capistrano-db-tasks'
 # Change these
-server '46.101.140.24', port: 22, roles: [:web, :app, :db], primary: true
+server '46.101.140.24', port: 22, user: 'komi-comix', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:KomiKomix/komi-comix.git'
 set :application,     'komi-comix'
@@ -31,7 +32,7 @@ set :branch,        :master
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
- set :linked_files, %w{config/database.yml config/secret.yml}
+ set :linked_files, %w{config/database.yml config/secrets.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 set :rake, "bundle exec rake"
@@ -41,10 +42,8 @@ set :keep_releases, 7
 set :upload_dirs, %w(public/spree data)
 set :shared_children, (fetch(:shared_children) || []) + fetch(:upload_dirs)
 
-set :assets_dir, %w(public/spree/products)
+set :assets_dir, %w(public/spree/products public/ckeditor_assets)
 set :local_assets_dir, 'public/spree'
-
-require 'capistrano-db-tasks'
 
 # if you haven't already specified
 set :rails_env, "production"
@@ -82,18 +81,6 @@ namespace :puma do
 end
 
 namespace :deploy do
-  namespace :assets do
-    desc "Precompile assets"
-    task :precompile do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ lib/assets/ | wc -l").to_i > 0
-        run %Q{cd #{release_path} && RAILS_ENV=#{stage} RAILS_GROUPS=assets bundle exec rake assets:precompile}
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-  end
-
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
