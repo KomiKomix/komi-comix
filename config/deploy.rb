@@ -34,6 +34,41 @@ set :branch,        :master
  set :linked_files, %w{config/database.yml config/secret.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
+set :rake, "bundle exec rake"
+
+set :keep_releases, 7
+
+set :upload_dirs, %w(public/spree data)
+set :shared_children, (fetch(:shared_children) || []) + fetch(:upload_dirs)
+
+set :assets_dir, %w(public/spree/products)
+set :local_assets_dir, 'public/spree'
+
+require 'capistrano-db-tasks'
+
+# if you haven't already specified
+set :rails_env, "production"
+# if you want to remove the local dump file after loading
+set :db_local_clean, true
+# if you want to remove the dump file from the server after downloading
+set :db_remote_clean, true
+# if you want to exclude table from dump
+set :db_ignore_tables, []
+# if you want to exclude table data (but not table schema) from dump
+set :db_ignore_data_tables, []
+# If you want to import assets, you can change default asset dir (default = system)
+# This directory must be in your shared directory on the server
+#set :assets_dir, %w(public/assets public/att)
+#set :local_assets_dir, %w(public/assets public/att)
+# if you want to work on a specific local environment (default = ENV['RAILS_ENV'] || 'development')
+set :locals_rails_env, "production"
+
+# if you are highly paranoid and want to prevent any push operation to the server
+set :disallow_pushing, false
+
+# if you prefer bzip2/unbzip2 instead of gzip
+set :compressor, :bzip2
+
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
@@ -47,6 +82,18 @@ namespace :puma do
 end
 
 namespace :deploy do
+  namespace :assets do
+    desc "Precompile assets"
+    task :precompile do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ lib/assets/ | wc -l").to_i > 0
+        run %Q{cd #{release_path} && RAILS_ENV=#{stage} RAILS_GROUPS=assets bundle exec rake assets:precompile}
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -74,7 +121,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  after  :finishing,    :compile_assets
+  #after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
 end
