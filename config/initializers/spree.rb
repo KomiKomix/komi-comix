@@ -38,7 +38,7 @@ Spree.config do |config|
   Spree::Money.class_eval do
     def to_s
       @money.format.gsub(/,00/, '')
-      @money.format(symbol_position: :after, with_currency: true, no_cents: true)
+      @money.format(symbol_position: :after, with_currency: false, no_cents: true)
     end
 
     def to_html(options = { :html => true })
