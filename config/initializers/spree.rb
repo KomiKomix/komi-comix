@@ -34,6 +34,17 @@ Spree.config do |config|
   config.searcher_class = Spree::Search::KomiComixSearch
   #config.use_common_meta = true
   #config.taxon_use_common_meta = true
+
+  Spree::Money.class_eval do
+    def to_s
+      @money.format.gsub(/,00/, '')
+      @money.format(symbol_position: :after, with_currency: true, no_cents: true)
+    end
+
+    def to_html(options = { :html => true })
+     to_s
+    end
+  end
 end
 
 Spree.user_class = "Spree::LegacyUser"
