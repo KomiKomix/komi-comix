@@ -21,12 +21,14 @@
 
 ru:
   spree:
+    it_banner: Баннер
     caption: Заголовок
     take_your_chance: Успей купить
     posts: Новости
     post: Новость
     change_my_password: Сменить пароль
     products_not_found: Извините, поиск не дал результата
+    get_post_index: Узнать свой индекс
 
   time:
     formats:
