@@ -585,7 +585,6 @@ DEPENDENCIES
   bootstrap-sass
   bullet!
   byebug
-  capistrano
   capistrano-bundler
   capistrano-db-tasks
   capistrano-rails

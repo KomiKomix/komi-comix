@@ -14,7 +14,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano'
+  #gem 'capistrano'
   gem 'capistrano-rvm',      require: false
   gem 'capistrano-rails',    require: false
   gem 'capistrano-bundler',  require: false
