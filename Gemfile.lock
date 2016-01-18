@@ -576,13 +576,14 @@ DEPENDENCIES
   bootstrap-sass
   bullet!
   byebug
+  capistrano
   capistrano-bundler
   capistrano-db-tasks
   capistrano-rails
   capistrano-rvm
   capistrano3-puma
   capybara
-  ckeditor (~> 4.1.0)
+  ckeditor (~> 4.1.6)
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
