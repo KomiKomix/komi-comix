@@ -65,7 +65,7 @@ gem 'spree_paypal_express',      github: 'spree-contrib/better_spree_paypal_expr
 gem 'ckeditor', '~>4.1.6'
 
 gem 'russian_post_calc',         github: 'shaggyone/russian_post_calc'
-#gem 'spree_russian_post_calc',   github: 'EALeon/spree_russian_post_calc', branch: 'test_branch'
+gem 'spree_russian_post_calc',   github: 'EALeon/spree_russian_post_calc', branch: 'test_branch'
 
 group :development do
   gem 'better_errors'
