@@ -33,7 +33,7 @@ set :branch,        :master
 
 ## Linked Files & Directories (Default None):
 set :linked_files, %w{config/database.yml config/secrets.yml}
-set :linked_dirs,  %w{public/spree public/ckeditor_assets}
+set :linked_dirs,  %w{public/spree public/ckeditor_assets public/assets/ckeditor}
 
 set :rake, "bundle exec rake"
 
