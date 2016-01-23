@@ -44,23 +44,4 @@
       h4.text-center
         = Spree.t('products_not_found')
 
-.modal.fade#cart_modal[tabindex="-1" role="dialog" aria-labelledby="cart_modal_label"]
-  .modal-dialog[role="document"]
-    .modal-content
-      .modal-header
-        button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
-          span[aria-hidden="true"]= '&times;'.html_safe
-        - title = current_order.present? ? Spree.t('excellent_choice') : Spree.t('blank_cart')
-        h4.modal-title.text-center#cart_modal_label= title
-
-      .modal-body
-        table.table
-          tbody#popup_container
-            = render partial: 'spree/shared/products_for_popup', locals: { order: current_order }
-
-      .modal-footer
-        button[type="button" class="btn btn-info hidden-xs pull-left" data-dismiss="modal"]= 'Продолжить покупки'
-        a[type="button" href=cart_path class="btn btn-primary"]
-          i.fa.fa-shopping-cart= 'Купить'
-
-
+= render 'spree/shared/cart_modal'
