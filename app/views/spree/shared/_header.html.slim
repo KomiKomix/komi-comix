@@ -23,12 +23,7 @@
             span= 'Мой аккаунт'
         hr
         
-        a[class="card_box pull-right p_small" href="#{cart_path}"]
-          i[class="fa fa-shopping-cart fa-lg"]
-          - order = current_spree_user.orders.last if current_spree_user && current_spree_user.orders.last.present?
-          span.cart-count= "В корзине (#{order.present? ? order.item_count : '0'})"
-          br
-          span.cart-text= "#{order.present? ? Spree::Money.new(order.total).to_s : '0,00 ₽'}"
+        = render partial: 'spree/shared/card_box'
           
     #signin_modal.modal.fade.bs-example-modal-sm[tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"]
       .modal-dialog.modal-sm

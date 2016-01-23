@@ -5,7 +5,7 @@
         td.item_amount= "× #{i.quantity}".html_safe
         td.item_cost.money.text-right= Spree::Money.new(i.total).to_s.gsub(' ', "&nbsp;").html_safe
         td.hidden-xs.text-right
-          = link_to destroy_line_item_path(variant_id: i.variant_id, quantity: i.quantity, partial: 'spree/shared/products_for_popup'), remote: true do
+          = link_to destroy_line_item_path(variant_id: i.variant_id, quantity: i.quantity),remote: true do
             i.fa.fa-trash-o
 
     tr.price_total

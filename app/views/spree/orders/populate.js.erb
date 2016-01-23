@@ -1,2 +1,4 @@
 $("#popup_container").
 html("<%= escape_javascript(render partial: 'spree/shared/products_for_popup', locals: { order: current_order }) %>");
+$("#card_box").
+html("<%= escape_javascript(render partial: 'spree/shared/card_box', locals: { order: current_order }) %>");

@@ -1,1 +1,12 @@
-$("#popup_container").html("<%= escape_javascript(render partial: params[:partial], locals: { order: current_order}) %>");
+$("#card_box").
+html("<%= escape_javascript(render partial: 'spree/shared/card_box', locals: { order: current_order }) %>");  
+
+if (typeof $( "#popup_container" ) !== "undefined") {
+  $("#popup_container").
+  html("<%= escape_javascript(render partial: 'spree/shared/products_for_popup', locals: { order: current_order}) %>");
+}
+
+if (typeof $( "#update-cart" ) !== "undefined") {
+  $("#update-cart").
+  html("<%= escape_javascript(render partial: 'form', locals: { order: current_order}) %>");
+}

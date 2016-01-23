@@ -1,0 +1,7 @@
+#card_box
+  = link_to cart_path, class: 'card_box pull-right p_small'
+    i.fa.fa-shopping-cart.fa-lg
+    - order = current_spree_user.orders.last if current_spree_user && current_spree_user.orders.last.present?
+    span.cart-count= "В корзине (#{order.present? ? order.item_count : '0'})"
+    br
+    span.cart-text= "#{order.present? ? Spree::Money.new(order.total).to_s : '0,00 ₽'}"
