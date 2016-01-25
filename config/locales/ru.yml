@@ -29,7 +29,8 @@ ru:
     change_my_password: Сменить пароль
     products_not_found: Извините, поиск не дал результата
     get_post_index: Узнать свой индекс
-
+    excellent_choice: Прекрасный выбор!
+    calc: Рассчитать
   time:
     formats:
       long: "%d %B %Y %H:%M"

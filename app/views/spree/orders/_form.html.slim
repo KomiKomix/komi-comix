@@ -1,5 +1,4 @@
-- @order ||= order
-= form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
+= form_for order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
   table.table
     thead
       tr
@@ -11,46 +10,16 @@
     tbody
       = render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form}
 
-      tr.middle_index
+      = render partial: 'cart_delivery_calculator'
+
+      tr.delivery_total
         td.call_empty
-        td[colspan="3"]
-          label.radio
-            input[type="radio" name="optionsRadios" id="optionsRadios2" value="option1" data-toggle="radio" checked="" class="custom-radio"]
-              span.icons
-                span.icon-unchecked
-                span.icon-checked
-            = 'Доставка почтой'
+        td= 'Доставка:'
+        td.text-right.item_cost.call_empty#delivery_total= delivery_cost
+        td.trash.call_empty
 
-          label.radio
-            input[type="radio" name="optionsRadios" id="optionsRadios2" value="option1" data-toggle="radio" checked="" class="custom-radio"]
-              span.icons
-                span.icon-unchecked
-                span.icon-checked
-            = 'Самовывоз'
-
-          .row
-            .col-sm-5.col-sm-offset-1
-              input[type="tel" value="" data-rule-phone="true" placeholder="Индекс" class="form-control" aria-invalid="true" style="width: 100%;"]
-
-            .col-sm-5
-              button[class="btn btn-primary" style="width: 100%;"]
-                = 'Рассчитать'
-
-          = link_to Spree.t('get_post_index'), 'https://pochta.ru/offices', target: '_blank', class: 'login-link'
-
-      tr.middle_index
-        tr.price_total
-          td.call_empty
-          td= 'Общая сумма:'
-          td.text-right= Spree::Money.new(current_order.total).to_s
-          td.trash
-
-.row
-  .col-md-12
-    a.btn.btn-info.copy[href=products_path]
-      = '← Назад'.html_safe
-
-    - unless @order.line_items.empty?
-      = form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
-        = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
-          = 'Оформить заказ →'.html_safe
+      tr.price_total
+        td.call_empty
+        td= 'Общая сумма:'
+        td.text-right#price_total= order_total
+        td.trash

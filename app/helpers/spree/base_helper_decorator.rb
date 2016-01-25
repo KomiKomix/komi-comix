@@ -53,5 +53,21 @@ module Spree
       raw html.css('body').children.to_s
     end
 
+    def custom_radio_tag(label_text = nil, options = {id: '', value: '', name: '', checked: false})
+      id      = options[:id]
+      value   = options[:value]
+      name    = options[:name]
+      checked = options[:checked]
+      post_calc = options[:post_calc]
+      content_tag(:label, class: 'radio') do
+        content_tag(:input, class: 'custom-radio', type: 'radio', id: id, value: value, name: name,
+                    checked: checked, :'data-toggle' => 'radio', :'data-post-calc' => post_calc) do
+          content_tag(:span, class: 'icons') do
+            "<span class='icon-unchecked'></span><span class='icon-checked'></span>".html_safe
+          end
+        end +
+        label_text
+      end
+    end
   end
 end

@@ -1,4 +1,5 @@
 Spree::OrdersController.class_eval do
+  before_filter :vars_prepare, only: [:edit, :change_shipping_method]
   #rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
   # Adds a new item to the order (creating a new order if none already exists)
@@ -40,5 +41,23 @@ Spree::OrdersController.class_eval do
     respond_with(order) do |format|
       format.js
     end
+  end
+
+  def change_shipping_method
+
+  end
+
+  def vars_prepare
+    @order = current_order
+    @shipping_method = Spree::ShippingMethod.find_by_id(params[:shipping_id]) || Spree::ShippingMethod.first
+    post_calc = (@shipping_method.calculator.type == Spree::Order::DEFAULT_SHIPPING_CALCULATOR) && params[:zip].present?
+
+    if post_calc
+      delivery_cost = @shipping_method.calculator.compute(@order, {ship_address_zipcode: params[:zip].to_s})
+    else
+      delivery_cost = @shipping_method.calculator.compute_package(@order)
+    end
+    @order_total   = Spree::Money.new(delivery_cost + @order.total).to_s
+    @delivery_cost = Spree::Money.new(delivery_cost).to_s
   end
 end

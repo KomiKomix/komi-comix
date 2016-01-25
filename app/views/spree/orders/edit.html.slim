@@ -1,3 +1,4 @@
+
 .container
   .row
     .col-md-10.col-md-offset-1
@@ -5,7 +6,18 @@
         .page-header
           h3= 'Корзина'
           
-        = render partial: 'form'
+        #update-cart-form
+          = render partial: 'form', locals: {order: current_order, delivery_cost: @delivery_cost, order_total: @order_total, shipping_method: @shipping_method}
+
+        .row
+          .col-md-12
+            a.btn.btn-info.copy[href=products_path]
+              = '← Назад'.html_safe
+
+            - unless @order.line_items.empty?
+              = form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
+                = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
+                  = 'Оформить заказ →'.html_safe
 
         hr
         .row

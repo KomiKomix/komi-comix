@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   Spree::Core::Engine.add_routes do
     get 'order/destroy_line_item' => 'orders#destroy_line_item', as: :destroy_line_item
+    get 'order/change_shipping_method' => 'orders#change_shipping_method', as: :change_shipping_method
   end
 
 

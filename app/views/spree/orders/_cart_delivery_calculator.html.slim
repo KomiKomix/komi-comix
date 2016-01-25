@@ -1,0 +1,17 @@
+tr.middle_index#delivery_calc
+  td.call_empty
+  td[colspan="3"]
+    - Spree::ShippingMethod.all.each do |sm|
+      - post_calc = sm.calculator.type == Spree::Order::DEFAULT_SHIPPING_CALCULATOR
+      - checked   = (@shipping_method.present? && sm.id == @shipping_method.id) || post_calc
+
+      = custom_radio_tag(sm.name, {name: 'optionsRadios', id: "optionsRadios#{sm.id}", value: sm.id, checked: checked, post_calc: post_calc})
+
+    .row
+      .col-sm-5.col-sm-offset-1#address_fields
+        input[type="tel" value="" data-rule-phone="true" placeholder="Индекс" class="form-control" aria-invalid="true" style="width: 100%;" id='zip']
+
+      .col-sm-5
+        = link_to Spree.t('calc'), '#', class: "btn btn-primary", style: "width: 100%;"
+
+    = link_to Spree.t('get_post_index'), 'https://pochta.ru/offices', target: '_blank', class: 'login-link'
