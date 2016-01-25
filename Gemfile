@@ -61,7 +61,7 @@ gem 'spree_news',                github: 'EALeon/spree_news', branch: 'test_bran
 
 gem 'spree_paypal_express',      github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 
-#gem 'spree_robokassa',           github: 'pronix/spree_robokassa'
+#gem 'spree_robokassa',           path: '../spree_robokassa'
 gem 'ckeditor', '~>4.1.6'
 
 gem 'russian_post_calc',         github: 'shaggyone/russian_post_calc'

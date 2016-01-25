@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/EALeon/spree_russian_post_calc.git
-  revision: 82e4a07dd6c245a6a765cf431a8355dd0c1f8533
+  revision: 9838a5c91d117763e9b806b13d3ecf8d57325d6e
   branch: test_branch
   specs:
     spree_russian_post_calc (0.1.0)
