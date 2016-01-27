@@ -1,5 +1,5 @@
 Spree::OrdersController.class_eval do
-  before_filter :vars_prepare, only: [:edit, :change_shipping_method]
+  #before_filter :vars_prepare, only: [:edit, :change_shipping_method]
   #rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
   # Adds a new item to the order (creating a new order if none already exists)
@@ -44,10 +44,6 @@ Spree::OrdersController.class_eval do
   end
 
   def change_shipping_method
-
-  end
-
-  def vars_prepare
     @order = current_order
     @shipping_method = Spree::ShippingMethod.find_by_id(params[:shipping_id]) || Spree::ShippingMethod.first
     post_calc = (@shipping_method.calculator.type == Spree::Order::DEFAULT_SHIPPING_CALCULATOR) && params[:zip].present?
