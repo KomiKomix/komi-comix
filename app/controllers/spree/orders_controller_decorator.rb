@@ -1,5 +1,5 @@
 Spree::OrdersController.class_eval do
-  before_filter :calc_delivery, only: [:edit]
+  before_filter :calc_delivery, only: [:edit, :populate, :destroy_line_item]
   #rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
 
   # Adds a new item to the order (creating a new order if none already exists)
