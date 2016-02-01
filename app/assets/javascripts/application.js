@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require ckeditor/init
+//= require_tree ../../../vendor/assets/javascripts/spree/frontend
 //= require_tree ./ckeditor
 //= require_tree .
 
@@ -27,7 +28,7 @@ $(function() {
   $(document).on("change", "#delivery_calc .radio", function() {
     var post_calc = $(this).find('.custom-radio').data('post-calc');
 
-    $.get('order/change_shipping_method', {shipping_id: $(this).find('.custom-radio').attr('value')});
+    $.get('order/calc_delivery', {shipping_id: $(this).find('.custom-radio').attr('value')});
     $(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
   });
 
@@ -36,6 +37,6 @@ $(function() {
     var selected_radio = parent.find('.custom-radio:checked');
     var zip            = $(this).closest('.row').find('#zip').val();
 
-    $.get('order/change_shipping_method', {shipping_id: selected_radio.attr('value'), zip: zip});
+    $.get('order/calc_delivery', {shipping_id: selected_radio.attr('value'), zip: zip});
   });
 });

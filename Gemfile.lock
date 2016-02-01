@@ -6,6 +6,14 @@ GIT
     spree_news (1.0.0)
 
 GIT
+  remote: git://github.com/EALeon/spree_robokassa.git
+  revision: d95bcfcc2c3802693ca97cc0fe0521a69e7127da
+  branch: test_branch
+  specs:
+    spree_robokassa (0.50.2)
+      spree_core (>= 0.40.0)
+
+GIT
   remote: git://github.com/EALeon/spree_russian_post_calc.git
   revision: 9838a5c91d117763e9b806b13d3ecf8d57325d6e
   branch: test_branch
@@ -627,6 +635,7 @@ DEPENDENCIES
   spree_i18n!
   spree_news!
   spree_paypal_express!
+  spree_robokassa!
   spree_russian_post_calc!
   spree_social_products!
   spree_static_content!

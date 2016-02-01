@@ -8,5 +8,5 @@ if (typeof $( "#popup_container" ) !== "undefined") {
 
 if (typeof $( "#update-cart" ) !== "undefined") {
   $("#update-cart").
-  html("<%= escape_javascript(render partial: 'form', locals: { order: current_order}) %>");
+  html("<%= escape_javascript(render partial: 'form', locals: {order: current_order, delivery_cost: @delivery_cost, order_total: @order_total, shipping_method: @shipping_method}) %>");
 }

@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module KomiComix
   class Application < Rails::Application
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     
     config.to_prepare do
       # Load application's model / class decorators
