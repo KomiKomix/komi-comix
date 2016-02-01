@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require ckeditor/init
-//= require_tree ../../../vendor/assets/javascripts/spree/frontend
 //= require_tree ./ckeditor
+//= require 'spree/frontend/all'
 //= require_tree .
 
 
@@ -32,7 +32,7 @@ $(function() {
     $(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
   });
 
-  $(document).on("click", ".btn.btn-primary", function() {
+  $(document).on("click", "#delivery_calc.btn.btn-primary", function() {
     var parent         = $(this).closest('#delivery_calc');
     var selected_radio = parent.find('.custom-radio:checked');
     var zip            = $(this).closest('.row').find('#zip').val();
