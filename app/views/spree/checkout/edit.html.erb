@@ -4,25 +4,15 @@
       <div class="card_block">
         <div class="b_title">
           <div class="page-header">
-              <h3>Оформление заказа</h3>
+            <h3>Оформление заказа</h3>
           </div>
         </div>
-
-        <div id="checkout" data-hook>
-          <% @order.checkout_steps[0...-1].each do |state| %>
-            <div class="row checkout_content <%= 'disabled-step' if state != @order.state %>" data-step="<%= state %>"data-hook="checkout_content" id="checkout_<%= state %>">
-              <%= render :partial => 'form_wrapper', :locals => { :order => @order, :state => state } %>
-            </div>
-          <% end %>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= render partial: 'form_wrapper', locals: { order: @order, state: 'one_step' } %>
+          </div>
         </div>
-
-
       </div>
     </div>
   </div>
 </div>
-
-
-<% if I18n.locale != :en %>
-  <script src="<%= assets_prefix %>/jquery.validate/localization/messages_<%= I18n.locale.to_s.downcase.gsub("-", "") %>.js"></script>
-<% end %>

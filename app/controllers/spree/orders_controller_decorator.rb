@@ -44,7 +44,7 @@ Spree::OrdersController.class_eval do
   end
 
   def calc_delivery
-    @order = current_order
+    @order = current_order(create_order_if_necessary: true)
     @shipping_method = Spree::ShippingMethod.find_by_id(params[:shipping_id]) || Spree::ShippingMethod.first
     post_calc = (@shipping_method.calculator.type == Spree::Order::DEFAULT_SHIPPING_CALCULATOR) && params[:zip].present?
 
