@@ -1,0 +1,7 @@
+<% if commentable.comments.any? %>
+  <%= render 'spree/admin/shared/comment_list', :commentable => commentable %>
+<% else %>
+  <div class="col-md-12 no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: I18n.t(:comments, scope: 'spree')) %>
+  </div>
+<% end %>

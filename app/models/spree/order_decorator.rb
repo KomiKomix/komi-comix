@@ -9,4 +9,18 @@ Spree::Order.class_eval do
   remove_checkout_step :confirm
 
 
+  def comment
+    comments.first.comment
+  end
+
+  def comment=(text)
+    if comments.empty?
+      comments.create(comment: text, user_id: user_id)
+    else
+      comment = comments.first
+      comment.comment = text
+      comment.save
+    end
+  end
+
 end

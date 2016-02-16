@@ -1,0 +1,18 @@
+<table class="index table">
+  <thead>
+    <tr>
+      <th><%= "#{t('spree.date')}/#{t('spree.time')}" %></th>
+      <th><%= Spree.t(:commenter) %></th>
+      <th><%= Spree.t(:comment) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% commentable.comments.reverse.each_with_index do |comment, index| %>
+      <tr class="<%= cycle('odd', 'even')%>">
+        <td class='align-center'><%= pretty_time(comment.created_at) %></td>
+        <td class='align-center'><%= comment.user.try(:email) %></td>
+        <td><%= comment.comment.html_safe %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

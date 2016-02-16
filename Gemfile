@@ -48,7 +48,6 @@ gem 'aws-sdk', '~>2'
 
 
 gem 'spree', '3.0.4'
-gem 'spree_gateway',             github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise',         github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_i18n',                github: 'spree-contrib/spree_i18n', branch: '3-0-stable'
 gem 'spree_social_products',     github: 'spree/spree_social_products', branch: '3-0-stable'
@@ -57,8 +56,9 @@ gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', b
 #gem 'spree_bank_transfer',       github: 'alvarosaavedra/spree_bank_transfer', branch: '3-0-stable', require: 'spree_bank_transfer'
 gem 'spree_editor',              github: 'spree-contrib/spree_editor', branch: '3-0-stable'
 gem 'spree_news',                github: 'EALeon/spree_news', branch: 'test_branch'
-#gem 'spree_comments',            github: 'spree/spree_comments', branch: '3-0-stable'
+gem 'spree_comments',            github: 'spree-contrib/spree_comments', branch: '3-0-stable'
 
+#gem 'spree_paypal_express',      path: '../better_spree_paypal_express', branch: '3-0-stable'
 gem 'spree_paypal_express',      github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 
 #gem 'spree_robokassa',           github: 'EALeon/spree_robokassa', branch: 'test_branch'

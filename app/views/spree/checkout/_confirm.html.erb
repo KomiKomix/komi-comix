@@ -4,10 +4,13 @@
   <%= render partial: 'spree/shared/order_details', locals: { order: @order } %>
 </fieldset>
 
-<div>
-  <textarea name="user_description" id="call_back_txt" cols="30" rows="20" class="copy" placeholder="Комментарий" style="resize: none; overflow-y: hidden; height: 70px; width: 100%;" aria-invalid="false">
-  </textarea>
-</div>
+<fieldset id="comment">
+  <%= form.fields_for :comments do |comment_form| %>
+    <p>
+      <%= comment_form.text_area :comment, {style: 'resize: none; overflow-y: hidden; height: 70px; width: 100%;', class: 'copy', placeholder: "Комментарий", cols: "30", rows: "20", id: "call_back_txt"} %>
+    </p>
+  <% end %>
+</fieldset>
 
 <div class="form-buttons" data-hook="buttons">
   <%= link_to '← Назад', cart_path, class: 'btn btn-info copy' %>
