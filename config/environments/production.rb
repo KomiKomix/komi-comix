@@ -83,9 +83,9 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.yandex.ru',
     port: 587,
-    domain: ENV['APP_DOMAIN'],
-    user_name: ENV['APP_DOMAIN_MAIL_USER'],
-    password: ENV['APP_DOMAIN_MAIL_SECRET'],
+    domain: ENV['APP_MAIL_DOMAIN'],
+    user_name: ENV['APP_MAIL_DOMAIN_USER'],
+    password: ENV['APP_MAIL_DOMAIN_SECRET'],
     authentication: :login,
     enable_starttls_auto: true
   }
