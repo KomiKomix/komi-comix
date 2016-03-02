@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116114501) do
+ActiveRecord::Schema.define(version: 20160216161837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,28 @@ ActiveRecord::Schema.define(version: 20160116114501) do
   add_index "spree_calculators", ["calculable_id", "calculable_type"], name: "index_spree_calculators_on_calculable_id_and_calculable_type", using: :btree
   add_index "spree_calculators", ["deleted_at"], name: "index_spree_calculators_on_deleted_at", using: :btree
   add_index "spree_calculators", ["id", "type"], name: "index_spree_calculators_on_id_and_type", using: :btree
+
+  create_table "spree_comment_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "applies_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_comments", force: :cascade do |t|
+    t.string   "title",            limit: 50
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comment_type_id"
+  end
+
+  add_index "spree_comments", ["commentable_id"], name: "index_spree_comments_on_commentable_id", using: :btree
+  add_index "spree_comments", ["commentable_type"], name: "index_spree_comments_on_commentable_type", using: :btree
+  add_index "spree_comments", ["user_id"], name: "index_spree_comments_on_user_id", using: :btree
 
   create_table "spree_countries", force: :cascade do |t|
     t.string   "iso_name"
