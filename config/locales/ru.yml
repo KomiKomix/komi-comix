@@ -30,6 +30,8 @@ ru:
     products_not_found: Извините, поиск не дал результата
     get_post_index: Узнать свой индекс
     excellent_choice: Прекрасный выбор!
+    blank_cart: Ваша корзина пуста!
+    cart_products_not_found: Товары не найдены
     calc: Рассчитать
   time:
     formats:

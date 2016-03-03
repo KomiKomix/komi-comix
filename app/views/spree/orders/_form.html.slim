@@ -1,36 +1,42 @@
-= form_for order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
-  table.table
-    thead
-      tr
-        td= 'Описание'
-        td= 'Количество'
-        td.text-right= 'Сумма'
-        td
-
-    tbody
-      = render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form}
-
-      = render partial: 'cart_delivery_calculator'
-
-      tr.delivery_total
-        td.call_empty
-        td= 'Доставка:'
-        td.text-right.item_cost.call_empty#delivery_total= delivery_cost
-        td.trash.call_empty
-
-      tr.price_total
-        td.call_empty
-        td= 'Общая сумма:'
-        td.text-right#price_total= order_total
-        td.trash
-
-
+- if cart_blank?(order)
+  = Spree.t('cart_products_not_found')
   .row
     .col-md-12
       = link_to '← Назад', products_path, class: 'btn btn-info copy'
-      - unless @order.line_items.empty?
-        = form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
-          = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
-            = 'Оформить заказ →'.html_safe
+- else
+  = form_for order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
+    table.table
+      thead
+        tr
+          td= 'Описание'
+          td= 'Количество'
+          td.text-right= 'Сумма'
+          td
+
+      tbody
+        = render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form}
+
+        = render partial: 'cart_delivery_calculator'
+
+        tr.delivery_total
+          td.call_empty
+          td= 'Доставка:'
+          td.text-right.item_cost.call_empty#delivery_total= delivery_cost
+          td.trash.call_empty
+
+        tr.price_total
+          td.call_empty
+          td= 'Общая сумма:'
+          td.text-right#price_total= order_total
+          td.trash
+
+
+    .row
+      .col-md-12
+        = link_to '← Назад', products_path, class: 'btn btn-info copy'
+        - unless @order.line_items.empty?
+          = form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
+            = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
+              = 'Оформить заказ →'.html_safe
 
 

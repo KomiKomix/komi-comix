@@ -1,3 +1,4 @@
+$('#cart_modal_label').html("<%= cart_modal_title %>");
 $("#popup_container").
 html("<%= escape_javascript(render partial: 'spree/shared/products_for_popup', locals: { order: current_order }) %>");
 $("#card_box").

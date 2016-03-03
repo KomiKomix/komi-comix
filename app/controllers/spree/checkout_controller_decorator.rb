@@ -23,8 +23,8 @@ Spree::CheckoutController.class_eval do
   end
 
   def before_one_step
-    @order.bill_address ||= (spree_current_user.bill_address || Spree::Address.build_default)
-    @order.ship_address ||= (spree_current_user.ship_address || Spree::Address.build_default)
+    @order.bill_address ||= user_bill_address
+    @order.ship_address ||= user_ship_address
 
     @shipping_method = Spree::ShippingMethod.find_by_id(params[:shipping_method_id]) || Spree::ShippingMethod.first
     #@order.payments.destroy_all if request.put?
@@ -32,5 +32,13 @@ Spree::CheckoutController.class_eval do
 
   def comment_params
     params.require(:order).require(:comments).permit(:comment)
+  end
+
+  def user_bill_address
+    spree_current_user.nil? ? Spree::Address.build_default : spree_current_user.bill_address
+  end
+
+  def user_ship_address
+    spree_current_user.nil? ? Spree::Address.build_default : spree_current_user.ship_address
   end
 end

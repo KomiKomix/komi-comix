@@ -69,5 +69,15 @@ module Spree
         label_text
       end
     end
+
+    def cart_modal_title
+      cart_blank? ? Spree.t('blank_cart') : Spree.t('excellent_choice')
+    end
+
+    def cart_blank?(order = current_order)
+      return true unless order.present?
+      return true if order.line_items.count.zero?
+      false
+    end
   end
 end

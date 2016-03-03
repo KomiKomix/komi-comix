@@ -4,13 +4,10 @@
       .modal-header
         button[type="button" class="close" data-dismiss="modal" aria-label="Close"]
           span[aria-hidden="true"]= '&times;'.html_safe
-        - title = current_order.present? ? Spree.t('excellent_choice') : Spree.t('blank_cart')
-        h4.modal-title.text-center#cart_modal_label= title
+        h4.modal-title.text-center#cart_modal_label= cart_modal_title
 
-      .modal-body
-        table.table
-          tbody#popup_container
-            = render partial: 'spree/shared/products_for_popup', locals: { order: current_order }
+      .modal-body#popup_container
+        = render partial: 'spree/shared/products_for_popup', locals: { order: current_order }
 
       .modal-footer
         button[type="button" class="btn btn-info hidden-xs pull-left" data-dismiss="modal"]= 'Продолжить покупки'
