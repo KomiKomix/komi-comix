@@ -1,6 +1,6 @@
 #card_box
   = link_to cart_path, class: 'card_box pull-right p_small'
     i.fa.fa-shopping-cart.fa-lg
-    span.cart-count= "В корзине (#{current_order.present? ? order.item_count : '0'})"
+    span.cart-count= "В корзине (#{order.present? ? order.item_count : '0'})"
     br
-    span.cart-text= "#{current_order.present? ? Spree::Money.new(order.total).to_s : '0,00 ₽'}"
+    span.cart-text= "#{order.present? ? Spree::Money.new(order.total).to_s : '0,00 ₽'}"

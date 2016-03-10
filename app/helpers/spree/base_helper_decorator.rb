@@ -79,5 +79,43 @@ module Spree
       return true if order.line_items.count.zero?
       false
     end
+
+    def simple_current_order
+
+      return @simple_current_order if @simple_current_order
+
+      @simple_current_order = find_order_by_token_or_user
+
+      if @simple_current_order
+        @simple_current_order.last_ip_address = request.remote_ip
+        return @simple_current_order
+      else
+        @simple_current_order = Spree::Order.new
+      end
+    end
+
+    def find_order_by_token_or_user(options={}, with_adjustments = false)
+      options[:lock] ||= false
+
+      # Find any incomplete orders for the guest_token
+      incomplete_orders = Spree::Order.incomplete.includes(line_items: [variant: [:images, :option_values, :product]])
+      order = if with_adjustments
+                incomplete_orders.includes(:adjustments).lock(options[:lock]).find_by(current_order_params)
+              else
+                incomplete_orders.lock(options[:lock]).find_by(current_order_params)
+              end
+
+      # Find any incomplete orders for the current user
+      if order.nil? && try_spree_current_user
+        order = last_incomplete_order
+      end
+
+      order
+    end
+
+    def current_order_params
+      { currency: current_currency, guest_token: cookies.signed[:guest_token], store_id: current_store.id, user_id: try_spree_current_user.try(:id) }
+    end
+
   end
 end
