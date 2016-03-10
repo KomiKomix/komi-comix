@@ -117,5 +117,9 @@ module Spree
       { currency: current_currency, guest_token: cookies.signed[:guest_token], store_id: current_store.id, user_id: try_spree_current_user.try(:id) }
     end
 
+    def last_incomplete_order
+      @last_incomplete_order ||= try_spree_current_user.last_incomplete_spree_order
+    end
+
   end
 end
