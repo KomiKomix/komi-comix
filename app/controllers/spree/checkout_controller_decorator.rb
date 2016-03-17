@@ -1,11 +1,19 @@
 Spree::CheckoutController.class_eval do
   # Updates the order and advances to the next state (when possible.)
+  before_action :set_onestep_params, only: [:update], if: :one_step?
+
   def update
     if @order.update_from_params(params, permitted_checkout_attributes, request.headers.env)
+      @order.comment = comment_params[:comment] if comment_params[:comment].present?
       @order.temporary_address = !params[:save_user_address]
       unless @order.next
-        flash[:error] = @order.errors.full_messages.join("\n")
-        redirect_to(checkout_state_path(@order.state)) && return
+        respond_to do |format|
+          format.html do
+            flash[:error] = @order.errors.full_messages.join("\n")
+            redirect_to(checkout_state_path(@order.state)) && return
+          end
+          format.js { head :ok }
+        end
       end
 
       if @order.completed?
@@ -15,10 +23,16 @@ Spree::CheckoutController.class_eval do
         flash['order_completed'] = true
         redirect_to completion_route
       else
-        redirect_to checkout_state_path(@order.state)
+        respond_to do |format|
+          format.html {redirect_to checkout_state_path(@order.state)}
+          format.js { head :ok }
+        end
       end
     else
-      render :edit
+      respond_to do |format|
+        format.html {render :edit}
+        format.js { head :not_acceptable }
+      end
     end
   end
 
@@ -31,7 +45,7 @@ Spree::CheckoutController.class_eval do
   end
 
   def comment_params
-    params.require(:order).require(:comments).permit(:comment)
+    params.require(:order).permit(:comment)
   end
 
   def user_bill_address
@@ -40,5 +54,16 @@ Spree::CheckoutController.class_eval do
 
   def user_ship_address
     spree_current_user.nil? ? Spree::Address.build_default : spree_current_user.ship_address
+  end
+
+  private
+
+  def set_onestep_params
+    params.require(:order).require(:bill_address_attributes)[:lastname] = params.require(:order).require(:bill_address_attributes)[:firstname]
+    params.require(:order).require(:bill_address_attributes)[:city] = params.require(:order).require(:bill_address_attributes)[:address1]
+  end
+
+  def one_step?
+    params[:state] == 'one_step'
   end
 end

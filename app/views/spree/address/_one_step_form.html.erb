@@ -1,0 +1,83 @@
+<% address_id = address_type.chars.first %>
+
+<div class="inner" data-hook=<%="#{address_type}_inner" %>>
+  <p class="field" id=<%="#{address_id}firstname" %>>
+    <%= form.label :firstname, class: 'input__title copy' do %>
+      <%="#{Spree.t(:full_name)}" %>
+      <span class="required">*</span>
+    <% end %>
+    <%= form.text_field :firstname, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
+  </p>
+
+  <p class="field" id=<%="#{address_id}phone" %>>
+    <%= form.label :phone, class: 'input__title copy' do %>
+      <%="#{Spree.t(:phone)}" %>
+      <span class="required">*</span>
+    <% end %>
+    <%= form.text_field :phone, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
+  </p>
+
+  <% if Spree::Config[:alternative_shipping_phone] %>
+    <p class="field" id=<%="#{address_id}altphone" %>>
+      <%= form.label :alternative_phone, class: 'input__title copy' do %>
+        <%="#{Spree.t(:alternative_phone)}" %>
+        <span class="required">*</span>
+      <% end %>
+      <%= form.text_field :alternative_phone, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
+    </p>
+  <% end %>
+
+  <p class="field" id=<%="#{address_id}address1" %>>
+    <%= form.label :address1, class: 'input__title copy' do %>
+      <%="#{Spree.t(:street_address)}" %>
+      <span class="required">*</span>
+    <% end %>
+    <%= form.text_field :address1, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
+  </p>
+
+  <p class="field" id=<%="#{address_id}country" %>>
+    <%= form.label :country_id, class: 'input__title copy' do %>
+      <%="#{Spree.t(:country)}" %>
+      <span class="required">*</span>
+    <% end %>
+    <span id=<%="#{address_id}country-selection" %>>
+      <%= form.collection_select :country_id, available_countries, :id, :name, {}, {class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true"} %>
+    </span>
+  </p>
+
+  <% if Spree::Config[:address_requires_state] %>
+    <p class="field" id=<%="#{address_id}state" %>>
+      <% have_states = !address.country.states.empty? %>
+      <%= form.label :state, class: 'input__title copy' do %>
+        <%="#{Spree.t(:state)}" %>
+        <span class="required" id=<%="#{address_id}state-required"%>>*</span>
+      <% end %>
+      <% state_elements = [
+         form.collection_select(:state_id, address.country.states,
+                            :id, :name,
+                            {:include_blank => true},
+                            {:class => have_states ? 'form-control required' : 'hidden',
+                            :disabled => !have_states}) +
+         form.text_field(:state_name,
+                            :class => !have_states ? 'required' : 'hidden',
+                            :disabled => have_states)
+         ].join.gsub('"', "'").gsub("\n", "")
+      %>
+      <%= javascript_tag do -%>
+        $('#<%="#{address_id}state" %>').append("<%== state_elements %>");
+      <% end %>
+    </p>
+      <noscript>
+        <%= form.text_field :state_name, :class => 'required' %>
+      </noscript>
+  <% end %>
+
+  <p class="field" id=<%="#{address_id}zipcode" %>>
+    <%= form.label :zipcode, class: 'input__title copy' do %>
+      <%="#{Spree.t(:zip)}" %>
+      <span class="required">*</span>
+    <% end %>
+    <%= form.text_field :zipcode, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
+  </p>
+
+</div>

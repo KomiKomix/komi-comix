@@ -10,7 +10,7 @@ Spree::Order.class_eval do
 
 
   def comment
-    comments.first.comment
+    comments.first && comments.first.comment
   end
 
   def comment=(text)

@@ -22,7 +22,7 @@ Spree.config do |config|
   #config.allow_ssl_in_production = true
   config.logo = 'logo/favicon.ico'
   config.layout = 'application'
-  #config.default_country_id = 72
+  config.default_country_id = 643
   config.products_per_page = 12
   config.allow_guest_checkout = true
   config.always_include_confirm_step = true
@@ -55,6 +55,12 @@ Spree::Backend::Config.locale = :ru
 Spree::Auth::Config.signout_after_password_change = false
 
 Spree::Product.whitelisted_ransackable_attributes |= ['caption']
+
+Spree::Auth::Config[:registration_step] = false
+
+Spree::Config[:checkout_zone] = "RU"
+
+Spree::Config[:address_requires_state] = false
 
 #Spree::PermittedAttributes.taxon_attributes << :short_description
 # Add terms_and_conditions to strong parameters

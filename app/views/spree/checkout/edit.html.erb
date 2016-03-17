@@ -9,6 +9,9 @@
         </div>
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
+            <% if need_auth?(user: current_spree_user, order: @order)%>
+              <%= render "spree/checkout/one_step_auth"%>
+            <% end %>
             <%= render partial: 'form_wrapper', locals: { order: @order, state: 'one_step' } %>
           </div>
         </div>

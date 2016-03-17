@@ -33,6 +33,7 @@ ru:
     blank_cart: Ваша корзина пуста!
     cart_products_not_found: Товары не найдены
     calc: Рассчитать
+    full_name: ФИО
   time:
     formats:
       long: "%d %B %Y %H:%M"

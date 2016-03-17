@@ -39,4 +39,28 @@ $(function() {
 
     $.get('order/calc_delivery', {shipping_id: selected_radio.attr('value'), zip: zip});
   });
+
+  $(document).on("click", "a.js-submit", function(e) {
+    e.preventDefault();
+
+    var selector = $(this).data('target');
+    clickButton(selector);
+  });
+
+  $(document).on("ajax:success", "#checkout_form_one_step", function(e) {
+    var paymentMethodId = $('input[name*=payments_attributes]:checked', '#checkout_form_one_step').val();
+    submitPayment(paymentMethodId);
+  });
+
+  function clickButton(selector){
+    $("#"+selector).click();
+  }
+
+  function submitPayment(paymentMethodId){
+    var selector = '#payment_method_' + paymentMethodId + ' ';
+    var link_selector = selector + 'a';
+    var button_selector = selector + 'button';
+    $(link_selector + ', ' + button_selector).click();
+  }
+
 });

@@ -121,5 +121,9 @@ module Spree
       @last_incomplete_order ||= try_spree_current_user.last_incomplete_spree_order
     end
 
+    def need_auth?(user:, order:)
+      !Spree::Auth::Config[:registration_step] && !user && !order.email?
+    end
+
   end
 end

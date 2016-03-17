@@ -20,9 +20,11 @@ db/*.sqlite3
 /db/*.sqlite3-journal
 /log/*
 /tmp/*
+.byebug_history
 
 # add /config/database.yml if it contains passwords
-# /config/database.yml
+/config/database.yml
+/config/secrets.yml
 
 # various artifacts
 **.war
@@ -42,6 +44,7 @@ db/*.sqlite3
 /public/cache
 /public/stylesheets/compiled
 /public/system/*
+/public/spree/products
 /spec/tmp/*
 /cache
 /capybara*
@@ -85,3 +88,4 @@ pickle-email-*.html
 
 # Ignore sublime project files
 *.sublime-*
+.ruby-version
