@@ -34,6 +34,7 @@ ru:
     cart_products_not_found: Товары не найдены
     calc: Рассчитать
     full_name: ФИО
+    full_address: Адрес (населенный пункт, улица, дом, квартира)
   time:
     formats:
       long: "%d %B %Y %H:%M"
