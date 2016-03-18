@@ -29,7 +29,7 @@
 
   <p class="field" id=<%="#{address_id}address1" %>>
     <%= form.label :address1, class: 'input__title copy' do %>
-      <%="#{Spree.t(:street_address)}" %>
+      <%="#{Spree.t(:full_address)}" %>
       <span class="required">*</span>
     <% end %>
     <%= form.text_field :address1, class: 'form-control', :'data-rule-required' => "true", :'aria-required' => "true", :'aria-invalid' => "true", required: true %>
