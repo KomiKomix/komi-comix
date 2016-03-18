@@ -6,6 +6,8 @@ Spree::CheckoutController.class_eval do
     if @order.update_from_params(params, permitted_checkout_attributes, request.headers.env)
       @order.comment = comment_params[:comment] if comment_params[:comment].present?
       @order.temporary_address = !params[:save_user_address]
+      @order.persist_user_address!
+      
       unless @order.next
         respond_to do |format|
           format.html do
@@ -49,11 +51,11 @@ Spree::CheckoutController.class_eval do
   end
 
   def user_bill_address
-    spree_current_user.nil? ? Spree::Address.build_default : spree_current_user.bill_address
+    spree_current_user.nil? || spree_current_user.bill_address.nil? ? Spree::Address.build_default : spree_current_user.bill_address
   end
 
   def user_ship_address
-    spree_current_user.nil? ? Spree::Address.build_default : spree_current_user.ship_address
+    spree_current_user.nil? || spree_current_user.ship_address.nil? ? Spree::Address.build_default : spree_current_user.ship_address
   end
 
   private
