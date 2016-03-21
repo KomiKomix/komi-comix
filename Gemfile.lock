@@ -110,7 +110,7 @@ GIT
 
 GIT
   remote: git://github.com/ysynesis/spree_walletone.git
-  revision: 6a4eb417fb608bd70c0348c53ed477289cb1c275
+  revision: 92fdc6c8cee093e69d5a1b64c5ff0957a4ee1ec0
   specs:
     spree_walletone (0.0.1)
       walletone
