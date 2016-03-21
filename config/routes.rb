@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     get 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
   end
 
-get '/w1_108518794761.txt', to: proc { |env| [200, {}, [""]] }
+  get '/w1_108518794761.txt', to: proc { |env| [200, {}, [""]] }
+
+  match '/walletone_confirm', to:  WalletonePayment.new, via: :all
+
           # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
