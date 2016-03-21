@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
   end
 
+  match '/walletone_confirm', to:  WalletonePayment.new, via: :all
 
           # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
