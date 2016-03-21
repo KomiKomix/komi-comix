@@ -16,6 +16,12 @@
       tbody
         = render partial: 'line_item', collection: order_form.object.line_items, locals: {order_form: order_form}
 
+        tr
+          td
+          td= 'Итого:'
+          td.text-right.item_cost
+            = @order.display_total
+
         = render partial: 'cart_delivery_calculator'
 
         tr.delivery_total
