@@ -1,5 +1,6 @@
 Spree::CheckoutController.class_eval do
   # Updates the order and advances to the next state (when possible.)
+  helper 'spree/walletone'
   before_action :set_onestep_params, only: [:update], if: :one_step?
 
   def update
@@ -7,7 +8,7 @@ Spree::CheckoutController.class_eval do
       @order.comment = comment_params[:comment] if comment_params[:comment].present?
       @order.temporary_address = !params[:save_user_address]
       @order.persist_user_address!
-      
+
       unless @order.next
         respond_to do |format|
           format.html do

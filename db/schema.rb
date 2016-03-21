@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216161837) do
+ActiveRecord::Schema.define(version: 20160321093027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1157,6 +1157,13 @@ ActiveRecord::Schema.define(version: 20160216161837) do
   add_index "spree_variants", ["sku"], name: "index_spree_variants_on_sku", using: :btree
   add_index "spree_variants", ["tax_category_id"], name: "index_spree_variants_on_tax_category_id", using: :btree
   add_index "spree_variants", ["track_inventory"], name: "index_spree_variants_on_track_inventory", using: :btree
+
+  create_table "spree_walletone_checkouts", force: :cascade do |t|
+    t.string "token"
+    t.string "payer_id"
+    t.string "state",          default: "complete"
+    t.string "transaction_id"
+  end
 
   create_table "spree_zone_members", force: :cascade do |t|
     t.integer  "zoneable_id"

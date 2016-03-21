@@ -66,6 +66,7 @@ gem 'ckeditor', '~>4.1.6'
 
 gem 'russian_post_calc',         github: 'shaggyone/russian_post_calc'
 gem 'spree_russian_post_calc',   github: 'EALeon/spree_russian_post_calc', branch: 'test_branch'
+gem 'spree_walletone',           github: 'ysynesis/spree_walletone'
 
 group :development do
   gem 'better_errors'

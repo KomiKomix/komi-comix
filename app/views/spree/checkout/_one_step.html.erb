@@ -14,15 +14,7 @@
       <%= Spree.t(method.name, :scope => :payment_methods, :default => method.name) %>
     </label>
     <% end %>
-    <ul class="nav" id="payment-methods" style="display:none;">
-      <% @order.available_payment_methods.each do |method| %>
-      <li id="payment_method_<%= method.id %>" class="<%= 'last' if method == @order.available_payment_methods.last %>" data-hook>
-        <fieldset>
-          <%= render :partial => "spree/checkout/payment/#{method.method_type}", :locals => { :payment_method => method } %>
-        </fieldset>
-      </li>
-      <% end %>
-    </ul>
+    <%= render partial:'spree/checkout/payment_buttons'%>
   </div>
 </div>
 
