@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   mount Spree::Core::Engine, at: '/'
 
   Spree::Core::Engine.add_routes do
-    get 'order/destroy_line_item' => 'orders#destroy_line_item', as: :destroy_line_item
+    post 'orders/destroy_line_item' => 'orders#destroy_line_item', as: :destroy_line_item
     get 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
   end
 

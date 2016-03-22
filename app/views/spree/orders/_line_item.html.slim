@@ -16,10 +16,10 @@
     td.item_amount
       span.quantity
         = '×'.html_safe
-        = item_form.number_field :quantity, min: 1, size: 3, id: 'quantity', name: 'quantity', maxlength: 3
+        = item_form.number_field :quantity, min: 1, size: 3, name: 'quantity', maxlength: 3, :'data-variant-id' => line_item.variant_id, :'data-value-old' => line_item.quantity
     td.item_cost.money.text-right
-      = line_item.single_money.to_html
+      = line_item.total
     td.text-right.trash
-      = link_to destroy_line_item_path(variant_id: line_item.variant_id, quantity: line_item.quantity), remote: true do
+      = link_to destroy_line_item_path(variant_id: line_item.variant_id, quantity: 1), remote: true, method: :post do
         i.fa.fa-trash-o
 

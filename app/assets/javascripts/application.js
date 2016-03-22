@@ -32,13 +32,43 @@ $(function() {
     $(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
   });
 
+  $(document).on('change', '.quantity input[name*=quantity]', function() {
+    var variant_id = $(this).data('variant-id');
+    var new_value  = $(this).val();
+    var old_value  = $(this).data('value-old');
+    var url        = '/orders/populate';
+
+    if ((new_value).match(/^\d+$/)) {
+      var diff = new_value - old_value;
+
+      if (diff < 0) {
+        diff = diff * (-1);
+        url  = 'orders/destroy_line_item';
+      };
+
+      if (diff != 0) {
+        $.ajax({
+          url: url,
+          type: 'POST',
+          data: { variant_id: variant_id, quantity: diff },
+          dataType: 'script',
+          success: function() { calc_delivery(); }
+        });
+      };
+    };
+  });
+
   $(document).on("click", "#delivery_calc.btn.btn-primary", function() {
+    calc_delivery();
+  });
+
+  function calc_delivery(){
     var parent         = $(this).closest('#delivery_calc');
     var selected_radio = parent.find('.custom-radio:checked');
     var zip            = $(this).closest('.row').find('#zip').val();
 
     $.get('order/calc_delivery', {shipping_id: selected_radio.attr('value'), zip: zip});
-  });
+  }
 
   $(document).on("click", "a.js-submit", function(e) {
     e.preventDefault();
