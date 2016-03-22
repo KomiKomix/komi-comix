@@ -20,6 +20,6 @@
     td.item_cost.money.text-right
       = line_item.total
     td.text-right.trash
-      = link_to destroy_line_item_path(variant_id: line_item.variant_id, quantity: 1), remote: true, method: :post do
+      = link_to destroy_line_item_path(variant_id: line_item.variant_id, quantity: line_item.quantity), remote: true, method: :post do
         i.fa.fa-trash-o
 
