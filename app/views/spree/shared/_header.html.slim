@@ -56,18 +56,11 @@ nav.navbar
       ul.nav.navbar-nav.center-block
         li.active
           a[href="#{products_path}"]= 'Архив'
-        li
-          - news = Spree::Post.published
-          - news_url = news.present? ? posts_path : '#'
-          = link_to 'Пропаганда', news_url
-        li
-          - delivery_page = Spree::Page.visible.find_by_slug('/delivery')
-          - delivery_url = delivery_page.present? && delivery_page.slug.present? ? delivery_page.slug : '#'
-          = link_to 'Доставка', delivery_url
-        li
-          - about_page = Spree::Page.visible.find_by_slug('/about')
-          - about_url = about_page.present? && about_page.slug.present? ? about_page.slug : '#'
-          = link_to 'О нас', about_url
+
+        - Spree::Page.in_top_menu.each do |p|
+          li
+            = link_to p.title, p.slug
+
 
 - if Spree::Page.has_banner? and (current_page?(root_path) or current_page?(products_path))
   = raw Spree::Page.main_banner.body
