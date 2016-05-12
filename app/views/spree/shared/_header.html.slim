@@ -57,6 +57,11 @@ nav.navbar
         li.active
           a[href="#{products_path}"]= 'Архив'
 
+        li
+          - news = Spree::Post.published
+          - news_url = news.present? ? posts_path : '#'
+          = link_to 'Пропаганда', news_url
+
         - Spree::Page.in_top_menu.each do |p|
           li
             = link_to p.title, p.slug
