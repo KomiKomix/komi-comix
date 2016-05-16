@@ -22,6 +22,7 @@
 ru:
   spree:
     it_banner: Баннер
+    footer: Подвал
     caption: Заголовок
     take_your_chance: Успей купить
     posts: Новости
@@ -35,6 +36,7 @@ ru:
     calc: Рассчитать
     full_name: ФИО
     full_address: Адрес (населенный пункт, улица, дом, квартира)
+    save: Сохранить
   time:
     formats:
       long: "%d %B %Y %H:%M"

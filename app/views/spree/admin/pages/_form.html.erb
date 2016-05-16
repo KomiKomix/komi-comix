@@ -76,6 +76,13 @@
       </div>
 
       <div class="checkbox">
+        <%= f.label :footer do %>
+          <%= f.check_box :footer %>
+          <%= Spree.t(:footer) %>
+        <% end %>
+      </div>
+
+      <div class="checkbox">
         <%= f.label :render_layout_as_partial do %>
           <%= f.check_box :render_layout_as_partial %>
           <%= Spree::Page.human_attribute_name(:render_layout_as_partial) %>

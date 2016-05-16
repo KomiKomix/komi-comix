@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321093027) do
+ActiveRecord::Schema.define(version: 20160516183336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -381,6 +381,7 @@ ActiveRecord::Schema.define(version: 20160321093027) do
     t.string   "meta_title"
     t.boolean  "render_layout_as_partial", default: false
     t.boolean  "it_banner",                default: false, null: false
+    t.boolean  "footer",                   default: false, null: false
   end
 
   add_index "spree_pages", ["slug"], name: "index_spree_pages_on_slug", using: :btree
