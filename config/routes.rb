@@ -8,12 +8,19 @@ Rails.application.routes.draw do
   # We ask that you don't use the :as option here, as Spree relies on it being the default of "spree"
   mount Spree::Core::Engine, at: '/'
 
+  Spree::Core::Engine.routes.draw do
+    namespace :admin do
+      resources :social_links
+    end
+  end
+
   Spree::Core::Engine.add_routes do
     post 'orders/destroy_line_item' => 'orders#destroy_line_item', as: :destroy_line_item
     get 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
   end
 
   match '/walletone_confirm', to:  WalletonePayment.new, via: :all
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

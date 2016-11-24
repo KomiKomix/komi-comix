@@ -1,0 +1,5 @@
+<% if can? :admin, Spree::SocialLink %>
+    <ul class='nav nav-sidebar'>
+        <%= tab Spree::SocialLink, url: spree.admin_social_links_url, icon: 'leaf', label: Spree.t('social_links') %>
+    </ul>
+<% end %>
