@@ -2,6 +2,7 @@ Spree::Page.class_eval do
   scope :banners, -> { where({ it_banner: true, visible: true }) }
   scope :footers, -> { where({ footer: true, visible: true }) }
   scope :in_top_menu, -> { where({ show_in_header: true, visible: true }).order(position: :asc) }
+  scope :in_bottom_menu, -> { where({ show_in_footer: true, visible: true }).order(position: :asc) }
 
   def self.has_banner?
     banners.present?
@@ -12,6 +13,6 @@ Spree::Page.class_eval do
   end
 
   def self.footer
-  	footers.first
+    footers.first
   end
 end

@@ -5,7 +5,7 @@
     .row
       .col-md-12
         .row
-          .col-md-6.hidden-xs
+          .col-md-5.hidden-xs
             strong= 'KomiKomix — магазин комиксов'
             p.p-main
               = 'С 2010 года мы продаем комиксы всех стилей и направлений, для детей и взрослых, на русском и английском языках. Вы можете посетить один из двух наших магазинов в центре Москвы, либо сделать заказ онлайн, и мы доставим его курьером или почтой. Удачных покупок!'
@@ -22,7 +22,15 @@
               li
                 button[href="#" class="btn tumbler"]
 
-          .col-md-4.col-md-offset-2
+          .col-md-3.hidden-xs
+            - if Spree::Page.in_bottom_menu.present?
+              strong= '&nbsp;'.html_safe
+              ul.footer-nav
+                - Spree::Page.in_bottom_menu.each do |p|
+                  li
+                    = link_to p.title, p.slug
+
+          .col-md-4
             address
               strong= 'Контакты'
               br
