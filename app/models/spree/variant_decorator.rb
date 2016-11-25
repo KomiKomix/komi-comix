@@ -1,6 +1,6 @@
 Spree::Variant.class_eval do
 
-  scope :by_num_sku, -> { where('sku REGEXP ?', '^\d*[0-9]\d*$').order(sku: 'desc') }
+  scope :by_num_sku, -> { where('sku ~ ?', '^\d*[0-9]\d*$').order(sku: 'desc') }
 
   before_save :set_sku
 
