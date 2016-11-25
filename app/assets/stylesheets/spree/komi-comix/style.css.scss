@@ -413,12 +413,8 @@ aside {
 
 .thumbnail {
   max-width: 200px;
-  border-radius: 0px;
+  border-radius: 0;
   border-color: #fff;
-
-  &:hover h4 {
-    text-decoration: underline;
-  }
 
   .caption {
     height: 90px;
@@ -432,6 +428,16 @@ aside {
 }
 
 .thumbnail {
+
+  &:hover {
+    h4 {
+      text-decoration: underline;
+    }
+    .image-wrapper img {
+      opacity: .8;
+    }
+  }
+
   h4 {
     font-size: 1.4rem;
     white-space: nowrap;
@@ -439,8 +445,8 @@ aside {
     text-overflow: ellipsis;
     font-weight: 400;
     text-transform: none;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 
   p {
@@ -450,7 +456,7 @@ aside {
     text-overflow: ellipsis;
     font-weight: 400;
     text-transform: none;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 0px;
     font-size: 1.4rem;
     font-weight: 300;
