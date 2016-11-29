@@ -1,0 +1,51 @@
+<% content_for :page_title do %>
+  <%= Spree.t(:settings, scope: :yandex) %>
+<% end %>
+
+<%= form_tag admin_yandex_settings_path, method: :put do %>
+<div class="row">
+  <div class="col-md-6">
+    <fieldset>
+      <legend><%= Spree.t(:metrika, scope: [:yandex]) %></legend>
+
+  <div class="form-group">
+    <div class="checkbox">
+      <%= label_tag :metrika_enabled do %>
+          <%= preference_field_tag :metrika_enabled, Spree::YandexConfig[:metrika_enabled], type: :boolean %>
+          <%= Spree.t :metrika_enabled, scope: [:yandex, :preferences] %>
+      <% end %>
+    </div>
+  </div>
+    <div class="form-group">
+      <%= label_tag :metrika_html, Spree.t(:metrika_html, scope: [:yandex, :preferences]) %>
+      <%= preference_field_tag :metrika_html, Spree::YandexConfig[:metrika_html], type: :text %>
+    </div>
+      </fieldset>
+</div>
+    <div class="col-md-6">
+      <fieldset>
+        <legend><%= Spree.t(:webmaster, scope: [:yandex]) %></legend>
+
+        <div class="form-group">
+          <div class="checkbox">
+            <%= label_tag :webmaster_verification_enabled do %>
+                <%= preference_field_tag :webmaster_verification_enabled, Spree::YandexConfig[:webmaster_verification_enabled], type: :boolean %>
+                <%= Spree.t :webmaster_verification_enabled, scope: [:yandex, :preferences] %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag :webmaster_verification_code, Spree.t(:webmaster_verification_code, scope: [:yandex, :preferences]) %>
+          <%= preference_field_tag :webmaster_verification_code, Spree::YandexConfig[:webmaster_verification_code], type: :string %>
+        </div>
+      </fieldset>
+    </div>
+</div>
+<div>
+  <div>
+    <div class="form-actions" data-hook="buttons">
+      <%= button Spree.t('actions.update'), 'save' %>
+    </div>
+  </div>
+</div>
+<% end %>
