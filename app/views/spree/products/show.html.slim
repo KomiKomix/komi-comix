@@ -20,6 +20,16 @@
             br
             small= @product.name
 
+          .shopping-box
+            .price
+              span= display_price(@product)
+              span.quantity
+                = '×'
+                input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3"]
+
+            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
+              = 'Добавить в корзину'
+
           .description.copy
             p.p_small.text-justify
               = @product.description.html_safe
@@ -29,18 +39,6 @@
                 - if p.value.present?
                   li
                     = "#{p.property_name}: #{p.value}".html_safe
-
-          .shopping-box
-            .price
-              span= display_price(@product)
-              span.quantity
-                = '×'
-                input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3"]
-
-
-            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
-              = 'Добавить в корзину'
-
 
       section.product-recommended[style='margin-top:60px;']
         = render 'spree/shared/recomended'
