@@ -21,6 +21,11 @@ Rails.application.routes.draw do
 
   match '/walletone_confirm', to:  WalletonePayment.new, via: :all
 
+  Spree::Core::Engine.add_routes do
+    namespace :admin do
+      resource :yandex_settings, only: [:edit, :update]
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
