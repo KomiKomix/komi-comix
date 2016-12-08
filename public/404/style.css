@@ -1,0 +1,224 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.demo {
+    background-color: black;
+    color: white;
+    font-family: 'prstartk';
+    font-size: 1.3rem;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+}
+
+.demo-header {
+    margin: 0 auto;
+    padding-top: 22px;
+    width: 560px;
+}
+
+.demo-header-section {
+    display: inline-block;
+    height: 100%;
+    margin-left: -20px;
+    width: 139px;
+}
+
+.demo-header-section span {
+    text-align: center;
+}
+
+.demo-header-section:first-child {
+    margin-left: 0;
+}
+
+.demo-header-section:first-child span {
+    display: block;
+    text-align: left;
+}
+
+.demo-wrap {
+    bottom: 70px;
+    height: 71px;
+    margin: 0 auto;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.demo-text {
+    height: 70px;
+    left: 50%;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    transform: translate(-50%, -40%);
+    width: 100%;
+    z-index: 100;
+}
+
+.demo-text p {
+    line-height: 2.6rem;
+    margin: 60px auto 0;
+    text-align: left;
+    width: 380px;
+}
+
+.demo-actors {
+    height: 100%;
+    margin: 0 auto;
+    width: 300px;
+}
+
+.demo-img-mario {
+    height: 48px;
+    width: 36px;
+}
+
+.demo-img-toad {
+    height: 72px;
+    margin-left: -8px;
+    width: 48px;
+}
+
+.demo-img-coin {
+    display: inline-block;
+    height: 18px;
+    margin-bottom: -2px;
+    width: 12px;
+}
+
+.demo-img-x {
+    display: inline-block;
+    height: 12px;
+    margin-left: -22px;
+    margin-right: 6px;
+    width: 19.2px;
+}
+
+.demo-img-brick {
+    background: url("i/brick.png") repeat 0 0;
+    background-size: 48px 48px;
+    width: 100%;
+    z-index: 0;
+}
+
+.demo-img-brick-top {
+    height: 48px;
+}
+
+.demo-img-brick-bottom {
+    bottom: 0;
+    height: 72px;
+    position: fixed;
+}
+
+.demo-coins {
+    margin-left: -20px;
+}
+
+.demo-broken {
+    display: none;
+}
+
+@media screen and (max-width: 530px), screen and (max-height: 460px) {
+    .demo {
+        font-size: 0.8rem;
+    }
+
+    .demo-header {
+        padding-top: 14px;
+        width: 330px;
+    }
+
+    .demo-header-section {
+        display: inline-block;
+        height: 100%;
+        margin-left: -10px;
+        width: 80px;
+    }
+
+    .demo-img-coin {
+        height: 14.4px;
+        margin-bottom: -2px;
+        width: 9.6px;
+    }
+
+    .demo-img-x {
+        height: 9.6px;
+        margin-left: -12.5px;
+        margin-right: 6px;
+        width: 15.36px;
+    }
+
+    .demo-img-mario {
+        height: 38.4px;
+        width: 28.8px;
+    }
+
+    .demo-img-toad {
+        height: 57.6px;
+        width: 38.4px;
+    }
+
+    .demo-wrap {
+        height: 41px;
+    }
+
+    .demo-text p {
+        line-height: 1.6rem;
+        margin-top: 20px;
+    }
+
+    .demo-text {
+        margin-left: 25px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .demo-text span {
+        margin-left: -35px;
+    }
+
+    .demo-img-brick {
+        background-size: 38.4px 38.4px;
+    }
+
+    .demo-img-brick-top {
+        height: 38.4px;
+    }
+
+    .demo-img-brick-bottom {
+        height: 57px;
+    }
+
+    .demo-coins {
+        margin-left: -13px;
+    }
+}
+
+@media (max-height: 260px) {
+    .demo-wrap,
+    .demo-img-brick {
+        display: none;
+    }
+
+    .demo-broken {
+        background-color: black;
+        display: block;
+    }
+
+    .demo-broken span {
+        color: white;
+        font-family: 'prstartk';
+        font-size: 0.8rem;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
