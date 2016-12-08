@@ -54,6 +54,9 @@
     <thead>
       <tr data-hook="admin_products_index_headers">
         <th><%= Spree.t(:sku) %></th>
+        <th>
+          <%= sort_link @search, :created_at, Spree.t(:created_at), { default_order: "asc" }, {title: 'admin_products_listing_created_at_title'} %>
+        </th>
 
         <th></th>
 
@@ -75,6 +78,7 @@
       <% @collection.each do |product| %>
           <tr <%== "style='color: red;'" if product.deleted? %> id="<%= spree_dom_id product %>" data-hook="admin_products_index_rows" class="<%= cycle('odd', 'even') %>">
             <td class="sku"><%= product.sku rescue '' %></td>
+            <td title="<%= product.created_at.localtime rescue '' %>"><%= product.created_at.localtime.try(&:to_date) rescue '' %></td>
             <td class="text-right">
               <%= mini_image product %>
             </td>

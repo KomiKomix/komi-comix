@@ -55,7 +55,7 @@ Spree::Backend::Config.locale = :ru
 
 Spree::Auth::Config.signout_after_password_change = false
 
-Spree::Product.whitelisted_ransackable_attributes |= ['caption']
+# Spree::Product.whitelisted_ransackable_attributes |= ['caption']
 
 Spree::Auth::Config[:registration_step] = false
 
