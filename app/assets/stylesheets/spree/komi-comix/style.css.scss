@@ -795,6 +795,14 @@ footer {
   }
 }
 
+.footer-nav {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style: none;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .nav {
     //a {
