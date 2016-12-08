@@ -34,6 +34,7 @@ Spree.config do |config|
   config.searcher_class = Spree::Search::KomiComixSearch
   #config.use_common_meta = true
   #config.taxon_use_common_meta = true
+  config.admin_products_per_page = 50
 
   Spree::Money.class_eval do
     def to_s
