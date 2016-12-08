@@ -3,6 +3,7 @@ Spree::Page.class_eval do
   scope :footers, -> { where({ footer: true, visible: true }) }
   scope :in_top_menu, -> { where({ show_in_header: true, visible: true }).order(position: :asc) }
 
+
   def self.has_banner?
     banners.present?
   end
@@ -12,6 +13,14 @@ Spree::Page.class_eval do
   end
 
   def self.footer
-  	footers.first
+    footers.first
+  end
+
+  def self.footer_contacts
+    return Spree::Page.visible.where({ slug: '/_footer_contacts' }).first
+  end
+
+  def self.footer_about
+    return Spree::Page.visible.where({ slug: '/_footer_about' }).first
   end
 end
