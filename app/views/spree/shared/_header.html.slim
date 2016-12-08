@@ -33,10 +33,10 @@
               = form_for(Spree::User.new, as: :spree_user, url: spree_user_session_path, html: { role: 'form'}) do |f|
                 .form-group
                   = f.email_field :email, class: 'form-control login-field', placeholder: "Введите вашу почту", :'data-rule-required' => 'true', :'data-rule-password' => 'true', :'aria-invalid' => 'true'
-                  = f.label :email, :email, class: 'login-field-icon fui-user'
+                  = f.label :email, '&shy;'.html_safe, class: 'login-field-icon fui-user'
                 .form-group
                   = f.password_field :password, class: 'form-control login-field', :'data-rule-required' => 'true', :'data-rule-password' => 'true', :'aria-invalid' => 'true', placeholder: "Пароль"
-                  = f.label :password, Spree.t(:password), class: 'login-field-icon fui-lock'
+                  = f.label :password, '&shy;'.html_safe, class: 'login-field-icon fui-lock'
 
                 = f.submit Spree.t(:login), id: 'login-button', class: 'btn btn-primary btn-lg btn-block'
 
