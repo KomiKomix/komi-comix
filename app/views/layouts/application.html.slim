@@ -5,6 +5,8 @@ html[lang='ru']
     = render partial: 'spree/shared/head'
 
   body[data-hook='body']
+    - if Spree::YandexConfig[:metrika_enabled] and Spree::YandexConfig[:metrika_html]
+      = Spree::YandexConfig[:metrika_html].html_safe
     header
       = render partial: 'spree/shared/header'
 

@@ -37,6 +37,15 @@ ru:
     full_name: ФИО
     full_address: Адрес (населенный пункт, улица, дом, квартира)
     save: Сохранить
+    yandex:
+      metrika: Яндекс.Метрика
+      webmaster: Яндекс.Вебмастер
+      settings: Настройки Яндекс
+      preferences:
+        metrika_enabled: Яндекс.Метрика включена
+        metrika_html: HTML-код
+        webmaster_verification_enabled: выводить код на главной странице
+        webmaster_verification_code: код подтверждения
   time:
     formats:
       long: "%d %B %Y %H:%M"
