@@ -608,39 +608,41 @@ aside {
   }
 }
 
-.vk {
-  height: 32px;
-  width: 32px;
-  background: no-repeat image-url("icon.png") -192px 0;
-  background-size: auto;
-}
+.btn {
+  &.vk {
+    height: 32px;
+    width: 32px;
+    background: no-repeat image-url("icon.png") -192px 0;
+    background-size: auto;
+  }
 
-.google {
-  height: 32px;
-  width: 32px;
-  background: no-repeat image-url("icon.png") -64px -32px;
-  background-size: auto;
-}
+  &.google {
+    height: 32px;
+    width: 32px;
+    background: no-repeat image-url("icon.png") -64px -32px;
+    background-size: auto;
+  }
 
-.facebook {
-  height: 32px;
-  width: 32px;
-  background: no-repeat image-url("icon.png") -128px -96px;
-  background-size: auto;
-}
+  &.facebook {
+    height: 32px;
+    width: 32px;
+    background: no-repeat image-url("icon.png") -128px -96px;
+    background-size: auto;
+  }
 
-.tweeter {
-  height: 32px;
-  width: 32px;
-  background: no-repeat image-url("icon.png") 0 -160px;
-  background-size: auto;
-}
+  &.twitter {
+    height: 32px;
+    width: 32px;
+    background: no-repeat image-url("icon.png") 0 -160px;
+    background-size: auto;
+  }
 
-.tumbler {
-  height: 32px;
-  width: 32px;
-  background: no-repeat image-url("icon.png") -160px -96px;
-  background-size: auto;
+  &.tumbler {
+    height: 32px;
+    width: 32px;
+    background: no-repeat image-url("icon.png") -160px -96px;
+    background-size: auto;
+  }
 }
 
 footer {

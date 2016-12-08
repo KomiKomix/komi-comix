@@ -1,0 +1,38 @@
+<% content_for :page_title do %>
+    <%= plural_resource_name(Spree::SocialLink) %>
+<% end %>
+
+<% content_for :page_actions do %>
+    <%= button_link_to Spree.t(:new_social_link), new_admin_social_link_url, :class => "btn-success", :icon => 'add', :id => 'admin_new_social_link' %>
+<% end if can? :create, Spree::SocialLink %>
+
+<% if @social_links.any? %>
+    <table class="table" id="listing_social_links" data-hook>
+      <thead>
+      <tr data-hook="admin_social_links_index_headers">
+        <th><%= Spree::SocialLink.human_attribute_name(:position) %></th>
+        <th><%= Spree::SocialLink.human_attribute_name(:url) %></th>
+        <th class="text-center"><%= Spree::SocialLink.human_attribute_name(:visible) %></th>
+        <th data-hook="admin_social_links_index_header_actions" class="actions"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @social_links.each do |social_link| %>
+          <tr data-hook="admin_social_links_index_rows" class="<%= cycle('odd', 'even') %>" id="<%= dom_id social_link %>">
+            <td><%= social_link.position %></td>
+            <td><%= link_to social_link.url, edit_admin_social_link_path(social_link) %></td>
+            <td class="text-center"><%= content_tag(:i, '', class: 'icon icon-ok') if social_link.visible? %></td>
+            <td class='actions actions-1 text-right' data-hook="admin_social_links_index_row_actions">
+              <%= link_to_edit social_link, no_text: true %>
+              <%= link_to_delete social_link, no_text: true %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="alert alert-info no-objects-found">
+      <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::SocialLink)) %>,
+      <%= link_to(Spree.t(:add_one), new_admin_social_link_url) if can? :create, Spree::SocialLink %>!
+    </div>
+<% end %>
