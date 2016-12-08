@@ -247,6 +247,7 @@ h3 small {
 
 .navbar-nav li a {
   font-weight: 400;
+  text-transform: uppercase;
 }
 
 nav .pagination {
@@ -288,8 +289,8 @@ nav .pagination a:hover {
     line-height: 40px;
     font-size: 1.4rem;
     font-weight: 300;
-    margin-left: 26px;
-    margin-right: 26px;
+    // margin-left: 26px;
+    // margin-right: 26px;
     color: #000;
     text-decoration: none;
     text-transform: uppercase;
@@ -311,7 +312,8 @@ nav .pagination a:hover {
   margin: 0;
 }
 
-.navbar-header .navbar-toggle:hover:before, .navbar-toggle:focus:before {
+.navbar-header .navbar-toggle:hover:before,
+.navbar-toggle:focus:before {
   color: #000;
 }
 
@@ -795,10 +797,10 @@ footer {
 
 @media screen and (max-width: 1024px) {
   .nav {
-    a {
-      margin-right: 8px;
-      margin-left: 8px;
-    }
+    //a {
+    //  margin-right: 8px;
+    //  margin-left: 8px;
+    //}
 
     li a:hover {
       box-shadow: none;
@@ -820,10 +822,10 @@ footer {
 
 @media screen and (max-width: 980px) {
   .nav {
-    a {
-      margin-right: 8px;
-      margin-left: 8px;
-    }
+    //a {
+    //  margin-right: 8px;
+    //  margin-left: 8px;
+    //}
 
     li a:hover {
       box-shadow: none;
