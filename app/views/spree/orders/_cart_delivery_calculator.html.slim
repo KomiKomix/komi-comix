@@ -12,6 +12,7 @@ tr.middle_index#delivery_calc
         input[type="tel" value="" data-rule-phone="true" placeholder="Индекс" class="form-control" aria-invalid="true" style="width: 100%;" id='zip']
 
       .col-sm-5
-        = link_to Spree.t('calc'), '#', class: "btn btn-primary", style: "width: 100%;"
+        .div[class="btn btn-primary", style="width: 100%;"]
+          = Spree.t('calc')
 
     = link_to Spree.t('get_post_index'), 'https://pochta.ru/offices', target: '_blank', class: 'login-link'
