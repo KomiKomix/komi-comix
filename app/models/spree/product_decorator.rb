@@ -6,7 +6,7 @@ Spree::Product.class_eval do
     super(*args)
     self.available_on = DateTime.current.strftime('%d.%m.%Y')
     self.shipping_category = Spree::ShippingCategory.first
-    prototype = Spree::Prototype.first
+    prototype = Spree::Prototype.where(name: 'books').first
     if prototype
       self.prototype_id = prototype.id
     end
