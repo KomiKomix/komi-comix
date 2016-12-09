@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   Spree::Core::Engine.add_routes do
     post 'orders/destroy_line_item' => 'orders#destroy_line_item', as: :destroy_line_item
-    get 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
+    post 'order/calc_delivery' => 'orders#calc_delivery', as: :calc_delivery
   end
 
   match '/walletone_confirm', to:  WalletonePayment.new, via: :all

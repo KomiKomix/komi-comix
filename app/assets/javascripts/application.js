@@ -27,7 +27,7 @@ $(function() {
   $(document).on("change", "#delivery_calc .radio", function() {
     var post_calc = $(this).find('.custom-radio').data('post-calc');
 
-    $.get('order/calc_delivery', {shipping_id: $(this).find('.custom-radio').attr('value')});
+    $.post('order/calc_delivery', {shipping_id: $(this).find('.custom-radio').attr('value')});
     $(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
   });
 
@@ -62,11 +62,11 @@ $(function() {
   });
 
   function calc_delivery(){
-    var parent         = $(this).closest('#delivery_calc');
+    var parent         = $('#delivery_calc');
     var selected_radio = parent.find('.custom-radio:checked');
-    var zip            = $(this).closest('.row').find('#zip').val();
+    var zip            = parent.find('#zip').val();
 
-    $.get('order/calc_delivery', {shipping_id: selected_radio.attr('value'), zip: zip});
+    $.post('order/calc_delivery', {shipping_id: selected_radio.attr('value'), zip: zip});
   }
 
   $(document).on("click", "a.js-submit", function(e) {
