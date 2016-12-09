@@ -41,6 +41,6 @@
       .col-md-12
         = link_to '← Назад', products_path, class: 'btn btn-info copy'
         - unless @order.line_items.empty?
-          = form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
-            = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
-              = 'Оформить заказ →'.html_safe
+          /= form_for @order, url: update_cart_path, html: {id: 'update-cart'} do |order_form|
+          = button_tag class: 'btn btn-primary pull-right copy', id: 'checkout-link', name: 'checkout' do
+            = 'Оформить заказ →'.html_safe
