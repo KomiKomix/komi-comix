@@ -27,7 +27,7 @@
           </p>
       </fieldset>
     </div>
-    <%= link_to '← Назад', card_path, class: 'btn btn-info copy' %>
+    <%= link_to '← Назад', cart_path, class: 'btn btn-info copy' %>
     <%= form.submit 'Оплатить', :class => 'btn btn-primary pull-right copy js-submit-target', id:'one_step_submit'%>
     <%= link_to 'Оплатить', '#',:class => 'btn btn-primary pull-right copy js-submit', data:{ target: 'one_step_submit'}%>
   </div>
