@@ -101,7 +101,7 @@ body, html {
 }
 
 .demo-img-brick {
-    background: url("/i/brick.png") repeat 0 0;
+    background: url("/404/i/brick.png") repeat 0 0;
     background-size: 48px 48px;
     width: 100%;
     z-index: 0;
