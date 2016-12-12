@@ -46,6 +46,13 @@ ru:
         metrika_html: HTML-код
         webmaster_verification_enabled: выводить код на главной странице
         webmaster_verification_code: код подтверждения
+    addtoany:
+      settings: Настройки AddToAny
+      preferences:
+        enabled_in_news: включить в новостях
+        enabled_in_products: включить в товарах
+        codes_str: коды сервисов
+        codes_help: "Список кодов через запятую. Например: twitter, facebook, vk, google_plus"
   time:
     formats:
       long: "%d %B %Y %H:%M"
