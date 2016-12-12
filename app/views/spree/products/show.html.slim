@@ -31,8 +31,9 @@
               = 'Добавить в корзину'
 
           .description.copy
-            p.p_small.text-justify
-              = @product.description.html_safe
+            - if @product.description
+              p.p_small.text-justify
+                = @product.description.html_safe
 
             ul.list-unstyled.p_small.copy
               - @product.product_properties.each do |p|
