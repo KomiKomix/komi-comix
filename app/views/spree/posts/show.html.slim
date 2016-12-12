@@ -9,4 +9,4 @@
         .col-md-6
           - if Spree::AddtoanyConfig[:enabled_in_news] && Spree::AddtoanyConfig[:codes_str]
             div.pull-right = add_to_any_buttons
-      .content = @post.description.html_safe
+      .content = formatted_news(@post.description)
