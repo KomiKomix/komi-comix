@@ -8,5 +8,5 @@
           p = l(@post.created_at, format: "%d %B %Y")
         .col-md-6
           - if Spree::AddtoanyConfig[:enabled_in_news] && Spree::AddtoanyConfig[:codes_str]
-            = add_to_any_buttons
+            div.pull-right = add_to_any_buttons
       .content = @post.description.html_safe
