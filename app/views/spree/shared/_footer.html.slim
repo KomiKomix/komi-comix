@@ -10,8 +10,7 @@
             - page_data = Spree::Page.footer_about
             - if page_data
               strong= page_data.title
-              p.p-main
-                = raw page_data.body
+              div.p-main = raw page_data.body
 
             ul.share-gruop.list-inline
               - Spree::SocialLink.visible.each do |social_link|
@@ -27,11 +26,11 @@
                     = link_to p.title, p.slug
 
           .col-md-4
-            address
-              - page_data = Spree::Page.footer_contacts
-              - if page_data
-                strong= page_data.title
-                = raw page_data.body
+            - page_data = Spree::Page.footer_contacts
+            - if page_data
+              strong= page_data.title
+              div.p-main
+                address = raw page_data.body
 
         hr
         .row

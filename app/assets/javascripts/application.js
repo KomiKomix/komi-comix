@@ -16,7 +16,7 @@
 //= require_tree ./ckeditor
 //= require 'spree/frontend/all'
 //= require_tree .
-
+//= require_tree ./lightbox
 
 $(function() {
   $(document).on("click", "#products_sort a, #products_row .pagination a", function() {

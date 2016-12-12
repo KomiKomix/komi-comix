@@ -3,7 +3,7 @@
   .row
     .col-md-10.col-md-offset-1
       .page-header
-        h3= 'Пропаганда'
+        h3 = 'Пропаганда'
       .card_block
         .row
           .col-md-8.col-md-offset-2
@@ -12,8 +12,8 @@
               - card_class += ' copy' unless index.zero?
               div[class=card_class]
                 .content
-                  p.title= post.title
-                  p.p_small= l post.created_at, format: :long
+                  h4.title = link_to post.title, post
+                  p.p_small = l post.created_at, format: :long
                   = formatted_news(post.description)
 
         = paginate news, theme: 'komi-comix'
