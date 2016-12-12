@@ -43,17 +43,17 @@ module Spree
     def formatted_news(news_description)
       html = Nokogiri::HTML::Document.parse(news_description)
       images = html.css('img')
+      images.wrap('<div class="news_img"></div>')
+      images.wrap('a href="" data-lightbox="news-gallery"></a>')
       images.each do |i|
         i.remove_attribute('style')
         i.set_attribute('class', 'img-responsive')
-        l = i.parent
-        l.name = 'a'
-        l.set_attribute('href', i.get_attribute('src'))
-        l.set_attribute('data-lightbox', 'news-gallery')
-        p = l.parent
-        p.name = 'div'
-        p.set_attribute('class', 'news_img')
-
+        link = i.parent
+        link['href'] = i['src']
+        p = link.parent.parent
+        if not p.nil?
+          p.name = 'div'
+        end
       end
       raw html.css('body').children.to_s
     end
