@@ -41,6 +41,11 @@
                   li
                     = "#{p.property_name}: #{p.value}".html_safe
 
+          -if Spree::AddtoanyConfig[:enabled_in_products] && Spree::AddtoanyConfig[:codes_str]
+            .row
+              .col-md-12
+                =add_to_any_buttons
+
       section.product-recommended[style='margin-top:60px;']
         = render 'spree/shared/recomended'
 
