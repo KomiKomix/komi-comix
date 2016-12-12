@@ -27,6 +27,12 @@ Rails.application.routes.draw do
     end
   end
 
+  Spree::Core::Engine.add_routes do
+    namespace :admin do
+      resource :addtoany_settings, only: [:edit, :update]
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

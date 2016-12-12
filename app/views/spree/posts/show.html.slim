@@ -2,13 +2,11 @@
   .row
     .col-md-10.col-md-offset-1
       .page-header
-        h3
-          = @post.title
+        h3 = @post.title
       .row
         .col-md-6
           p = l(@post.created_at, format: "%d %B %Y")
         .col-md-6
           - if Spree::AddtoanyConfig[:enabled_in_news] && Spree::AddtoanyConfig[:codes_str]
-            = add_to_any_buttons
-      .content
-        = formatted_news(@post.description)
+            div.pull-right = add_to_any_buttons
+      .content = formatted_news(@post.description)
