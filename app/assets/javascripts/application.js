@@ -25,10 +25,11 @@ $(function() {
   });
 
   $(document).on("change", "#delivery_calc .radio", function() {
-    var post_calc = $(this).find('.custom-radio').data('post-calc');
+    calc_delivery();
+    //var post_calc = $(this).find('.custom-radio').data('post-calc');
 
-    $.post('order/calc_delivery', {shipping_id: $(this).find('.custom-radio').attr('value')});
-    $(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
+    //$.post('order/calc_delivery', {shipping_id: $(this).find('.custom-radio').attr('value')});
+    //$(this).closest('#delivery_calc').children('#address_fields *').attr('disabled', !post_calc);
   });
 
   $(document).on('change', '.quantity input[name*=quantity]', function() {
