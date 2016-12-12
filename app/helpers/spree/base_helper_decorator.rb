@@ -44,7 +44,7 @@ module Spree
       html = Nokogiri::HTML::Document.parse(news_description)
       images = html.css('img')
       images.wrap('<div class="news_img"></div>')
-      images.wrap('a href="" data-lightbox="news-gallery"></a>')
+      images.wrap('<a href="" data-lightbox="news-gallery"></a>')
       images.each do |i|
         i.remove_attribute('style')
         i.set_attribute('class', 'img-responsive')
