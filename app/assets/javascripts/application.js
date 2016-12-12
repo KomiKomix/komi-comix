@@ -57,7 +57,7 @@ $(function() {
     };
   });
 
-  $(document).on("click", "#delivery_calc.btn.btn-primary", function() {
+  $(document).on("click", "#delivery_calc .btn.btn-primary", function() {
     calc_delivery();
   });
 
