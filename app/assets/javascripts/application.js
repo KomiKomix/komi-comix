@@ -19,9 +19,6 @@
 //= require_tree ./lightbox
 
 $(function() {
-  $(document).ready(function(){
-    lightbox.init();
-  });
 
   $(document).on("click", "#products_sort a, #products_row .pagination a", function() {
     $.getScript(this.href);
