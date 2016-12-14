@@ -15,7 +15,7 @@
 //= require ckeditor/init
 //= require_tree ./ckeditor
 //= require 'spree/frontend/all'
-//= require_tree .
+//= require_tree ./spree
 //= require_tree ./lightbox
 
 $(function() {
