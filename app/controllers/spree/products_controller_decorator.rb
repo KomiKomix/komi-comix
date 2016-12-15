@@ -1,5 +1,5 @@
 Spree::ProductsController.class_eval do
-  rescue_from ActiveRecord::RecordNotFound, with: :page_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :error404
   before_filter :set_active_pic, only: :show
 
   def index
@@ -15,6 +15,10 @@ Spree::ProductsController.class_eval do
 
   def sorting_param
     params[:sort_by].try(:to_sym) || default_sorting
+  end
+
+  def error404
+    render :file => "#{Rails.root}/public/404.html", status: 404, :layout => false
   end
 
   private
