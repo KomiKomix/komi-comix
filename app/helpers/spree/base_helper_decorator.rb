@@ -1,3 +1,5 @@
+include ActionView::Helpers::TextHelper
+
 module Spree
   module BaseHelper
     def taxons_tree(root_taxon, current_taxon, max_level = 1)
@@ -38,6 +40,17 @@ module Spree
           content_tag(:p, product.name, class: 'list-group-item-text')
         end
       end
+    end
+
+    def post_preview(post)
+      html = Nokogiri::HTML::Document.parse(post.description)
+      text = truncate(html.text, length: 300)
+      images = html.css('img')
+      if images.size > 0
+        i = images[0]
+        text = "#{text}<div class=\"news_img\"><a href=\"#{i['src']}\" data-lightbox=\"news-gallery\">#{i.to_s}</a></div>"
+      end
+      text.html_safe
     end
 
     def formatted_news(news_description)
