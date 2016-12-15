@@ -14,6 +14,6 @@
                 .content
                   h4.title = link_to post.title, post
                   p.p_small = l post.created_at, format: :long
-                  = formatted_news(post.description)
+                  = post_preview(post)
 
         = paginate news, theme: 'komi-comix'
