@@ -433,9 +433,6 @@ aside {
 .thumbnail {
 
   &:hover {
-    h4 {
-      text-decoration: underline;
-    }
     .image-wrapper img {
       opacity: .8;
     }
@@ -668,6 +665,13 @@ footer {
   padding-right: 20px;
   padding-left: 20px;
   margin-top: 30px;
+  h1 {
+    font-weight: 700;
+    color: #777;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.72222;
+  }
 }
 
 .pay-card i {

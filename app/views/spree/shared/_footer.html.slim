@@ -9,7 +9,7 @@
           .col-md-5.hidden-xs
             - page_data = Spree::Page.footer_about
             - if page_data
-              strong= page_data.title
+              h1 = page_data.title
               div.p-main = raw page_data.body
 
             ul.share-gruop.list-inline
