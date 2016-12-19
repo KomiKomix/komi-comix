@@ -143,5 +143,36 @@ module Spree
       !Spree::Auth::Config[:registration_step] && !user && !order.email?
     end
 
+    def meta_data
+      object = instance_variable_get('@'+controller_name.singularize)
+      meta = {}
+
+      if object.kind_of? ActiveRecord::Base
+        meta[:keywords] = object.meta_keywords if object[:meta_keywords].present?
+        meta[:description] = object.meta_description if object[:meta_description].present?
+      end
+
+      if object.kind_of?(Spree::Product)
+        if meta[:description].blank?
+          meta[:description] = strip_tags(object.description)
+        end
+      elsif Spree::Page.footer_about
+        meta[:description] = strip_tags(Spree::Page.footer_about.body)
+      end
+
+      meta.reverse_merge!({
+                              keywords: current_store.meta_keywords,
+                              description: current_store.meta_description,
+                          }) if meta[:keywords].blank? or meta[:description].blank?
+
+      meta
+    end
+
+    def meta_data_tags
+      meta_data.map do |name, content|
+        tag('meta', name: name, content: content)
+      end.join("\n")
+    end
+
   end
 end

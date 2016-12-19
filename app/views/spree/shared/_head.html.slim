@@ -8,9 +8,7 @@ meta[name='w1-verification' content='130737760683']
 - if current_page?('/') and Spree::YandexConfig[:webmaster_verification_enabled]
   meta[name='yandex-verification' content=Spree::YandexConfig[:webmaster_verification_code].to_s]
 
-- page_data = Spree::Page.footer_about
-- if page_data
-  meta[name='description' content="#{strip_tags(page_data.body)}"]
+= meta_data_tags.html_safe
 
 == favicon_link_tag Spree::Config.logo
 == javascript_include_tag 'application'
