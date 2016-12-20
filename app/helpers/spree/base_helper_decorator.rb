@@ -157,7 +157,7 @@ module Spree
           meta[:description] = strip_tags(object.description)
         end
       else
-        meta[:description] = current_store.meta_keywords
+        meta[:description] = current_store.meta_description
         if meta[:description].blank? and Spree::Page.footer_about
           meta[:description] = strip_tags(Spree::Page.footer_about.body)
         end
