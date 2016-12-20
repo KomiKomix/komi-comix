@@ -156,8 +156,11 @@ module Spree
         if meta[:description].blank?
           meta[:description] = strip_tags(object.description)
         end
-      elsif Spree::Page.footer_about
-        meta[:description] = strip_tags(Spree::Page.footer_about.body)
+      else
+        meta[:description] = current_store.meta_keywords
+        if meta[:description].blank? and Spree::Page.footer_about
+          meta[:description] = strip_tags(Spree::Page.footer_about.body)
+        end
       end
 
       meta.reverse_merge!({
