@@ -4,6 +4,7 @@
 # User-agent: *
 # Disallow: /
 Host: komikomix.ru
+Sitemap: http://komikomix.ru/sitemap.xml.gz
 
 User-agent: *
 Disallow: /checkout
