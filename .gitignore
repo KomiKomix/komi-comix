@@ -46,6 +46,7 @@ config/application.yml
 /public/stylesheets/compiled
 /public/system/*
 /public/spree/products
+/public/sitemap*
 /spec/tmp/*
 /cache
 /capybara*
