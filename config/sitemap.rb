@@ -43,9 +43,9 @@ SitemapGenerator::Sitemap.add_links do
   #   Article.find_each do |article|
   #     add article_path(article), lastmod: article.updated_at
   #   end
-  add_login
-  add_signup
-  add_account
-  add_password_reset
+  # add_login
+  # add_signup
+  # add_account
+  # add_password_reset
   add_products
 end
