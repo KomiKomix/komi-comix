@@ -11,7 +11,7 @@
         .col-sm-10
           .basket_details
             = link_to variant.product do
-              span.title= line_item.name
+              span.title= "#{line_item.name} #{variant.product.caption}".strip
 
     td.item_amount
       span.quantity

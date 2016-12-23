@@ -8,7 +8,7 @@
       - class_name = class_name + ' state_selected' if i.id == @active_pic_id
       li[class=class_name]
         - if i.id != @active_pic_id
-          a[href=i.attachment.url(:original) data-lightbox='product-gallery-#{@product.id}' data-title="#{@product.caption} #{@product.name}"]
+          a[href=i.attachment.url(:original) data-lightbox='product-gallery-#{@product.id}' data-title=product.name_with_caption]
         = link_to spree.product_path(id: @product, active_pic_id: i.id), class: 'link', remote: true do
           = image_tag(i.attachment.url(:small))
 
