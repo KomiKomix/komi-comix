@@ -47,6 +47,5 @@ SitemapGenerator::Sitemap.add_links do
   add_signup
   add_account
   add_password_reset
-  add_taxons
   add_products
 end
