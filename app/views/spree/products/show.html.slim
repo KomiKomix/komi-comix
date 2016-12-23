@@ -1,4 +1,4 @@
-- t = content_for(:title, "#{@product.caption} #{@product.name}".strip)
+- t = content_for(:title, @product.name_with_caption)
 .container
   .row
     .col-md-10.col-md-offset-1
