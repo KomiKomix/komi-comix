@@ -5,7 +5,7 @@ SitemapGenerator::Sitemap.default_host = "http://#{Spree::Store.default.url}"
 ##
 
 ## Pick a place safe to write the files
-# SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.public_path = '/home/komi-comix/apps/komi-comix/shared/public'
 
 ## Store on S3 using Fog - Note must add fog to your Gemfile.
 # SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(aws_access_key_id:     Spree::Config[:s3_access_key],
