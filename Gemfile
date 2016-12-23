@@ -57,6 +57,7 @@ gem 'spree_static_content',      github: 'spree-contrib/spree_static_content', b
 gem 'spree_editor',              github: 'spree-contrib/spree_editor', branch: '3-0-stable'
 gem 'spree_news',                github: 'EALeon/spree_news', branch: 'test_branch'
 gem 'spree_comments',            github: 'spree-contrib/spree_comments', branch: '3-0-stable'
+gem 'spree_sitemap',             github: 'spree-contrib/spree_sitemap', branch: '3-0-stable'
 
 gem 'spree_paypal_express',      github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 

@@ -81,6 +81,15 @@ GIT
       spree_core (~> 3.0.4)
 
 GIT
+  remote: git://github.com/spree-contrib/spree_sitemap.git
+  revision: 9f32321667bf57c2316ee4b7abb6cc04dbfee2bc
+  branch: 3-0-stable
+  specs:
+    spree_sitemap (3.0.5)
+      sitemap_generator (~> 4.3.1)
+      spree_core (~> 3.0.0)
+
+GIT
   remote: git://github.com/spree-contrib/spree_static_content.git
   revision: 80a74e1ad8e1843c6bfabcd700dc8edb84822fdd
   branch: 3-0-stable
@@ -471,6 +480,8 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    sitemap_generator (4.3.1)
+      builder
     sixarm_ruby_unaccent (1.1.1)
     slim (3.0.6)
       temple (~> 0.7.3)
@@ -662,6 +673,7 @@ DEPENDENCIES
   spree_news!
   spree_paypal_express!
   spree_russian_post_calc!
+  spree_sitemap!
   spree_social_products!
   spree_static_content!
   spree_walletone!
