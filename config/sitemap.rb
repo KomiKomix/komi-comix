@@ -20,32 +20,18 @@ SitemapGenerator::Sitemap.public_path = '/home/komi-comix/apps/komi-comix/shared
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 SitemapGenerator::Sitemap.add_links do
-  # Put links creation logic here.
-  #
-  # The root path '/' and sitemap index file are added automatically.
-  # Links are added to the Sitemap in the order they are specified.
-  #
-  # Usage: add(path, options = {})
-  #        (default options are used if you don't specify)
-  #
-  # Defaults: priority: 0.5, changefreq: 'weekly',
-  #           lastmod: Time.now, host: default_host
-  #
-  #
-  # Examples:
-  #
-  # Add '/articles'
-  #
-  #   add articles_path, priority: 0.7, changefreq: 'daily'
-  #
-  # Add individual articles:
-  #
-  #   Article.find_each do |article|
-  #     add article_path(article), lastmod: article.updated_at
-  #   end
-  # add_login
-  # add_signup
-  # add_account
-  # add_password_reset
+
+  Spree::Page.visible.find_each do |page|
+    if page.show_in_header? || page.show_in_footer
+      add page_path(page), priority: 0.9, lastmod: page.updated_at, changefreq: 'weekly'
+    end
+  end
+
+  add posts_path, priority: 0.7, changefreq: 'weekly'
+
+  Post.published.find_each do |post|
+    add post_path(article), lastmod: post.updated_at, changefreq: 'weekly'
+  end
+
   add_products
 end
