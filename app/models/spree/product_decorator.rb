@@ -1,5 +1,5 @@
 Spree::Product.class_eval do
-  translates :name_main, :name_extra, :caption
+  translates :name_main, :name_extra
   scope :rand, -> { order('RANDOM()').limit(3) }
 
   validates :name_main, presence: true
@@ -26,15 +26,7 @@ Spree::Product.class_eval do
     end
   end
 
-  self.whitelisted_ransackable_attributes = %w[slug caption created_at]
-
-  def name_with_caption
-    "#{self.name} #{self.caption}".strip
-  end
-
-  add_search_scope :ascend_by_caption_and_name do
-    order([caption: :asc]) #, name: :asc])
-  end
+  self.whitelisted_ransackable_attributes = %w[slug created_at]
 
   def set_name
     if self.name_main or self.name_extra
