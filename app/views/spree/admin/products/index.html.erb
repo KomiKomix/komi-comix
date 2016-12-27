@@ -14,12 +14,6 @@
       <div data-hook="admin_products_index_search" class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :caption_cont, Spree.t(:caption) %>
-            <%= f.text_field :caption_cont, :size => 15, class: "form-control js-quick-search-target" %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
             <%= f.label :name_cont, Spree.t(:name) %>
             <%= f.text_field :name_cont, :size => 15, class: "form-control" %>
           </div>
@@ -59,11 +53,6 @@
         </th>
 
         <th></th>
-
-        <th>
-          <%= sort_link @search, :caption, Spree.t(:caption), { default_order: "desc" }, {title: 'admin_products_listing_caption_title'} %>
-        </th>
-
         <th>
           <%= sort_link @search,:name, Spree.t(:name), { default_order: "desc" }, {title: 'admin_products_listing_name_title'} %>
         </th>
@@ -81,9 +70,6 @@
             <td title="<%= product.created_at.localtime rescue '' %>"><%= product.created_at.localtime.try(&:to_date) rescue '' %></td>
             <td class="text-right">
               <%= mini_image product %>
-            </td>
-            <td >
-              <%= link_to product.try(:caption), edit_admin_product_path(product) %>
             </td>
             <td><%= link_to product.try(:name), edit_admin_product_path(product) %></td>
             <td class="text-center"><%= product.display_price.to_html rescue '' %></td>
