@@ -2,7 +2,7 @@
   .img-table
     - image ||= product.images.find_by_id(@active_pic_id)
     - if defined?(image) && image
-      a[href=image.attachment.url(:original) data-lightbox='product-gallery-#{product.id}' data-title=product.name_with_caption]
-        = image_tag image.attachment.url(image_size), itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name_with_caption
+      a[href=image.attachment.url(:original) data-lightbox='product-gallery-#{product.id}' data-title=product.name]
+        = image_tag image.attachment.url(image_size), itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name
     - else
       = product_image(product, itemprop: 'image', alt: '...', class: 'img-responsive img-center', title: product.name)
