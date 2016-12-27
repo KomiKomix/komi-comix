@@ -50,8 +50,8 @@ module Spree
             sort_scope = sort_scope.ascend_by_updated_at
           when sort_by && sort_by == 'ascend_by_master_price'
             sort_scope = sort_scope.ascend_by_master_price
-          when sort_by && sort_by == 'ascend_by_caption_and_name'
-            sort_scope = sort_scope.ascend_by_caption_and_name
+          when sort_by && sort_by == 'ascend_by_name'
+            sort_scope = sort_scope.ascend_by_name
           else
             sort_scope = sort_scope.descend_by_updated_at
           end
@@ -95,7 +95,7 @@ module Spree
         # method should return new scope based on base_scope
         def get_products_conditions_for(base_scope, query)
           unless query.blank?
-            base_scope = base_scope.like_any([:caption, :name], query.split)
+            base_scope = base_scope.like_any([:name], query.split)
           end
           base_scope
         end
