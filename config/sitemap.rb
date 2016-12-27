@@ -29,7 +29,7 @@ SitemapGenerator::Sitemap.add_links do
 
   add posts_path, priority: 0.7, changefreq: 'weekly'
 
-  Post.published.find_each do |post|
+  Spree::Post.published.find_each do |post|
     add post_path(article), lastmod: post.updated_at, changefreq: 'weekly'
   end
 
