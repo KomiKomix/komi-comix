@@ -6,10 +6,16 @@
 
 <%= form_for [:admin, @product], :html => { :multipart => true } do |f| %>
     <fieldset data-hook="new_product">
-      <%= f.field_container :name, :class => ['form-group'] do %>
-          <%= f.label :name, Spree.t(:name) %> <span class="required">*</span>
-          <%= f.text_field :name, :class => 'form-control title' %>
-          <%= f.error_message_on :name %>
+      <%= f.field_container :name_main, :class => ['form-group'] do %>
+          <%= f.label :name_main, Spree.t(:name_main) %> <span class="required">*</span>
+          <%= f.text_field :name_main, :class => 'form-control title' %>
+          <%= f.error_message_on :name_main %>
+      <% end %>
+
+      <%= f.field_container :name_extra, :class => ['form-group'] do %>
+          <%= f.label :name_extra, Spree.t(:name_extra) %>
+          <%= f.text_field :name_extra, :class => 'form-control title' %>
+          <%= f.error_message_on :name_extra %>
       <% end %>
 
       <div data-hook="new_product_attrs" class="row">

@@ -1,6 +1,20 @@
 Spree::Product.class_eval do
-  translates :caption
+  translates :name_main, :name_extra, :caption
   scope :rand, -> { order('RANDOM()').limit(3) }
+
+  validates :name_main, presence: true
+
+  before_save :set_name
+  before_validation :set_name
+  before_validation :strip_data
+
+  def slug_candidates
+    [
+        [:name_main, :name_extra],
+        :name,
+        [:name, :sku],
+    ]
+  end
 
   def initialize(*args)
     super(*args)
@@ -12,13 +26,34 @@ Spree::Product.class_eval do
     end
   end
 
+  self.whitelisted_ransackable_attributes = %w[slug caption created_at]
+
   def name_with_caption
     "#{self.name} #{self.caption}".strip
   end
 
-  self.whitelisted_ransackable_attributes = %w[slug caption created_at]
-
   add_search_scope :ascend_by_caption_and_name do
     order([caption: :asc]) #, name: :asc])
   end
+
+  def set_name
+    if self.name_main or self.name_extra
+      self.name = "#{self.name_main} #{self.name_extra}".strip
+    end
+  end
+
+  def duplicate_extra(product)
+    self.name_main = "COPY OF #{product.name_main}"
+    self.name_extra = product.name_extra
+  end
+
+  def strip_data
+    if self.name_main
+      self.name_main = self.name_main.strip
+    end
+    if self.name_extra
+      self.name_extra = self.name_extra.strip
+    end
+  end
+
 end
