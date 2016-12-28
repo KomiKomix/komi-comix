@@ -1,4 +1,7 @@
 - t = content_for(:title, @product.name)
+- meta_og_image = @product.images.first
+- if meta_og_image
+  - h = content_for(:head, "<meta property='og:image' content='#{URI.join(request.url, meta_og_image.attachment.url(:product))}'>".html_safe)
 .container
   .row
     .col-md-10.col-md-offset-1
