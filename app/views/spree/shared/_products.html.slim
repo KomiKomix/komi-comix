@@ -1,3 +1,4 @@
+- h = content_for(:head, "<meta property='og:image' content='#{URI.join(request.url, '/logo.png')}'>".html_safe)
 - paginated_products = @searcher.retrieve_products if params.key?(:keywords)
 - paginated_products ||= products
 
