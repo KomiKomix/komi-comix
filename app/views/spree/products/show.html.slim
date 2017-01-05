@@ -20,9 +20,9 @@
 
         .col-md-6.col-sm-6.col-lg-6
           .page-header
-            h3= @product.name_main
+            h3= @product.name_main.html_safe
             br
-            small= @product.name_extra
+            small= @product.name_extra.html_safe
 
           .shopping-box
             .price
