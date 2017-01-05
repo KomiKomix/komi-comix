@@ -31,9 +31,9 @@
             .caption
               .caption_name
                 h4.text-center
-                  = product.name_main
+                  = product.name_main.html_safe
                 p.text-center
-                  = product.name_extra
+                  = product.name_extra.html_safe
               p.text-center
                 = display_price(product)
 
