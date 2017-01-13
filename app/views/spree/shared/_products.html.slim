@@ -16,9 +16,9 @@
         = link_to 'Цена', params.merge(sort_by: :ascend_by_master_price, keywords: params[:keywords], taxons: params[:taxons], page: params[:page]), class: 'btn btn-default', remote: true
 
   hr.copy
-  .row
 
-    - if products.any?
+  - if products.any?
+    .row
       - products.each do |product|
         - url = product_url(product, taxon_id: @taxon.try(:id))
 
@@ -40,8 +40,9 @@
                 = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
                   i.fa.fa-plus[title='Add to cart']
 
-      = paginate paginated_products, theme: 'komi-comix'
-    - else
+    = paginate paginated_products, theme: 'komi-comix'
+  - else
+    .row
       h4.text-center
         = Spree.t('products_not_found')
 
