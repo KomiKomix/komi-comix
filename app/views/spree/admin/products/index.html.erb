@@ -79,7 +79,12 @@
               <% if @total_on_hand == Float::INFINITY %>
                 неограничено
               <% else %>
-                <%= @total_on_hand %>
+                  <% if product.master.is_backorderable? %>
+                    <% if @total_on_hand > 0 %><%= @total_on_hand %><br><% end %>
+                    предзаказ
+                  <% else %>
+                    <%= @total_on_hand %>
+                  <% end %>
               <% end %>
             </td>
             <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
