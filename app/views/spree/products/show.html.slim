@@ -25,14 +25,16 @@
             small= @product.name_extra.html_safe
 
           .shopping-box
-            .price
-              span= display_price(@product)
-              span.quantity
-                = '×'
-                input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3"]
-
-            button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
-              = 'Добавить в корзину'
+            - if @product.master.can_supply?
+              .price
+                span= display_price(@product)
+                span.quantity
+                  = '×'
+                  input[min="1" type="number" id="quantity" name="quantity" value="1" size="3" maxlength="3" max=@product.master.total_orderable]
+              button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
+                = 'Добавить в корзину'
+            - elsif @product.variants.empty?
+              span[class="out-of-stock"] = Spree.t(:out_of_stock)
 
           .description.copy
             - if @product.description

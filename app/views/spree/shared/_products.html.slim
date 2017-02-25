@@ -35,10 +35,14 @@
                 p.text-center
                   = product.name_extra.html_safe
               p.text-center
-                = display_price(product)
+                - if product.price_in(current_currency) and !product.price.nil?
+                  - if product.master.can_supply?
+                    = display_price(product)
 
-                = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
-                  i.fa.fa-plus[title='Add to cart']
+                    = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
+                      i.fa.fa-plus[title='Добавить в корзину']
+                  - else
+                    span[class="out-of-stock"] = Spree.t(:out_of_stock)
 
     = paginate paginated_products, theme: 'komi-comix'
   - else

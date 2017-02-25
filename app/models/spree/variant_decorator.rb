@@ -1,6 +1,7 @@
 Spree::Variant.class_eval do
 
-  scope :by_num_sku, -> { where('sku ~ ?', '^\d*[0-9]\d*$').order(sku: 'desc') }
+  # scope :by_num_sku, -> { where('sku ~ ?', '^\d*[0-9]\d*$').order(sku: 'desc') }
+  scope :by_num_sku, -> { order(sku: 'desc') }
 
   # before_save :set_sku
 
@@ -20,4 +21,17 @@ Spree::Variant.class_eval do
     end
   end
 
+  def total_orderable
+    if self.is_backorderable?
+      return nil
+    else
+      on_hand = self.total_on_hand
+      if on_hand == Float::INFINITY
+        return nil
+      elsif on_hand >= 0
+        return on_hand
+      end
+    end
+    return nil
+  end
 end
