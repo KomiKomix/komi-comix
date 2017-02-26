@@ -42,7 +42,7 @@
                     = link_to '#', class: 'btn btn-primary', id: "cart_product_#{product.id}", role: 'dialog', :'data-toggle' => 'modal', :'data-target' => '#cart_modal', :'data-product' => product.to_json, onclick: "$(this).closest('.thumbnail').find('.cart_form').submit();"
                       i.fa.fa-plus[title='Добавить в корзину']
                   - else
-                    span[class="out-of-stock"] = Spree.t(:out_of_stock)
+                    span.out-of-stock = "Ой! Продано…"
 
     = paginate paginated_products, theme: 'komi-comix'
   - else

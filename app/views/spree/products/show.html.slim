@@ -34,7 +34,9 @@
               button[type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#cart_modal" onclick="$(this).closest('.carditems').find('.cart_form').submit();"]
                 = 'Добавить в корзину'
             - elsif @product.variants.empty?
-              span[class="out-of-stock"] = Spree.t(:out_of_stock)
+              .price
+                span= display_price(@product)
+              span[class="out-of-stock"] = "Ой! Продано…"
 
           .description.copy
             - if @product.description
